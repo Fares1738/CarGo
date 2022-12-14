@@ -20,21 +20,21 @@ class _LoginPageState extends State<LoginPage> {
             SizedBox(height: 10),
             // Hello again!
 
-            // Image.asset(
-            //   'assets/CarGo.png',
-            //   height: 200,
-            //   width: 400,
-            // ),
-
-            Text(
-              "CarGo",
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 40,
-                fontFamily: 'ShadowIntoLight',
-                color: Color.fromARGB(255, 41, 130, 203),
-              ),
+            Image.asset(
+              'assets/CarGo.png',
+              height: 200,
+              width: 400,
             ),
+
+            // Text(
+            //   "CarGo",
+            //   style: TextStyle(
+            //     fontWeight: FontWeight.bold,
+            //     fontSize: 40,
+            //     fontFamily: 'ShadowIntoLight',
+            //     color: Color.fromARGB(255, 41, 130, 203),
+            //   ),
+            // ),
 
             // SizedBox(height: 10),
             Text(
