@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'login_page.dart';
+
 //Faris commit......
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -9,6 +10,7 @@ void main() async {
 }
 
 //Nafis Ahmed
+//Faris ismail
 
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
