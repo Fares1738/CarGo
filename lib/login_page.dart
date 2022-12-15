@@ -9,7 +9,7 @@ class LoginPage extends StatefulWidget {
   State<LoginPage> createState() => _LoginPageState();
 }
 //test
-// test commit
+// test commit.
 class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
