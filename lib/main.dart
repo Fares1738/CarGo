@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 
 import 'login_page.dart';
@@ -11,7 +13,7 @@ void main() async {
 //Nafis
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
-//This is Hassan Mustafa....
+//This is Hassan Mustafa......
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
