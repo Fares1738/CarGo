@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'login_page.dart';
-
 //Faris commit......
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -23,3 +22,5 @@ class Home extends StatelessWidget {
     );
   }
 }
+
+//test
