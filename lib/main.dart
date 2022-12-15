@@ -9,7 +9,7 @@ void main() async {
 }
 
 //Nafis Ahmed
-//Torky
+
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
 
