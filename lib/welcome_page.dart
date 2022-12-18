@@ -26,11 +26,9 @@ class _WelcomePageState extends State<WelcomePage> {
               width: 400,
             ),
 
-           
-
-             SizedBox(height: 10),
+            SizedBox(height: 10),
             Text(
-              "No time to waste !",
+              "No Time To Waste!",
               style: TextStyle(
                 fontSize: 20,
               ),
@@ -55,11 +53,8 @@ class _WelcomePageState extends State<WelcomePage> {
 
             // SizedBox(height: 10),
 
-            
-
             SizedBox(height: 10),
 
-           
             //Signin
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25.0),
@@ -81,8 +76,6 @@ class _WelcomePageState extends State<WelcomePage> {
             ),
 
             SizedBox(height: 25),
-
-            
           ]),
         ),
       ),
