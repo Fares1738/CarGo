@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:cargo/landing_page.dart';
 import 'package:flutter/material.dart';
 
 import 'login_page.dart';
@@ -23,7 +24,7 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: LoginPage(),
+      home: LandingPage(),
     );
   }
 }
