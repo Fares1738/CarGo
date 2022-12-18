@@ -63,7 +63,7 @@ class _LandingPage extends State<LandingPage> {
                       child: Text('Sign Up'),
                       onPressed: () {
                         //Waiting to add the sign up page
-                        ///* Navigator.push(
+                        /* Navigator.push(
                           context,
                           MaterialPageRoute(builder: (context) => LoginPage()),
                         ); */
