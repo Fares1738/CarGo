@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import 'login_page.dart';
 
+//Faris commit......
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -11,9 +12,11 @@ void main() async {
 }
 
 //SSSSSSSSSSSSSS
+//Nafis Ahmed
+
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
-//This is Hassan Mustafa...
+//This is Hassan Mustafa..
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
