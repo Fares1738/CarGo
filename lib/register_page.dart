@@ -34,7 +34,7 @@ class _LoginPageState extends State<RegisterPage> {
             // Hello again!
 
             Image.asset(
-              'assets/CarGo.png',
+              'assets/CarGo2.png',
               height: 200,
               width: 400,
             ),

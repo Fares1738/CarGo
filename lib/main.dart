@@ -1,11 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'package:cargo/landing_page.dart';
 import 'package:cargo/welcome_page.dart';
 import 'package:flutter/material.dart';
-
-import 'login_page.dart';
-
 //Faris commit......
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
