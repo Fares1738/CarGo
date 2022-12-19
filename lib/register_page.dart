@@ -39,16 +39,6 @@ class _LoginPageState extends State<RegisterPage> {
               width: 400,
             ),
 
-            Text(
-              "CarGo",
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 40,
-                fontFamily: 'ShadowIntoLight',
-                color: Color.fromARGB(255, 41, 130, 203),
-              ),
-            ),
-
             // SizedBox(height: 10),
             Text(
               "There is no Time to Waste",
