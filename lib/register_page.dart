@@ -33,18 +33,13 @@ class _LoginPageState extends State<RegisterPage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SizedBox(height: 10),
+              SizedBox(height: 20),
               // Hello again!
 
               Image.asset(
                 'assets/CarGo2.png',
                 width: 270,
                 height: 200,
-              ),
-              Image.asset(
-                'assets/CarGo2.png',
-                height: 200,
-                width: 400,
               ),
 
               // SizedBox(height: 10),
@@ -55,7 +50,7 @@ class _LoginPageState extends State<RegisterPage> {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              SizedBox(height: 30),
+              SizedBox(height: 50),
 
               //Fullname
               Padding(
