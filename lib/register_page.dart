@@ -68,6 +68,9 @@ class _LoginPageState extends State<RegisterPage> {
               //             ))))),
 
               // SizedBox(height: 10),
+            ),
+            SizedBox(height: 50),
+            // Email address
 
               //Fullname
               Padding(
