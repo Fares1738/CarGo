@@ -28,167 +28,171 @@ class _LoginPageState extends State<RegisterPage> {
           })),
       backgroundColor: Colors.grey[300],
       body: SafeArea(
-        child: Center(
-          child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-            SizedBox(height: 10),
-            // Hello again!
+        child: SingleChildScrollView(
+          child: Center(
+            child:
+                Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+              SizedBox(height: 10),
+              // Hello again!
 
-            Image.asset(
-              'assets/CarGo.png',
-              height: 200,
-              width: 400,
-            ),
-
-            // SizedBox(height: 10),
-            Text(
-              "There is no Time to Waste",
-              style: TextStyle(
-                fontSize: 20,
+              Image.asset(
+                'assets/CarGo2.png',
+                width: 270,
+                height: 200,
               ),
-            ),
-            SizedBox(height: 50),
-            // Email address
 
-            // Padding(
-            //     padding: const EdgeInsets.symmetric(horizontal: 25.0),
-            //     child: Container(
-            //         decoration: BoxDecoration(
-            //           color: Colors.red,
-            //           border: Border.all(color: Colors.blue),
-            //           borderRadius: BorderRadius.circular(15),
-            //         ),
-            //         child: Padding(
-            //             padding: const EdgeInsets.only(left: 20.0),
-            //             child: TextField(
-            //                 decoration: InputDecoration(
-            //               border: InputBorder.none,
-            //             ))))),
-
-            // SizedBox(height: 10),
-
-            //Fullname
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25.0),
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Colors.grey[200],
-                  border: Border.all(color: Colors.white),
-                  borderRadius: BorderRadius.circular(15),
+              // SizedBox(height: 10),
+              Text(
+                'No Time To Waste!',
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
                 ),
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 20.0),
-                  child: TextField(
-                    decoration: InputDecoration(
-                        border: InputBorder.none,
-                        hintText: "Fullname",
-                        hintStyle: TextStyle(
+              ),
+              SizedBox(height: 30),
+              // Email address
+
+              // Padding(
+              //     padding: const EdgeInsets.symmetric(horizontal: 25.0),
+              //     child: Container(
+              //         decoration: BoxDecoration(
+              //           color: Colors.red,
+              //           border: Border.all(color: Colors.blue),
+              //           borderRadius: BorderRadius.circular(15),
+              //         ),
+              //         child: Padding(
+              //             padding: const EdgeInsets.only(left: 20.0),
+              //             child: TextField(
+              //                 decoration: InputDecoration(
+              //               border: InputBorder.none,
+              //             ))))),
+
+              // SizedBox(height: 10),
+
+              //Fullname
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    border: Border.all(color: Colors.white),
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 20.0),
+                    child: TextField(
+                      decoration: InputDecoration(
+                          border: InputBorder.none,
+                          hintText: "Full Name",
+                          hintStyle: TextStyle(
+                            fontWeight: FontWeight.bold,
+                          )),
+                    ),
+                  ),
+                ),
+              ),
+
+              SizedBox(height: 10),
+
+              //Email
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    border: Border.all(color: Colors.white),
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 20.0),
+                    child: TextField(
+                      decoration: InputDecoration(
+                          border: InputBorder.none,
+                          hintText: "Email",
+                          hintStyle: TextStyle(
+                            fontWeight: FontWeight.bold,
+                          )),
+                    ),
+                  ),
+                ),
+              ),
+
+              SizedBox(height: 10),
+
+              //Password
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    border: Border.all(color: Colors.white),
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 20.0),
+                    child: TextField(
+                      obscureText: true,
+                      decoration: InputDecoration(
+                          border: InputBorder.none,
+                          hintText: "Password",
+                          hintStyle: TextStyle(
+                            fontWeight: FontWeight.bold,
+                          )),
+                    ),
+                  ),
+                ),
+              ),
+
+              SizedBox(height: 10),
+
+              //Confirm Password
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    border: Border.all(color: Colors.white),
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 20.0),
+                    child: TextField(
+                      obscureText: true,
+                      decoration: InputDecoration(
+                          border: InputBorder.none,
+                          hintText: "Confirm Password",
+                          hintStyle: TextStyle(
+                            fontWeight: FontWeight.bold,
+                          )),
+                    ),
+                  ),
+                ),
+              ),
+
+              SizedBox(height: 10),
+              //Sign Up
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 25),
+                child: Container(
+                  padding: EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    color: Colors.deepPurple,
+                    borderRadius: BorderRadius.circular(30),
+                  ),
+                  child: Center(
+                    child: Text("Sign up",
+                        style: TextStyle(
+                          color: Colors.white,
                           fontWeight: FontWeight.bold,
+                          fontSize: 15,
                         )),
                   ),
                 ),
               ),
-            ),
 
-            SizedBox(height: 10),
-
-            //Email
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25.0),
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Colors.grey[200],
-                  border: Border.all(color: Colors.white),
-                  borderRadius: BorderRadius.circular(15),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 20.0),
-                  child: TextField(
-                    decoration: InputDecoration(
-                        border: InputBorder.none,
-                        hintText: "Email",
-                        hintStyle: TextStyle(
-                          fontWeight: FontWeight.bold,
-                        )),
-                  ),
-                ),
-              ),
-            ),
-
-            SizedBox(height: 10),
-
-            //Password
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25.0),
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Colors.grey[200],
-                  border: Border.all(color: Colors.white),
-                  borderRadius: BorderRadius.circular(15),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 20.0),
-                  child: TextField(
-                    obscureText: true,
-                    decoration: InputDecoration(
-                        border: InputBorder.none,
-                        hintText: "Password",
-                        hintStyle: TextStyle(
-                          fontWeight: FontWeight.bold,
-                        )),
-                  ),
-                ),
-              ),
-            ),
-
-            SizedBox(height: 10),
-
-            //Confirm Password
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25.0),
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Colors.grey[200],
-                  border: Border.all(color: Colors.white),
-                  borderRadius: BorderRadius.circular(15),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 20.0),
-                  child: TextField(
-                    obscureText: true,
-                    decoration: InputDecoration(
-                        border: InputBorder.none,
-                        hintText: "Confirm Password",
-                        hintStyle: TextStyle(
-                          fontWeight: FontWeight.bold,
-                        )),
-                  ),
-                ),
-              ),
-            ),
-
-            SizedBox(height: 10),
-            //Signup
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25.0),
-              child: Container(
-                padding: EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                  color: Colors.deepPurple,
-                  borderRadius: BorderRadius.circular(30),
-                ),
-                child: Center(
-                  child: Text("Sign up",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 15,
-                      )),
-                ),
-              ),
-            ),
-
-            SizedBox(height: 25),
-          ]),
+              //SizedBox(height: 25),
+            ]),
+          ),
         ),
       ),
     );

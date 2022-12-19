@@ -24,13 +24,12 @@ class _LandingPage extends State<LandingPage> {
             SizedBox(height: 10),
             Image.asset(
               'assets/CarGo2.png',
+              width: 270,
               height: 200,
-              width: 400,
             ),
-            SizedBox(height: 30),
+            SizedBox(height: 50),
             Padding(
-              padding:
-                  EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 20),
+              padding: EdgeInsets.only(top: 20),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
@@ -45,7 +44,6 @@ class _LandingPage extends State<LandingPage> {
                       ),
                       child: Text('Sign In'),
                       onPressed: () {
-                        //Waiting to add the sign up page
                         Navigator.push(
                           context,
                           MaterialPageRoute(builder: (context) => LoginPage()),

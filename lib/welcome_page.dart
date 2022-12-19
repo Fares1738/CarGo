@@ -20,6 +20,8 @@ class _WelcomePageState extends State<WelcomePage> {
           child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
             Image.asset(
               'assets/CarGo2.png',
+              width: 270,
+              height: 200,
             ),
             Text(
               'No Time To Waste!',
@@ -28,6 +30,7 @@ class _WelcomePageState extends State<WelcomePage> {
                 fontWeight: FontWeight.bold,
               ),
             ),
+            SizedBox(height: 120),
             Padding(
               padding: EdgeInsets.only(top: 20),
               child: Column(
