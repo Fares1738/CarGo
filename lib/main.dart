@@ -12,10 +12,6 @@ void main() async {
   runApp(const Home());
 }
 
-//SSSSSSSSSSSSSS
-//Nafis Ahmed
-//Faris ismail
-//Hassan
 
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
