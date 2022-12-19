@@ -26,7 +26,6 @@ class _WelcomePageState extends State<WelcomePage> {
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
-                height: 1.2,
               ),
             ),
             Padding(
