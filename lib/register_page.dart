@@ -49,23 +49,6 @@ class _LoginPageState extends State<RegisterPage> {
             SizedBox(height: 50),
             // Email address
 
-            // Padding(
-            //     padding: const EdgeInsets.symmetric(horizontal: 25.0),
-            //     child: Container(
-            //         decoration: BoxDecoration(
-            //           color: Colors.red,
-            //           border: Border.all(color: Colors.blue),
-            //           borderRadius: BorderRadius.circular(15),
-            //         ),
-            //         child: Padding(
-            //             padding: const EdgeInsets.only(left: 20.0),
-            //             child: TextField(
-            //                 decoration: InputDecoration(
-            //               border: InputBorder.none,
-            //             ))))),
-
-            // SizedBox(height: 10),
-
             //Fullname
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25.0),
