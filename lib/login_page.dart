@@ -8,6 +8,7 @@ class LoginPage extends StatefulWidget {
   @override
   State<LoginPage> createState() => _LoginPageState();
 }
+
 //test
 class _LoginPageState extends State<LoginPage> {
   @override
@@ -26,7 +27,7 @@ class _LoginPageState extends State<LoginPage> {
               width: 400,
             ),
 //
-          //
+            //
             // Text(
             //   "CarGo",
             //   style: TextStyle(
@@ -114,7 +115,7 @@ class _LoginPageState extends State<LoginPage> {
 
             SizedBox(height: 10),
 
-            //Signin
+            //Sign in
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25.0),
               child: Container(

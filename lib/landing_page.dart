@@ -3,6 +3,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:cargo/login_page.dart';
+import 'package:cargo/register_page.dart';
 import 'package:flutter/material.dart';
 
 // ignore: use_key_in_widget_constructors
@@ -63,10 +64,11 @@ class _LandingPage extends State<LandingPage> {
                       child: Text('Sign Up'),
                       onPressed: () {
                         //Waiting to add the sign up page
-                        /* Navigator.push(
+                        Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => LoginPage()),
-                        ); */
+                          MaterialPageRoute(
+                              builder: (context) => RegisterPage()),
+                        );
                       },
                     ),
                   ],

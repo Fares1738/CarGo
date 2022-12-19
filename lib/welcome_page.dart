@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'package:cargo/landing_page.dart';
 import 'package:flutter/material.dart';
 
 class WelcomePage extends StatefulWidget {
@@ -17,65 +18,42 @@ class _WelcomePageState extends State<WelcomePage> {
       body: SafeArea(
         child: Center(
           child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-            SizedBox(height: 10),
-            // Hello again!
-
             Image.asset(
               'assets/CarGo.png',
-              height: 200,
-              width: 400,
             ),
-
-            SizedBox(height: 10),
             Text(
-              "No Time To Waste!",
+              'No Time To Waste!',
               style: TextStyle(
                 fontSize: 20,
+                fontWeight: FontWeight.bold,
+                height: 1.2,
               ),
             ),
-            SizedBox(height: 20),
-            // Email address
-
-            // Padding(
-            //     padding: const EdgeInsets.symmetric(horizontal: 25.0),
-            //     child: Container(
-            //         decoration: BoxDecoration(
-            //           color: Colors.red,
-            //           border: Border.all(color: Colors.blue),
-            //           borderRadius: BorderRadius.circular(15),
-            //         ),
-            //         child: Padding(
-            //             padding: const EdgeInsets.only(left: 20.0),
-            //             child: TextField(
-            //                 decoration: InputDecoration(
-            //               border: InputBorder.none,
-            //             ))))),
-
-            // SizedBox(height: 10),
-
-            SizedBox(height: 10),
-
-            //Signin
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25.0),
-              child: Container(
-                padding: EdgeInsets.all(15),
-                decoration: BoxDecoration(
-                  color: Colors.deepPurple,
-                  borderRadius: BorderRadius.circular(30),
-                ),
-                child: Center(
-                  child: Text("Continue",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 25,
-                      )),
-                ),
+              padding: EdgeInsets.only(top: 20),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      minimumSize: Size(200, 50),
+                      textStyle: TextStyle(fontSize: 21),
+                      backgroundColor: Colors.deepPurple,
+                      foregroundColor: Colors.white,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30.0)),
+                    ),
+                    child: Text('Continue To The App'),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => LandingPage()),
+                      );
+                    },
+                  ),
+                ],
               ),
-            ),
-
-            SizedBox(height: 25),
+            )
           ]),
         ),
       ),
