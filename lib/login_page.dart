@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'package:cargo/landing_page.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
@@ -14,6 +15,18 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      //Transparent appbar and back button icon
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+          iconTheme: IconThemeData(color: Colors.black),
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          leading: BackButton(onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => LandingPage()),
+            );
+          })),
       backgroundColor: Colors.grey[300],
       body: SafeArea(
         child: Center(
@@ -136,21 +149,6 @@ class _LoginPageState extends State<LoginPage> {
             ),
 
             SizedBox(height: 25),
-
-            //not a member? register now
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text("Not a Member?",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                    )),
-                Text(" Register Now",
-                    style: TextStyle(
-                      color: Colors.blueAccent[400],
-                    )),
-              ],
-            ),
           ]),
         ),
       ),
