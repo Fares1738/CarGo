@@ -23,7 +23,7 @@ class _LandingPage extends State<LandingPage> {
           children: [
             SizedBox(height: 10),
             Image.asset(
-              'assets/CarGo.png',
+              'assets/CarGo2.png',
               height: 200,
               width: 400,
             ),

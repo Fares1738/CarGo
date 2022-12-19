@@ -19,7 +19,7 @@ class _WelcomePageState extends State<WelcomePage> {
         child: Center(
           child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
             Image.asset(
-              'assets/CarGo.png',
+              'assets/CarGo2.png',
             ),
             Text(
               'No Time To Waste!',
