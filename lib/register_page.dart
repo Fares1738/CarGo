@@ -29,9 +29,10 @@ class _LoginPageState extends State<RegisterPage> {
       backgroundColor: Colors.grey[300],
       body: SafeArea(
         child: SingleChildScrollView(
-          child: Center(
-            child:
-                Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+            child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
               SizedBox(height: 10),
               // Hello again!
 
@@ -39,6 +40,11 @@ class _LoginPageState extends State<RegisterPage> {
                 'assets/CarGo2.png',
                 width: 270,
                 height: 200,
+              ),
+              Image.asset(
+                'assets/CarGo2.png',
+                height: 200,
+                width: 400,
               ),
 
               // SizedBox(height: 10),
@@ -50,27 +56,6 @@ class _LoginPageState extends State<RegisterPage> {
                 ),
               ),
               SizedBox(height: 30),
-              // Email address
-
-              // Padding(
-              //     padding: const EdgeInsets.symmetric(horizontal: 25.0),
-              //     child: Container(
-              //         decoration: BoxDecoration(
-              //           color: Colors.red,
-              //           border: Border.all(color: Colors.blue),
-              //           borderRadius: BorderRadius.circular(15),
-              //         ),
-              //         child: Padding(
-              //             padding: const EdgeInsets.only(left: 20.0),
-              //             child: TextField(
-              //                 decoration: InputDecoration(
-              //               border: InputBorder.none,
-              //             ))))),
-
-              // SizedBox(height: 10),
-            ),
-            SizedBox(height: 50),
-            // Email address
 
               //Fullname
               Padding(
@@ -192,11 +177,10 @@ class _LoginPageState extends State<RegisterPage> {
                   ),
                 ),
               ),
-
               //SizedBox(height: 25),
-            ]),
+            ],
           ),
-        ),
+        )),
       ),
     );
   }
