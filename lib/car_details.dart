@@ -333,7 +333,7 @@ class AddVehicleState extends State<AddVehicle> {
 
               //Add Vehicle Pictures
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 100),
+                padding: const EdgeInsets.symmetric(horizontal: 90),
                 child: Container(
                   padding: EdgeInsets.all(10),
                   decoration: BoxDecoration(
