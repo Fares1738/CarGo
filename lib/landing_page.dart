@@ -79,6 +79,7 @@ class _LandingPage extends State<LandingPage> {
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30.0)),
                     ),
+                    //Add Vehicle button
                     child: Text('Add a Vehicle'),
                     onPressed: () {
                       Navigator.push(
