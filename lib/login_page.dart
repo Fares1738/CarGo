@@ -31,7 +31,7 @@ class _LoginPageState extends State<LoginPage> {
       body: SafeArea(
         child: Center(
           child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-            SizedBox(height: 10),
+            //SizedBox(height: 10),
             // Hello again!
 
             Image.asset(
