@@ -2,6 +2,7 @@
 
 // ignore_for_file: prefer_const_constructors
 
+import 'package:cargo/car_details.dart';
 import 'package:cargo/login_page.dart';
 import 'package:cargo/register_page.dart';
 import 'package:flutter/material.dart';
@@ -65,6 +66,24 @@ class _LandingPage extends State<LandingPage> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(builder: (context) => RegisterPage()),
+                      );
+                    },
+                  ),
+                  SizedBox(height: 20),
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      minimumSize: Size(200, 50),
+                      textStyle: TextStyle(fontSize: 25),
+                      backgroundColor: Colors.deepPurple,
+                      foregroundColor: Colors.white,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30.0)),
+                    ),
+                    child: Text('Add a Vehicle'),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => AddVehicle()),
                       );
                     },
                   ),
