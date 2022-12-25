@@ -2,13 +2,13 @@
 
 import 'package:cargo/welcome_page.dart';
 import 'package:flutter/material.dart';
+
 //Faris commit......
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   runApp(const Home());
 }
-
 
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
@@ -21,4 +21,3 @@ class Home extends StatelessWidget {
     );
   }
 }
-//test
