@@ -70,24 +70,37 @@ class _LandingPage extends State<LandingPage> {
                     },
                   ),
                   SizedBox(height: 20),
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      minimumSize: Size(200, 50),
-                      textStyle: TextStyle(fontSize: 25),
-                      backgroundColor: Colors.deepPurple,
-                      foregroundColor: Colors.white,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(30.0)),
-                    ),
-                    //Add Vehicle button
-                    child: Text('Add a Vehicle'),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => AddVehicle()),
-                      );
-                    },
-                  ),
+                  // ElevatedButton(
+                  //   style: ElevatedButton.styleFrom(
+                  //     minimumSize: Size(200, 50),
+                  //     textStyle: TextStyle(fontSize: 25),
+                  //     backgroundColor: Colors.deepPurple,
+                  //     foregroundColor: Colors.white,
+                  //     shape: RoundedRectangleBorder(
+                  //         borderRadius: BorderRadius.circular(30.0)),
+                  //   ),
+                  //   //Add Vehicle button
+                  //   child: Text('Add a Vehicle'),
+                  //   onPressed: () {
+                  //     Navigator.push(
+                  //       context,
+                  //       MaterialPageRoute(
+                  //           builder: (context) => AddVehicle(
+                  //                 Manufacturer: '',
+                  //                 Model: '',
+                  //                 license_plate: '',
+                  //                 wheel_drive: '',
+                  //                 transmission: '',
+                  //                 location: '',
+                  //                 Make_year: 2014,
+                  //                 Mileage: 10000,
+                  //                 rent_price: 5000,
+                  //                 seats_number: 4,
+                  //                 gas_consumption: 24,
+                  //               )),
+                  //     );
+                  //   },
+                  // ),
                 ],
               ),
             ),
