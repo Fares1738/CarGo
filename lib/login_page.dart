@@ -1,6 +1,6 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
-import 'package:cargo/landing_page.dart';
+import 'package:cargo/rent_page.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
@@ -25,7 +25,7 @@ class _LoginPageState extends State<LoginPage> {
           leading: BackButton(onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => LandingPage()),
+              MaterialPageRoute(builder: (context) => RentPage()),
             );
           })),
       backgroundColor: Colors.grey[300],
@@ -103,21 +103,28 @@ class _LoginPageState extends State<LoginPage> {
 
               //Sign in
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                child: Container(
-                  padding: EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    color: Colors.deepPurple,
-                    borderRadius: BorderRadius.circular(30),
-                  ),
-                  child: Center(
-                    child: Text("Sign in",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 15,
-                        )),
-                  ),
+                padding: EdgeInsets.only(top: 20),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        minimumSize: Size(200, 50),
+                        textStyle: TextStyle(fontSize: 21),
+                        backgroundColor: Colors.deepPurple,
+                        foregroundColor: Colors.white,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30.0)),
+                      ),
+                      child: Text('Sign-In'),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => RentPage()),
+                        );
+                      },
+                    ),
+                  ],
                 ),
               ),
 
