@@ -1,17 +1,64 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, non_constant_identifier_names
 
 import 'package:flutter/material.dart';
 import 'package:cargo/landing_page.dart';
 
-class ViewAddedVehicle extends StatefulWidget {
-  const ViewAddedVehicle({Key? key}) : super(key: key);
+// ignore: must_be_immutable
+class AddVehicle extends StatefulWidget {
+  late String Manufacturer,
+      Model,
+      license_plate,
+      wheel_drive,
+      transmission,
+      location;
+  late int Make_year, Mileage, rent_price, seats_number;
+  late double gas_consumption;
+
+  AddVehicle(
+      {required this.Manufacturer,
+      required this.Model,
+      required this.license_plate,
+      required this.wheel_drive,
+      required this.transmission,
+      required this.location,
+      required this.Make_year,
+      required this.Mileage,
+      required this.rent_price,
+      required this.seats_number,
+      required this.gas_consumption});
 
   @override
   // ignore: no_logic_in_create_state
-  State<StatefulWidget> createState() => ViewAddedVehicleState();
+  State<StatefulWidget> createState() => AddVehicleState(Manufacturer, Model,
+      license_plate,
+      wheel_drive,
+      transmission,
+      location, Make_year, Mileage, rent_price, seats_number, gas_consumption);
 }
 
-class ViewAddedVehicleState extends State<ViewAddedVehicle> {
+class AddVehicleState extends State<AddVehicle> {
+  late String Manufacturer,
+      Model,
+      license_plate,
+      wheel_drive,
+      transmission,
+      location;
+  late int Make_year, Mileage, rent_price, seats_number;
+  late double gas_consumption;
+
+  AddVehicleState(
+      this.Manufacturer,
+      this.Model,
+      this.license_plate,
+      this.wheel_drive,
+      this.transmission,
+      this.location,
+      this.Make_year,
+      this.Mileage,
+      this.rent_price,
+      this.seats_number,
+      this.gas_consumption);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,7 +100,6 @@ class ViewAddedVehicleState extends State<ViewAddedVehicle> {
                 ),
               ),
               SizedBox(height: 40),
-
 
               //Manufacturer
               Padding(
@@ -282,7 +328,7 @@ class ViewAddedVehicleState extends State<ViewAddedVehicle> {
               ),
               SizedBox(height: 10),
 
-              //Transmissio
+              //Transmission
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 25.0),
                 child: Container(
