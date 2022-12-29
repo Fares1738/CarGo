@@ -17,6 +17,7 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
       //Transparent appbar and back button icon
       extendBodyBehindAppBar: true,
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
           iconTheme: IconThemeData(color: Colors.black),
           backgroundColor: Colors.transparent,
@@ -29,127 +30,100 @@ class _LoginPageState extends State<LoginPage> {
           })),
       backgroundColor: Colors.grey[300],
       body: SafeArea(
-        child: Center(
-          child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-            //SizedBox(height: 10),
-            // Hello again!
+        child: SingleChildScrollView(
+          child: Center(
+            child:
+                Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+              //SizedBox(height: 10),
+              // Hello again!
 
-            Image.asset(
-              'assets/CarGo2.png',
-              width: 270,
-              height: 200,
-            ),
-//
-            //
-            // Text(
-            //   "CarGo",
-            //   style: TextStyle(
-            //     fontWeight: FontWeight.bold,
-            //     fontSize: 40,
-            //     fontFamily: 'ShadowIntoLight',
-            //     color: Color.fromARGB(255, 41, 130, 203),
-            //   ),
-            // ),
-
-            // SizedBox(height: 10),
-            Text(
-              "There is no Time to Waste",
-              style: TextStyle(
-                fontSize: 20,
+              Image.asset(
+                'assets/CarGo2.png',
+                width: 270,
+                height: 200,
               ),
-            ),
-            SizedBox(height: 50),
-            // Email address
 
-            // Padding(
-            //     padding: const EdgeInsets.symmetric(horizontal: 25.0),
-            //     child: Container(
-            //         decoration: BoxDecoration(
-            //           color: Colors.red,
-            //           border: Border.all(color: Colors.blue),
-            //           borderRadius: BorderRadius.circular(15),
-            //         ),
-            //         child: Padding(
-            //             padding: const EdgeInsets.only(left: 20.0),
-            //             child: TextField(
-            //                 decoration: InputDecoration(
-            //               border: InputBorder.none,
-            //             ))))),
-
-            // SizedBox(height: 10),
-
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25.0),
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Colors.grey[200],
-                  border: Border.all(color: Colors.white),
-                  borderRadius: BorderRadius.circular(15),
+              Text(
+                "There is no Time to Waste",
+                style: TextStyle(
+                  fontSize: 20,
                 ),
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 20.0),
-                  child: TextField(
-                    decoration: InputDecoration(
-                        border: InputBorder.none,
-                        hintText: "Email",
-                        hintStyle: TextStyle(
+              ),
+              SizedBox(height: 50),
+
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.grey[200],
+                    border: Border.all(color: Colors.white),
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 20.0),
+                    child: TextField(
+                      decoration: InputDecoration(
+                          border: InputBorder.none,
+                          hintText: "Email",
+                          hintStyle: TextStyle(
+                            fontWeight: FontWeight.bold,
+                          )),
+                    ),
+                  ),
+                ),
+              ),
+
+              SizedBox(height: 10),
+
+              //Password
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.grey[200],
+                    border: Border.all(color: Colors.white),
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 20.0),
+                    child: TextField(
+                      obscureText: true,
+                      decoration: InputDecoration(
+                          border: InputBorder.none,
+                          hintText: "Password",
+                          hintStyle: TextStyle(
+                            fontWeight: FontWeight.bold,
+                          )),
+                    ),
+                  ),
+                ),
+              ),
+
+              SizedBox(height: 10),
+
+              //Sign in
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                child: Container(
+                  padding: EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    color: Colors.deepPurple,
+                    borderRadius: BorderRadius.circular(30),
+                  ),
+                  child: Center(
+                    child: Text("Sign in",
+                        style: TextStyle(
+                          color: Colors.white,
                           fontWeight: FontWeight.bold,
+                          fontSize: 15,
                         )),
                   ),
                 ),
               ),
-            ),
 
-            SizedBox(height: 10),
-
-            //Password
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25.0),
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Colors.grey[200],
-                  border: Border.all(color: Colors.white),
-                  borderRadius: BorderRadius.circular(15),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 20.0),
-                  child: TextField(
-                    obscureText: true,
-                    decoration: InputDecoration(
-                        border: InputBorder.none,
-                        hintText: "Password",
-                        hintStyle: TextStyle(
-                          fontWeight: FontWeight.bold,
-                        )),
-                  ),
-                ),
-              ),
-            ),
-
-            SizedBox(height: 10),
-
-            //Sign in
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25.0),
-              child: Container(
-                padding: EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                  color: Colors.deepPurple,
-                  borderRadius: BorderRadius.circular(30),
-                ),
-                child: Center(
-                  child: Text("Sign in",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 15,
-                      )),
-                ),
-              ),
-            ),
-
-            SizedBox(height: 25),
-          ]),
+              SizedBox(height: 25),
+            ]),
+          ),
         ),
       ),
     );
