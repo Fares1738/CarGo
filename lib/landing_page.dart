@@ -2,7 +2,7 @@
 
 // ignore_for_file: prefer_const_constructors
 
-import 'package:cargo/car_details.dart';
+import 'package:cargo/add_car_details.dart';
 import 'package:cargo/login_page.dart';
 import 'package:cargo/register_page.dart';
 import 'package:flutter/material.dart';
