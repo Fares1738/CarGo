@@ -71,7 +71,7 @@ class _ExplorePage extends State<ExplorePage> {
       shadowColor: Colors.transparent,
       centerTitle: true,
       title: Padding(
-        padding: const EdgeInsets.only(top: 6),
+        padding: const EdgeInsets.only(top: 7),
         child: Image.asset(
           'assets/CarGo2.png',
           color: Colors.black,
