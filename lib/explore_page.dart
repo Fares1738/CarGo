@@ -1,5 +1,7 @@
 // ignore_for_file: avoid_print, prefer_const_constructors, library_private_types_in_public_api, use_key_in_widget_constructors, non_constant_identifier_names, unused_import
 
+import 'package:cargo/booked_page.dart';
+import 'package:cargo/host_page.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 
@@ -54,7 +56,26 @@ class _ExplorePage extends State<ExplorePage> {
       color: Colors.deepPurple,
       animationDuration: Duration(milliseconds: 200),
       onTap: (int index) {
-        print(index);
+        switch (index) {
+          case 1:
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => BookedPage()),
+            );
+            break;
+          case 2:
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => Hostpage()),
+            );
+            break;
+          case 3:
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => ExplorePage()),
+            );
+            break;
+        }
       },
       items: const [
         Icon(Icons.explore, color: Colors.white),

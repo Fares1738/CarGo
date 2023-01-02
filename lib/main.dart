@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter/services.dart';
 
-//Faris commit......
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   CarGoPhoneSystemActionBar();
@@ -15,7 +14,6 @@ void main() async {
 
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
-//This is Hassan Mustafa..
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -25,7 +23,6 @@ class Home extends StatelessWidget {
   }
 }
 
-//test
 void CarGoPhoneSystemActionBar() {
   return SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
     statusBarIconBrightness: Brightness.dark,

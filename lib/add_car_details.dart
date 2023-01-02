@@ -5,59 +5,61 @@ import 'package:cargo/landing_page.dart';
 
 // ignore: must_be_immutable
 class AddVehicle extends StatefulWidget {
-  late String Manufacturer,
-      Model,
-      license_plate,
-      wheel_drive,
-      transmission,
-      location;
-  late int Make_year, Mileage, rent_price, seats_number;
-  late double gas_consumption;
+  // late String Manufacturer,
+  //     Model,
+  //     license_plate,
+  //     wheel_drive,
+  //     transmission,
+  //     location;
+  // late int Make_year, Mileage, rent_price, seats_number;
+  // late double gas_consumption;
 
-  AddVehicle(
-      {required this.Manufacturer,
-      required this.Model,
-      required this.license_plate,
-      required this.wheel_drive,
-      required this.transmission,
-      required this.location,
-      required this.Make_year,
-      required this.Mileage,
-      required this.rent_price,
-      required this.seats_number,
-      required this.gas_consumption});
+  // AddVehicle(
+  //     {super.key, required this.Manufacturer,
+  //     required this.Model,
+  //     required this.license_plate,
+  //     required this.wheel_drive,
+  //     required this.transmission,
+  //     required this.location,
+  //     required this.Make_year,
+  //     required this.Mileage,
+  //     required this.rent_price,
+  //     required this.seats_number,
+  //     required this.gas_consumption});
 
   @override
   // ignore: no_logic_in_create_state
-  State<StatefulWidget> createState() => AddVehicleState(Manufacturer, Model,
-      license_plate,
-      wheel_drive,
-      transmission,
-      location, Make_year, Mileage, rent_price, seats_number, gas_consumption);
+  State<StatefulWidget> createState() => AddVehicleState(
+    // Manufacturer, Model,
+    //   license_plate,
+    //   wheel_drive,
+    //   transmission,
+    //   location, Make_year, Mileage, rent_price, seats_number, gas_consumption
+      );
 }
 
 class AddVehicleState extends State<AddVehicle> {
-  late String Manufacturer,
-      Model,
-      license_plate,
-      wheel_drive,
-      transmission,
-      location;
-  late int Make_year, Mileage, rent_price, seats_number;
-  late double gas_consumption;
+  // late String Manufacturer,
+  //     Model,
+  //     license_plate,
+  //     wheel_drive,
+  //     transmission,
+  //     location;
+  // late int Make_year, Mileage, rent_price, seats_number;
+  // late double gas_consumption;
 
-  AddVehicleState(
-      this.Manufacturer,
-      this.Model,
-      this.license_plate,
-      this.wheel_drive,
-      this.transmission,
-      this.location,
-      this.Make_year,
-      this.Mileage,
-      this.rent_price,
-      this.seats_number,
-      this.gas_consumption);
+  // AddVehicleState(
+  //     this.Manufacturer,
+  //     this.Model,
+  //     this.license_plate,
+  //     this.wheel_drive,
+  //     this.transmission,
+  //     this.location,
+  //     this.Make_year,
+  //     this.Mileage,
+  //     this.rent_price,
+  //     this.seats_number,
+  //     this.gas_consumption);
 
   @override
   Widget build(BuildContext context) {
