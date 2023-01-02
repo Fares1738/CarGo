@@ -1,5 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'package:cargo/add_car_details.dart';
+import 'package:cargo/host_page.dart';
 import 'package:cargo/rent_page.dart';
 import 'package:flutter/material.dart';
 
@@ -120,7 +122,7 @@ class _LoginPageState extends State<LoginPage> {
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => RentPage()),
+                          MaterialPageRoute(builder: (context) => AddVehicle()),
                         );
                       },
                     ),
