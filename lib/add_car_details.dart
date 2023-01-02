@@ -3,17 +3,10 @@
 import 'package:flutter/material.dart';
 import 'package:cargo/landing_page.dart';
 
+import 'car_details.dart';
+
 // ignore: must_be_immutable
 class AddVehicle extends StatefulWidget {
-  // late String Manufacturer,
-  //     Model,
-  //     license_plate,
-  //     wheel_drive,
-  //     transmission,
-  //     location;
-  // late int Make_year, Mileage, rent_price, seats_number;
-  // late double gas_consumption;
-
   // AddVehicle(
   //     {super.key, required this.Manufacturer,
   //     required this.Model,
@@ -30,11 +23,11 @@ class AddVehicle extends StatefulWidget {
   @override
   // ignore: no_logic_in_create_state
   State<StatefulWidget> createState() => AddVehicleState(
-    // Manufacturer, Model,
-    //   license_plate,
-    //   wheel_drive,
-    //   transmission,
-    //   location, Make_year, Mileage, rent_price, seats_number, gas_consumption
+      // Manufacturer, Model,
+      //   license_plate,
+      //   wheel_drive,
+      //   transmission,
+      //   location, Make_year, Mileage, rent_price, seats_number, gas_consumption
       );
 }
 
@@ -61,6 +54,8 @@ class AddVehicleState extends State<AddVehicle> {
   //     this.seats_number,
   //     this.gas_consumption);
 
+  TextEditingController _manufacturer = new TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -84,7 +79,6 @@ class AddVehicleState extends State<AddVehicle> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               SizedBox(height: 5),
-              // Hello again!
 
               Image.asset(
                 'assets/CarGo2.png',
@@ -115,6 +109,7 @@ class AddVehicleState extends State<AddVehicle> {
                   child: Padding(
                     padding: const EdgeInsets.only(left: 20.0),
                     child: TextField(
+                      controller: _manufacturer,
                       decoration: InputDecoration(
                           border: InputBorder.none,
                           hintText: "Manufacturer",
@@ -401,23 +396,22 @@ class AddVehicleState extends State<AddVehicle> {
               ),
               SizedBox(height: 10),
               //Add Vehicle button
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 120),
-                child: Container(
-                  padding: EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    color: Colors.deepPurple,
-                    borderRadius: BorderRadius.circular(30),
-                  ),
-                  child: Center(
-                    child: Text("Add Vehicle",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 15,
-                        )),
-                  ),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  minimumSize: Size(200, 50),
+                  textStyle: TextStyle(fontSize: 21),
+                  backgroundColor: Colors.deepPurple,
+                  foregroundColor: Colors.white,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30.0)),
                 ),
+                child: Text('Sign-In'),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => ViewAddedVehicle()),
+                  );
+                },
               ),
               SizedBox(height: 10),
             ],

@@ -1,11 +1,28 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, non_constant_identifier_names
 
 import 'package:flutter/material.dart';
 import 'package:cargo/landing_page.dart';
 
+// ignore: must_be_immutable
 class ViewAddedVehicle extends StatefulWidget {
-  const ViewAddedVehicle({Key? key}) : super(key: key);
+  //String Manufacturer;
 
+  // ViewAddedVehicle({
+  //  required this.Manufacturer,
+  //   required this.Model,
+  //   required this.license_plate,
+  //   required this.wheel_drive,
+  //   required this.transmission,
+  //   required this.location
+  // });
+
+  //     Model,
+  //     license_plate,
+  //     wheel_drive,
+  //     transmission,
+  //     location;
+  // late int Make_year, Mileage, rent_price, seats_number;
+  // late double gas_consumption;
   @override
   // ignore: no_logic_in_create_state
   State<StatefulWidget> createState() => ViewAddedVehicleState();
@@ -76,6 +93,8 @@ class ViewAddedVehicleState extends State<ViewAddedVehicle> {
                   ),
                 ),
               ),
+
+            //  Text('Manufacturer: $Manufacturer'),
 
               SizedBox(height: 10),
 
@@ -378,3 +397,5 @@ class ViewAddedVehicleState extends State<ViewAddedVehicle> {
     );
   }
 }
+
+
