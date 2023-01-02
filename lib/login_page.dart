@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'package:cargo/explore_page.dart';
 import 'package:cargo/add_car_details.dart';
 import 'package:cargo/host_page.dart';
 import 'package:cargo/rent_page.dart';
@@ -122,7 +123,8 @@ class _LoginPageState extends State<LoginPage> {
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => AddVehicle()),
+                          MaterialPageRoute(
+                              builder: (context) => ExplorePage()),
                         );
                       },
                     ),
