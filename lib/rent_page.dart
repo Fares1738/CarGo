@@ -2,6 +2,8 @@
 
 import 'package:cargo/history_page.dart';
 import 'package:cargo/landing_page.dart';
+import 'package:cargo/host_page.dart';
+import 'package:cargo/explore_page.dart';
 import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 
@@ -111,7 +113,26 @@ class _RentPageState extends State<RentPage> with TickerProviderStateMixin {
       color: Colors.deepPurple,
       animationDuration: Duration(milliseconds: 200),
       onTap: (int index) {
-        print(index);
+        switch (index) {
+          case 1:
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => RentPage()),
+            );
+            break;
+          case 2:
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => Hostpage()),
+            );
+            break;
+          case 3:
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => ExplorePage()),
+            );
+            break;
+        }
       },
       items: const [
         Icon(Icons.explore, color: Colors.white),
