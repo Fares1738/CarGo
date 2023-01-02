@@ -54,7 +54,6 @@ class ViewAddedVehicleState extends State<ViewAddedVehicle> {
               ),
               SizedBox(height: 40),
 
-
               //Manufacturer
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 25.0),

@@ -5,6 +5,8 @@ import 'package:cargo/add_car_details.dart';
 import 'package:cargo/host_page.dart';
 import 'package:cargo/rent_page.dart';
 import 'package:flutter/material.dart';
+import 'package:cargo/landing_page.dart';
+
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -28,7 +30,7 @@ class _LoginPageState extends State<LoginPage> {
           leading: BackButton(onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => RentPage()),
+              MaterialPageRoute(builder: (context) => LandingPage()),
             );
           })),
       backgroundColor: Colors.grey[300],
