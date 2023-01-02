@@ -1,4 +1,7 @@
+import 'package:cargo/welcome_page.dart';
 import 'package:flutter/material.dart';
+
+import 'explore_page.dart';
 
 void main() => runApp(const MyApp());
 
@@ -36,12 +39,23 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
-          
           const SizedBox(height: 30),
           ElevatedButton(
-            style: style,
-            onPressed: () {},
-            child: const Text('VERIFY PROFILE'),
+            style: ElevatedButton.styleFrom(
+              minimumSize: Size(200, 50),
+              textStyle: TextStyle(fontSize: 21),
+              backgroundColor: Colors.deepPurple,
+              foregroundColor: Colors.white,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(30.0)),
+            ),
+            child: Text('Sign-In'),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ExplorePage()),
+              );
+            },
           ),
         ],
       ),
