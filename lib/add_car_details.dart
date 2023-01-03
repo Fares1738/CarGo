@@ -420,6 +420,7 @@ class AddVehicleState extends State<AddVehicle> {
     return AppBar(
       backgroundColor: Colors.transparent,
       shadowColor: Colors.transparent,
+      iconTheme: IconThemeData(color: Colors.black),
       centerTitle: true,
       title: Padding(
         padding: const EdgeInsets.only(top: 7),

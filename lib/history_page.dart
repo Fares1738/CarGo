@@ -94,6 +94,9 @@ class HistoryPage extends StatelessWidget {
                         ]))),
               ),
             ),
+            SizedBox(
+              height: 20,
+            ),
           ],
         ),
       ),
