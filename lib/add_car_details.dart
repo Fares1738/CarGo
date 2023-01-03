@@ -1,6 +1,5 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, non_constant_identifier_names
 
-import 'package:cargo/host_page.dart';
 import 'package:flutter/material.dart';
 import 'package:cargo/landing_page.dart';
 import 'car_details.dart';
@@ -47,16 +46,7 @@ class AddVehicleState extends State<AddVehicle> {
     return Scaffold(
       //Transparent appbar and back button icon
       extendBodyBehindAppBar: true,
-      appBar: AppBar(
-          iconTheme: IconThemeData(color: Colors.black),
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-          leading: BackButton(onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => Hostpage()),
-            );
-          })),
+      appBar: CarGoAppBar(),
       backgroundColor: Colors.white,
       body: SafeArea(
         child: SingleChildScrollView(
@@ -64,14 +54,6 @@ class AddVehicleState extends State<AddVehicle> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SizedBox(height: 5),
-
-              Image.asset(
-                'assets/CarGo2.png',
-                width: 270,
-                height: 100,
-              ),
-
               SizedBox(height: 10),
 
               Text(
@@ -430,6 +412,23 @@ class AddVehicleState extends State<AddVehicle> {
             ],
           ),
         )),
+      ),
+    );
+  }
+
+  AppBar CarGoAppBar() {
+    return AppBar(
+      backgroundColor: Colors.transparent,
+      shadowColor: Colors.transparent,
+      centerTitle: true,
+      title: Padding(
+        padding: const EdgeInsets.only(top: 7),
+        child: Image.asset(
+          'assets/CarGo2.png',
+          color: Colors.black,
+          height: 120.0,
+          width: 90.0,
+        ),
       ),
     );
   }
