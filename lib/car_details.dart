@@ -1,6 +1,5 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, non_constant_identifier_names, unnecessary_this
 
-import 'package:cargo/add_car_details.dart';
 import 'package:cargo/host_page.dart';
 import 'package:flutter/material.dart';
 
@@ -34,7 +33,6 @@ class ViewAddedVehicle extends StatefulWidget {
   final Text location;
 
   @override
-  // ignore: no_logic_in_create_state
   State<StatefulWidget> createState() => ViewAddedVehicleState();
 }
 
