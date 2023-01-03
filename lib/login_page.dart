@@ -33,7 +33,7 @@ class _LoginPageState extends State<LoginPage> {
               MaterialPageRoute(builder: (context) => LandingPage()),
             );
           })),
-      backgroundColor: Colors.grey[300],
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Center(

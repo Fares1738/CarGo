@@ -57,7 +57,7 @@ class AddVehicleState extends State<AddVehicle> {
               MaterialPageRoute(builder: (context) => Hostpage()),
             );
           })),
-      backgroundColor: Colors.grey[300],
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: SingleChildScrollView(
             child: Center(
