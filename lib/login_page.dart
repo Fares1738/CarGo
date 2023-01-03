@@ -48,12 +48,6 @@ class _LoginPageState extends State<LoginPage> {
                 height: 200,
               ),
 
-              Text(
-                "There is no Time to Waste",
-                style: TextStyle(
-                  fontSize: 20,
-                ),
-              ),
               SizedBox(height: 50),
 
               Padding(
