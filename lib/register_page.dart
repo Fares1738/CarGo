@@ -59,8 +59,8 @@ class _LoginPageState extends State<RegisterPage> {
                 padding: const EdgeInsets.symmetric(horizontal: 25.0),
                 child: Container(
                   decoration: BoxDecoration(
-                    color: Colors.white,
-                    border: Border.all(color: Colors.white),
+                    color: Colors.grey[200],
+                    border: Border.all(color: Colors.black),
                     borderRadius: BorderRadius.circular(15),
                   ),
                   child: Padding(
@@ -84,8 +84,8 @@ class _LoginPageState extends State<RegisterPage> {
                 padding: const EdgeInsets.symmetric(horizontal: 25.0),
                 child: Container(
                   decoration: BoxDecoration(
-                    color: Colors.white,
-                    border: Border.all(color: Colors.white),
+                    color: Colors.grey[200],
+                    border: Border.all(color: Colors.black),
                     borderRadius: BorderRadius.circular(15),
                   ),
                   child: Padding(
@@ -109,8 +109,8 @@ class _LoginPageState extends State<RegisterPage> {
                 padding: const EdgeInsets.symmetric(horizontal: 25.0),
                 child: Container(
                   decoration: BoxDecoration(
-                    color: Colors.white,
-                    border: Border.all(color: Colors.white),
+                    color: Colors.grey[200],
+                    border: Border.all(color: Colors.black),
                     borderRadius: BorderRadius.circular(15),
                   ),
                   child: Padding(
@@ -135,8 +135,8 @@ class _LoginPageState extends State<RegisterPage> {
                 padding: const EdgeInsets.symmetric(horizontal: 25.0),
                 child: Container(
                   decoration: BoxDecoration(
-                    color: Colors.white,
-                    border: Border.all(color: Colors.white),
+                    color: Colors.grey[200],
+                    border: Border.all(color: Colors.black),
                     borderRadius: BorderRadius.circular(15),
                   ),
                   child: Padding(

@@ -77,7 +77,7 @@ class AddVehicleState extends State<AddVehicle> {
               Text(
                 'Add your car details',
                 style: TextStyle(
-                  fontSize: 30,
+                  fontSize: 25,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -88,8 +88,8 @@ class AddVehicleState extends State<AddVehicle> {
                 padding: const EdgeInsets.symmetric(horizontal: 25.0),
                 child: Container(
                   decoration: BoxDecoration(
-                    color: Colors.white,
-                    border: Border.all(color: Colors.white),
+                    color: Colors.grey[100],
+                    border: Border.all(color: Colors.black),
                     borderRadius: BorderRadius.circular(15),
                   ),
                   child: Padding(
@@ -114,8 +114,8 @@ class AddVehicleState extends State<AddVehicle> {
                 padding: const EdgeInsets.symmetric(horizontal: 25.0),
                 child: Container(
                   decoration: BoxDecoration(
-                    color: Colors.white,
-                    border: Border.all(color: Colors.white),
+                    color: Colors.grey[100],
+                    border: Border.all(color: Colors.black),
                     borderRadius: BorderRadius.circular(15),
                   ),
                   child: Padding(
@@ -140,8 +140,8 @@ class AddVehicleState extends State<AddVehicle> {
                 padding: const EdgeInsets.symmetric(horizontal: 25.0),
                 child: Container(
                   decoration: BoxDecoration(
-                    color: Colors.white,
-                    border: Border.all(color: Colors.white),
+                    color: Colors.grey[200],
+                    border: Border.all(color: Colors.black),
                     borderRadius: BorderRadius.circular(15),
                   ),
                   child: Padding(
@@ -166,8 +166,8 @@ class AddVehicleState extends State<AddVehicle> {
                 padding: const EdgeInsets.symmetric(horizontal: 25.0),
                 child: Container(
                   decoration: BoxDecoration(
-                    color: Colors.white,
-                    border: Border.all(color: Colors.white),
+                    color: Colors.grey[200],
+                    border: Border.all(color: Colors.black),
                     borderRadius: BorderRadius.circular(15),
                   ),
                   child: Padding(
@@ -192,8 +192,8 @@ class AddVehicleState extends State<AddVehicle> {
                 padding: const EdgeInsets.symmetric(horizontal: 25.0),
                 child: Container(
                   decoration: BoxDecoration(
-                    color: Colors.white,
-                    border: Border.all(color: Colors.white),
+                    color: Colors.grey[200],
+                    border: Border.all(color: Colors.black),
                     borderRadius: BorderRadius.circular(15),
                   ),
                   child: Padding(
@@ -217,8 +217,8 @@ class AddVehicleState extends State<AddVehicle> {
                 padding: const EdgeInsets.symmetric(horizontal: 25.0),
                 child: Container(
                   decoration: BoxDecoration(
-                    color: Colors.white,
-                    border: Border.all(color: Colors.white),
+                    color: Colors.grey[200],
+                    border: Border.all(color: Colors.black),
                     borderRadius: BorderRadius.circular(15),
                   ),
                   child: Padding(
@@ -242,8 +242,8 @@ class AddVehicleState extends State<AddVehicle> {
                 padding: const EdgeInsets.symmetric(horizontal: 25.0),
                 child: Container(
                   decoration: BoxDecoration(
-                    color: Colors.white,
-                    border: Border.all(color: Colors.white),
+                    color: Colors.grey[200],
+                    border: Border.all(color: Colors.black),
                     borderRadius: BorderRadius.circular(15),
                   ),
                   child: Padding(
@@ -267,8 +267,8 @@ class AddVehicleState extends State<AddVehicle> {
                 padding: const EdgeInsets.symmetric(horizontal: 25.0),
                 child: Container(
                   decoration: BoxDecoration(
-                    color: Colors.white,
-                    border: Border.all(color: Colors.white),
+                    color: Colors.grey[200],
+                    border: Border.all(color: Colors.black),
                     borderRadius: BorderRadius.circular(15),
                   ),
                   child: Padding(
@@ -292,8 +292,8 @@ class AddVehicleState extends State<AddVehicle> {
                 padding: const EdgeInsets.symmetric(horizontal: 25.0),
                 child: Container(
                   decoration: BoxDecoration(
-                    color: Colors.white,
-                    border: Border.all(color: Colors.white),
+                    color: Colors.grey[200],
+                    border: Border.all(color: Colors.black),
                     borderRadius: BorderRadius.circular(15),
                   ),
                   child: Padding(
@@ -317,8 +317,8 @@ class AddVehicleState extends State<AddVehicle> {
                 padding: const EdgeInsets.symmetric(horizontal: 25.0),
                 child: Container(
                   decoration: BoxDecoration(
-                    color: Colors.white,
-                    border: Border.all(color: Colors.white),
+                    color: Colors.grey[200],
+                    border: Border.all(color: Colors.black),
                     borderRadius: BorderRadius.circular(15),
                   ),
                   child: Padding(
@@ -342,8 +342,8 @@ class AddVehicleState extends State<AddVehicle> {
                 padding: const EdgeInsets.symmetric(horizontal: 25.0),
                 child: Container(
                   decoration: BoxDecoration(
-                    color: Colors.white,
-                    border: Border.all(color: Colors.white),
+                    color: Colors.grey[200],
+                    border: Border.all(color: Colors.black),
                     borderRadius: BorderRadius.circular(15),
                   ),
                   child: Padding(
@@ -370,8 +370,8 @@ class AddVehicleState extends State<AddVehicle> {
                   children: <Widget>[
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        minimumSize: Size(200, 50),
-                        textStyle: TextStyle(fontSize: 21),
+                        minimumSize: Size(150, 45),
+                        textStyle: TextStyle(fontSize: 17),
                         backgroundColor: Colors.deepPurple,
                         foregroundColor: Colors.white,
                         shape: RoundedRectangleBorder(
@@ -391,14 +391,14 @@ class AddVehicleState extends State<AddVehicle> {
               ),
               //Add Vehicle button
               Padding(
-                padding: EdgeInsets.only(top: 20),
+                padding: EdgeInsets.only(top: 10),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        minimumSize: Size(200, 50),
-                        textStyle: TextStyle(fontSize: 21),
+                        minimumSize: Size(150, 45),
+                        textStyle: TextStyle(fontSize: 20),
                         backgroundColor: Colors.deepPurple,
                         foregroundColor: Colors.white,
                         shape: RoundedRectangleBorder(
