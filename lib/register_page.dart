@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'package:cargo/explore_page.dart';
 import 'package:flutter/material.dart';
 import 'package:cargo/landing_page.dart';
 import 'package:cargo/rent_page.dart';
@@ -169,11 +170,12 @@ class _LoginPageState extends State<RegisterPage> {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(30.0)),
                       ),
-                      child: Text('Sign-Up'),
+                      child: Text('Sign Up'),
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => RentPage()),
+                          MaterialPageRoute(
+                              builder: (context) => ExplorePage()),
                         );
                       },
                     ),
