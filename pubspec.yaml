@@ -68,8 +68,12 @@ flutter:
     - assets/mustang.jpg
     - assets/profile.png
     - assets/tick.jpg
+<<<<<<< HEAD
     - assets/selfie.png
     
+=======
+    - assets/
+>>>>>>> 77049291c8974eb9eb3cd74a549fe3a4b6aae941
 
   # - images/a_dot_ham.jpeg
 
