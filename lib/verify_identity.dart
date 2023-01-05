@@ -1,6 +1,6 @@
+import 'package:cargo/selfie_page.dart';
 import 'package:flutter/material.dart';
 
-import 'explore_page.dart';
 
 class VerifyID extends StatefulWidget {
   const VerifyID({Key? key}) : super(key: key);
@@ -50,7 +50,11 @@ class _VerifyIDState extends State<VerifyID> {
                     ),
                     child: Text('CONTINUE'),
                     onPressed: () {
-                     
+                     Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => SelfiePage ()),
+                        );
                     },
                   ),
                 ],
