@@ -1,4 +1,4 @@
-// ignore_for_file: camel_case_types, library_private_types_in_public_api
+// ignore_for_file: camel_case_types, library_private_types_in_public_api, non_constant_identifier_names
 
 import 'package:cargo/location_model.dart';
 import 'package:flutter/material.dart';
@@ -19,6 +19,12 @@ class _Cities extends State<Cities> {
     'Melacca',
     'Johor Bahru'
   ];
+
+  final city = TextEditingController();
+
+  void dispose() {
+    city.dispose();
+  }
 
   static List url = [
     'https://cdn.britannica.com/49/102749-050-B4874C95/Kuala-Lumpur-Malaysia.jpg',
@@ -77,7 +83,15 @@ class _Cities extends State<Cities> {
           MaterialPageRoute(builder: (context) => Cities()),
         );
       },
-      icon: Text("Search for a Location"),
+      icon: TextField(
+        controller: city,
+        decoration: InputDecoration(
+            border: InputBorder.none,
+            hintText: "Search for a City",
+            hintStyle: TextStyle(
+              fontWeight: FontWeight.bold,
+            )),
+      ),
       label: Icon(
         Icons.search,
         color: Colors.black,
