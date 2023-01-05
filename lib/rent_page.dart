@@ -109,15 +109,16 @@ class _RentPageState extends State<RentPage> with TickerProviderStateMixin {
 
   CurvedNavigationBar CarGoCurvedNavigationBar() {
     return CurvedNavigationBar(
+      index: 1,
       backgroundColor: Color.fromARGB(255, 255, 255, 255),
       color: Colors.deepPurple,
       animationDuration: Duration(milliseconds: 200),
       onTap: (int index) {
         switch (index) {
-          case 1:
+          case 0:
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => RentPage()),
+              MaterialPageRoute(builder: (context) => ExplorePage()),
             );
             break;
           case 2:
