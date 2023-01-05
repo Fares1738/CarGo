@@ -2,9 +2,12 @@
 
 import 'package:cargo/booked_page.dart';
 import 'package:cargo/host_page.dart';
+import 'package:cargo/location_model.dart';
+import 'package:cargo/location_page.dart';
 import 'package:cargo/rent_page.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
+
 
 class ExplorePage extends StatefulWidget {
   @override
@@ -33,7 +36,12 @@ class _ExplorePage extends State<ExplorePage> {
 
   ElevatedButton SearchElevatedButton() {
     return ElevatedButton.icon(
-      onPressed: () {},
+      onPressed: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => Cities()),
+        );
+      },
       icon: Text("Search for a Location"),
       label: Icon(
         Icons.search,
@@ -104,4 +112,6 @@ class _ExplorePage extends State<ExplorePage> {
       ),
     );
   }
+
+  
 }
