@@ -89,8 +89,8 @@ class _ExplorePage extends State<ExplorePage> {
 
   AppBar CarGoAppBar() {
     return AppBar(
-      backgroundColor: Colors.transparent,
-      shadowColor: Colors.transparent,
+      backgroundColor: Colors.white,
+      // shadowColor: Colors.white,
       iconTheme: IconThemeData(color: Colors.black),
       centerTitle: true,
       title: Padding(
