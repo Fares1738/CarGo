@@ -1,6 +1,8 @@
 import 'package:cargo/selfie_page.dart';
 import 'package:flutter/material.dart';
 
+import 'explore_page.dart';
+
 
 class VerifyID extends StatefulWidget {
   const VerifyID({Key? key}) : super(key: key);
