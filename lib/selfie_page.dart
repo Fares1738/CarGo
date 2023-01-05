@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'explore_page.dart';
 
 class SelfiePage extends StatefulWidget {
-  const VerifyPage({Key? key}) : super(key: key);
+  const SelfiePage({Key? key}) : super(key: key);
 
   @override
   State<SelfiePage> createState() => _SelfiePageState();
@@ -47,11 +47,10 @@ class _SelfiePageState extends State<SelfiePage> {
                     ),
                     child: Text('VERIFY PROFILE'),
                     onPressed: () {
-                     Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => VerifyID()),
-                        );
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => VerifyID()),
+                      );
                     },
                   ),
                 ],
