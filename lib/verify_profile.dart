@@ -1,3 +1,4 @@
+import 'package:cargo/verify_identity.dart';
 import 'package:flutter/material.dart';
 
 import 'explore_page.dart';
@@ -46,7 +47,11 @@ class _VerifyPageState extends State<VerifyPage> {
                     ),
                     child: Text('VERIFY PROFILE'),
                     onPressed: () {
-                     
+                     Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => VerifyID()),
+                        );
                     },
                   ),
                 ],

@@ -38,11 +38,11 @@ dependencies:
   firebase_auth: ^4.0.4
   google_fonts:
   curved_navigation_bar: ^1.0.3
+  flutter_button: ^0.0.4
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-    
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -65,6 +65,11 @@ flutter:
   assets:
     - assets/CarGo2.png
     - assets/rav4.jpg
+    - assets/mustang.jpg
+    - assets/profile.png
+    - assets/tick.jpg
+    - assets/
+
   # - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
