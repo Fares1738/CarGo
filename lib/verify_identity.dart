@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 
 import 'explore_page.dart';
 
-class VerifyPage extends StatefulWidget {
-  const VerifyPage({Key? key}) : super(key: key);
+class VerifyID extends StatefulWidget {
+  const VerifyID({Key? key}) : super(key: key);
 
   @override
-  State<VerifyPage> createState() => _VerifyPageState();
+  State<VerifyID> createState() => _VerifyIDState();
 }
 
-class _VerifyPageState extends State<VerifyPage> {
+class _VerifyIDState extends State<VerifyID> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,17 +18,21 @@ class _VerifyPageState extends State<VerifyPage> {
         child: Center(
           child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
             Image.asset(
-              'assets/profile.png',
+              'assets/tick.jpg',
               width: 270,
               height: 200,
             ),
+            
             Text(
-              'Complete Your Profile',
+              'Verify your identity', 
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
+                
               ),
+              
             ),
+            
             SizedBox(height: 120),
             Padding(
               padding: EdgeInsets.only(top: 20),
@@ -44,7 +48,7 @@ class _VerifyPageState extends State<VerifyPage> {
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30.0)),
                     ),
-                    child: Text('VERIFY PROFILE'),
+                    child: Text('CONTINUE'),
                     onPressed: () {
                      
                     },
@@ -54,6 +58,8 @@ class _VerifyPageState extends State<VerifyPage> {
             )
           ]),
         ),
+      
+        
       ),
     );
   }
