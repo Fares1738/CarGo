@@ -8,7 +8,7 @@ import 'package:cargo/register_page.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 
-import 'booked_page.dart';
+import 'rent_page.dart';
 import 'explore_page.dart';
 
 // ignore: use_key_in_widget_constructors
@@ -85,7 +85,7 @@ class _Hostpage extends State<Hostpage> {
           case 1:
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => BookedPage()),
+              MaterialPageRoute(builder: (context) => RentPage()),
             );
             break;
           case 2:

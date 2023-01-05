@@ -3,10 +3,9 @@ import 'package:flutter/material.dart';
 class HistoryPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(3.0),
-      //Fix RenferFlex issue
-      child: SingleChildScrollView(
+    return SingleChildScrollView(
+      child: Container(
+        padding: const EdgeInsets.all(3.0),
         child: Column(
           children: [
             Align(
@@ -50,7 +49,7 @@ class HistoryPage extends StatelessWidget {
                                 fontSize: 15,
                                 color: Colors.white,
                               )),
-                          Text('Owner: 131441',
+                          Text('Owner: 41',
                               textAlign: TextAlign.start,
                               style: TextStyle(
                                 fontSize: 15,
@@ -93,9 +92,6 @@ class HistoryPage extends StatelessWidget {
                               )),
                         ]))),
               ),
-            ),
-            SizedBox(
-              height: 20,
             ),
           ],
         ),
