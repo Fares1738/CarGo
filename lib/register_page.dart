@@ -1,7 +1,10 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'package:cargo/explore_page.dart';
+import 'package:cargo/verify_profile.dart';
 import 'package:flutter/material.dart';
 import 'package:cargo/landing_page.dart';
+import 'package:cargo/rent_page.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({Key? key}) : super(key: key);
@@ -26,7 +29,7 @@ class _LoginPageState extends State<RegisterPage> {
               MaterialPageRoute(builder: (context) => LandingPage()),
             );
           })),
-      backgroundColor: Colors.grey[300],
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: SingleChildScrollView(
             child: Center(
@@ -57,8 +60,8 @@ class _LoginPageState extends State<RegisterPage> {
                 padding: const EdgeInsets.symmetric(horizontal: 25.0),
                 child: Container(
                   decoration: BoxDecoration(
-                    color: Colors.white,
-                    border: Border.all(color: Colors.white),
+                    color: Colors.grey[200],
+                    border: Border.all(color: Colors.black),
                     borderRadius: BorderRadius.circular(15),
                   ),
                   child: Padding(
@@ -82,8 +85,8 @@ class _LoginPageState extends State<RegisterPage> {
                 padding: const EdgeInsets.symmetric(horizontal: 25.0),
                 child: Container(
                   decoration: BoxDecoration(
-                    color: Colors.white,
-                    border: Border.all(color: Colors.white),
+                    color: Colors.grey[200],
+                    border: Border.all(color: Colors.black),
                     borderRadius: BorderRadius.circular(15),
                   ),
                   child: Padding(
@@ -107,8 +110,8 @@ class _LoginPageState extends State<RegisterPage> {
                 padding: const EdgeInsets.symmetric(horizontal: 25.0),
                 child: Container(
                   decoration: BoxDecoration(
-                    color: Colors.white,
-                    border: Border.all(color: Colors.white),
+                    color: Colors.grey[200],
+                    border: Border.all(color: Colors.black),
                     borderRadius: BorderRadius.circular(15),
                   ),
                   child: Padding(
@@ -133,8 +136,8 @@ class _LoginPageState extends State<RegisterPage> {
                 padding: const EdgeInsets.symmetric(horizontal: 25.0),
                 child: Container(
                   decoration: BoxDecoration(
-                    color: Colors.white,
-                    border: Border.all(color: Colors.white),
+                    color: Colors.grey[200],
+                    border: Border.all(color: Colors.black),
                     borderRadius: BorderRadius.circular(15),
                   ),
                   child: Padding(
@@ -155,21 +158,29 @@ class _LoginPageState extends State<RegisterPage> {
               SizedBox(height: 10),
               //Sign Up
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 25),
-                child: Container(
-                  padding: EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    color: Colors.deepPurple,
-                    borderRadius: BorderRadius.circular(30),
-                  ),
-                  child: Center(
-                    child: Text("Sign up",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 15,
-                        )),
-                  ),
+                padding: EdgeInsets.only(top: 20),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        minimumSize: Size(200, 50),
+                        textStyle: TextStyle(fontSize: 21),
+                        backgroundColor: Colors.deepPurple,
+                        foregroundColor: Colors.white,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30.0)),
+                      ),
+                      child: Text('Sign Up'),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => VerifyPage()),
+                        );
+                      },
+                    ),
+                  ],
                 ),
               ),
               //SizedBox(height: 25),

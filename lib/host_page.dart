@@ -5,7 +5,11 @@
 import 'package:cargo/add_car_details.dart';
 import 'package:cargo/login_page.dart';
 import 'package:cargo/register_page.dart';
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
+
+import 'rent_page.dart';
+import 'explore_page.dart';
 
 // ignore: use_key_in_widget_constructors
 class Hostpage extends StatefulWidget {
@@ -19,7 +23,7 @@ class _Hostpage extends State<Hostpage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CarGoAppBar(),
-      backgroundColor: Colors.grey[300],
+      backgroundColor: Color.fromARGB(255, 255, 255, 255),
       body: Center(
         child: Column(
           children: [
@@ -66,16 +70,56 @@ class _Hostpage extends State<Hostpage> {
           ],
         ),
       ),
+      bottomNavigationBar: CarGoCurvedNavigationBar(),
     );
   }
 
+  // ignore: non_constant_identifier_names
+  CurvedNavigationBar CarGoCurvedNavigationBar() {
+    return CurvedNavigationBar(
+      backgroundColor: Color.fromARGB(255, 255, 255, 255),
+      color: Colors.deepPurple,
+      animationDuration: Duration(milliseconds: 200),
+      onTap: (int index) {
+        switch (index) {
+          case 1:
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => RentPage()),
+            );
+            break;
+          case 2:
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => Hostpage()),
+            );
+            break;
+          case 3:
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => ExplorePage()),
+            );
+            break;
+        }
+      },
+      items: const [
+        Icon(Icons.explore, color: Colors.white),
+        Icon(Icons.directions_car_sharp, color: Colors.white),
+        Icon(Icons.car_rental, color: Colors.white),
+        Icon(Icons.settings, color: Colors.white),
+      ],
+    );
+  }
+
+  // ignore: non_constant_identifier_names
   AppBar CarGoAppBar() {
     return AppBar(
       backgroundColor: Colors.transparent,
       shadowColor: Colors.transparent,
+      iconTheme: IconThemeData(color: Colors.black),
       centerTitle: true,
       title: Padding(
-        padding: const EdgeInsets.only(top: 6),
+        padding: const EdgeInsets.only(top: 7),
         child: Image.asset(
           'assets/CarGo2.png',
           color: Colors.black,
