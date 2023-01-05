@@ -84,7 +84,7 @@ class _ExplorePage extends State<ExplorePage> {
             );
             break;
         }
-      },
+      }, 
       items: const [
         Icon(Icons.explore, color: Colors.white),
         Icon(Icons.directions_car_sharp, color: Colors.white),
