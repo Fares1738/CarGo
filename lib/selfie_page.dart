@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 
 import 'explore_page.dart';
 
-class VerifyPage extends StatefulWidget {
+class SelfiePage extends StatefulWidget {
   const VerifyPage({Key? key}) : super(key: key);
 
   @override
-  State<VerifyPage> createState() => _VerifyPageState();
+  State<SelfiePage> createState() => _SelfiePageState();
 }
 
-class _VerifyPageState extends State<VerifyPage> {
+class _SelfiePageState extends State<SelfiePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
