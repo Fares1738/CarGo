@@ -1,16 +1,15 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
-
-import 'package:cargo/landing_page.dart';
 import 'package:flutter/material.dart';
 
-class WelcomePage extends StatefulWidget {
-  const WelcomePage({Key? key}) : super(key: key);
+import 'explore_page.dart';
+
+class VerifyID extends StatefulWidget {
+  const VerifyID({Key? key}) : super(key: key);
 
   @override
-  State<WelcomePage> createState() => _WelcomePageState();
+  State<VerifyID> createState() => _VerifyIDState();
 }
 
-class _WelcomePageState extends State<WelcomePage> {
+class _VerifyIDState extends State<VerifyID> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,17 +18,21 @@ class _WelcomePageState extends State<WelcomePage> {
         child: Center(
           child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
             Image.asset(
-              'assets/CarGo2.png',
+              'assets/tick.jpg',
               width: 270,
               height: 200,
             ),
+            
             Text(
-              'No Time To Waste!',
+              'Verify your identity', 
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
+                
               ),
+              
             ),
+            
             SizedBox(height: 120),
             Padding(
               padding: EdgeInsets.only(top: 20),
@@ -40,17 +43,14 @@ class _WelcomePageState extends State<WelcomePage> {
                     style: ElevatedButton.styleFrom(
                       minimumSize: Size(200, 50),
                       textStyle: TextStyle(fontSize: 21),
-                      backgroundColor: Colors.deepPurple,
+                      backgroundColor: Colors.purple,
                       foregroundColor: Colors.white,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30.0)),
                     ),
-                    child: Text('Continue To The App'),
+                    child: Text('CONTINUE'),
                     onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => LandingPage()),
-                      );
+                     
                     },
                   ),
                 ],
@@ -58,6 +58,8 @@ class _WelcomePageState extends State<WelcomePage> {
             )
           ]),
         ),
+      
+        
       ),
     );
   }

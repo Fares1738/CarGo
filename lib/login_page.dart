@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, unused_import
 
 import 'package:cargo/explore_page.dart';
 import 'package:cargo/add_car_details.dart';
@@ -33,7 +33,7 @@ class _LoginPageState extends State<LoginPage> {
               MaterialPageRoute(builder: (context) => LandingPage()),
             );
           })),
-      backgroundColor: Colors.grey[300],
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Center(
@@ -48,12 +48,6 @@ class _LoginPageState extends State<LoginPage> {
                 height: 200,
               ),
 
-              Text(
-                "There is no Time to Waste",
-                style: TextStyle(
-                  fontSize: 20,
-                ),
-              ),
               SizedBox(height: 50),
 
               Padding(

@@ -23,15 +23,11 @@ class _RentPageState extends State<RentPage> with TickerProviderStateMixin {
     return DefaultTabController(
         length: 3,
         child: Scaffold(
+          appBar: CarGoAppBar(),
           backgroundColor: Colors.white,
           body: SafeArea(
             child: Center(
               child: Column(children: [
-                Image.asset(
-                  'assets/CarGo2.png',
-                  width: 70,
-                  height: 100,
-                ),
                 TabBar(
                   labelColor: Colors.white,
                   unselectedLabelColor: Colors.deepPurple,
@@ -144,13 +140,15 @@ class _RentPageState extends State<RentPage> with TickerProviderStateMixin {
     );
   }
 
+  // ignore: non_constant_identifier_names
   AppBar CarGoAppBar() {
     return AppBar(
       backgroundColor: Colors.transparent,
       shadowColor: Colors.transparent,
+      iconTheme: IconThemeData(color: Colors.black),
       centerTitle: true,
       title: Padding(
-        padding: const EdgeInsets.only(top: 6),
+        padding: const EdgeInsets.only(top: 7),
         child: Image.asset(
           'assets/CarGo2.png',
           color: Colors.black,

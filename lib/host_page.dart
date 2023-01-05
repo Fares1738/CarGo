@@ -116,9 +116,10 @@ class _Hostpage extends State<Hostpage> {
     return AppBar(
       backgroundColor: Colors.transparent,
       shadowColor: Colors.transparent,
+      iconTheme: IconThemeData(color: Colors.black),
       centerTitle: true,
       title: Padding(
-        padding: const EdgeInsets.only(top: 6),
+        padding: const EdgeInsets.only(top: 7),
         child: Image.asset(
           'assets/CarGo2.png',
           color: Colors.black,
