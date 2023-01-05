@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'explore_page.dart';
 
 class SelfiePage extends StatefulWidget {
-  const VerifyPage({Key? key}) : super(key: key);
+  const SelfiePage({Key? key}) : super(key: key);
 
   @override
   State<SelfiePage> createState() => _SelfiePageState();
@@ -15,8 +15,8 @@ class _SelfiePageState extends State<SelfiePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: SafeArea(
-        child: Center(
+      body: Column(
+        children: [ Center(
           child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
             Image.asset(
               'assets/profile.png',
