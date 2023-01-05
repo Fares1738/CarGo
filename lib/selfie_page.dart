@@ -47,11 +47,10 @@ class _SelfiePageState extends State<SelfiePage> {
                     ),
                     child: Text('VERIFY PROFILE'),
                     onPressed: () {
-                     Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => VerifyID()),
-                        );
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => VerifyID()),
+                      );
                     },
                   ),
                 ],

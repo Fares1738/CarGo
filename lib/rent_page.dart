@@ -86,10 +86,12 @@ class _RentPageState extends State<RentPage> with TickerProviderStateMixin {
       label: Icon(
         Icons.search,
         color: Colors.black,
+        //  fontWeight: FontWeight.w700,
       ),
       style: ElevatedButton.styleFrom(
         minimumSize: Size(340, 50),
         textStyle: TextStyle(
+          fontWeight: FontWeight.bold,
           fontSize: 20,
           // fontWeight: FontWeight.bold,
           overflow: TextOverflow.fade,
@@ -97,7 +99,7 @@ class _RentPageState extends State<RentPage> with TickerProviderStateMixin {
         backgroundColor: Colors.white70,
         foregroundColor: Colors.black,
         shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(15.0),
+            borderRadius: BorderRadius.circular(90.0),
             side: BorderSide(color: Colors.black)),
       ),
     );

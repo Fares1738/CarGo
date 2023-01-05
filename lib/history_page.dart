@@ -35,8 +35,7 @@ class HistoryPage extends StatelessWidget {
                         child:
                             Column(mainAxisSize: MainAxisSize.min, children: [
                           Ink.image(
-                            image: NetworkImage(
-                                "https://www.motortrend.com/uploads/2022/05/2023-Toyota-RAV4-TRD-Off-Road.jpg?fit=around%7C875:492.1875"),
+                            image: AssetImage("assets/rav4.jpg"),
                             height: 200,
                             width: 300,
                             fit: BoxFit.cover,
@@ -70,8 +69,7 @@ class HistoryPage extends StatelessWidget {
                         child:
                             Column(mainAxisSize: MainAxisSize.min, children: [
                           Ink.image(
-                            image: NetworkImage(
-                                "https://images.wapcar.my/file1/7b7992d699df4420a88f0f13dc40879e_1072x604.jpg"),
+                            image: AssetImage("assets/mustang.jpg"),
                             height: 200,
                             width: 300,
                             fit: BoxFit.cover,
