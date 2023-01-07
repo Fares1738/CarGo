@@ -7,7 +7,6 @@ import 'package:cargo/rent_page.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 
-
 class ExplorePage extends StatefulWidget {
   @override
   _ExplorePage createState() => _ExplorePage();
@@ -85,11 +84,18 @@ class _ExplorePage extends State<ExplorePage> {
 
   CurvedNavigationBar CarGoCurvedNavigationBar() {
     return CurvedNavigationBar(
+      index: 0,
       backgroundColor: Color.fromARGB(255, 255, 255, 255),
       color: Colors.deepPurple,
       animationDuration: Duration(milliseconds: 200),
       onTap: (int index) {
         switch (index) {
+          case 0:
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => ExplorePage()),
+            );
+            break;
           case 1:
             Navigator.push(
               context,
@@ -102,14 +108,8 @@ class _ExplorePage extends State<ExplorePage> {
               MaterialPageRoute(builder: (context) => Hostpage()),
             );
             break;
-          case 3:
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => ExplorePage()),
-            );
-            break;
         }
-      }, 
+      },
       items: const [
         Icon(Icons.explore, color: Colors.white),
         Icon(Icons.directions_car_sharp, color: Colors.white),
@@ -188,6 +188,4 @@ class carCard extends StatelessWidget {
           )),
     );
   }
-
-  
 }

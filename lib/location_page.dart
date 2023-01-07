@@ -22,7 +22,9 @@ class _Cities extends State<Cities> {
 
   final city = TextEditingController();
 
+  @override
   void dispose() {
+    super.dispose();
     city.dispose();
   }
 
@@ -43,7 +45,7 @@ class _Cities extends State<Cities> {
     return SafeArea(
         child: Scaffold(
             appBar: CarGoAppBar(),
-            body: Column(
+            body: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Padding(
