@@ -1,10 +1,11 @@
-// ignore_for_file: camel_case_types, library_private_types_in_public_api, non_constant_identifier_names
+// ignore_for_file: camel_case_types, library_private_types_in_public_api, non_constant_identifier_names, prefer_const_constructors_in_immutables
 
+import 'package:cargo/cars_in_city.dart';
 import 'package:cargo/location_model.dart';
 import 'package:flutter/material.dart';
 
 class Cities extends StatefulWidget {
-  const Cities({Key? key}) : super(key: key);
+  Cities({Key? key}) : super(key: key);
 
   @override
   _Cities createState() => _Cities();
@@ -19,14 +20,6 @@ class _Cities extends State<Cities> {
     'Melacca',
     'Johor Bahru'
   ];
-
-  final city = TextEditingController();
-
-  @override
-  void dispose() {
-    super.dispose();
-    city.dispose();
-  }
 
   static List url = [
     'https://cdn.britannica.com/49/102749-050-B4874C95/Kuala-Lumpur-Malaysia.jpg',
@@ -45,12 +38,12 @@ class _Cities extends State<Cities> {
     return SafeArea(
         child: Scaffold(
             appBar: CarGoAppBar(),
-            body: Row(
+            body: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Padding(
                   padding: const EdgeInsets.only(top: 50),
-                  child: SearchElevatedButton(),
+                  child: Search(),
                 ),
                 SizedBox(height: 20),
                 Expanded(
@@ -77,39 +70,6 @@ class _Cities extends State<Cities> {
             )));
   }
 
-  ElevatedButton SearchElevatedButton() {
-    return ElevatedButton.icon(
-      onPressed: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => Cities()),
-        );
-      },
-      icon: TextField(
-        controller: city,
-        decoration: InputDecoration(
-            border: InputBorder.none,
-            hintText: "Search for a City",
-            hintStyle: TextStyle(
-              fontWeight: FontWeight.bold,
-            )),
-      ),
-      label: Icon(
-        Icons.search,
-        color: Colors.black,
-      ),
-      style: ElevatedButton.styleFrom(
-        minimumSize: Size(340, 50),
-        textStyle: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-        backgroundColor: Colors.white70,
-        foregroundColor: Colors.black,
-        shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(15.0),
-            side: BorderSide(color: Colors.black)),
-      ),
-    );
-  }
-
   AppBar CarGoAppBar() {
     return AppBar(
       backgroundColor: Colors.transparent,
@@ -123,6 +83,53 @@ class _Cities extends State<Cities> {
           color: Colors.black,
           height: 120.0,
           width: 90.0,
+        ),
+      ),
+    );
+  }
+}
+
+class Search extends StatelessWidget {
+  Search({super.key});
+
+  final userCity = TextEditingController();
+
+  void dispose() {
+    userCity.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 25.0),
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.grey[200],
+          border: Border.all(color: Colors.black),
+          borderRadius: BorderRadius.circular(15),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.only(left: 20.0),
+          child: TextField(
+            controller: userCity,
+            decoration: InputDecoration(
+                suffixIcon: Align(
+                  widthFactor: 1.0,
+                  heightFactor: 1.0,
+                  child: IconButton(
+                    icon: Icon(Icons.search_rounded),
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => Cars(city: Text(userCity.text))));
+                    },
+                  ),
+                ),
+                border: InputBorder.none,
+                hintText: "Try Johor Bahru",
+                hintStyle: TextStyle(
+                  fontWeight: FontWeight.bold,
+                )),
+          ),
         ),
       ),
     );
