@@ -77,11 +77,18 @@ class _Hostpage extends State<Hostpage> {
   // ignore: non_constant_identifier_names
   CurvedNavigationBar CarGoCurvedNavigationBar() {
     return CurvedNavigationBar(
+      index: 2,
       backgroundColor: Color.fromARGB(255, 255, 255, 255),
       color: Colors.deepPurple,
       animationDuration: Duration(milliseconds: 200),
       onTap: (int index) {
         switch (index) {
+          case 0:
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => ExplorePage()),
+            );
+            break;
           case 1:
             Navigator.push(
               context,
@@ -92,12 +99,6 @@ class _Hostpage extends State<Hostpage> {
             Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => Hostpage()),
-            );
-            break;
-          case 3:
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => ExplorePage()),
             );
             break;
         }

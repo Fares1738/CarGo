@@ -38,6 +38,7 @@ dependencies:
   firebase_auth: ^4.0.4
   google_fonts:
   curved_navigation_bar: ^1.0.3
+  flutter_button: ^0.0.4
 
 dev_dependencies:
   flutter_test:
@@ -67,6 +68,12 @@ flutter:
     - assets/mustang.jpg
     - assets/profile.png
     - assets/tick.jpg
+<<<<<<< HEAD
+    - assets/selfie.png
+    
+=======
+    - assets/
+>>>>>>> 77049291c8974eb9eb3cd74a549fe3a4b6aae941
 
   # - images/a_dot_ham.jpeg
 
