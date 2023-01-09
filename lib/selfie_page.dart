@@ -113,7 +113,7 @@ class _SelfiePageState extends State<SelfiePage> {
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30.0)),
                     ),
-                  child: const Text('Upload a photo'),
+                  child: const Text('Upload photo'),
                   onPressed: () {},
                 ),
 
