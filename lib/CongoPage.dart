@@ -58,7 +58,7 @@ class CongoPage extends StatelessWidget {
               height: 10,
             ),
             Text(
-              "The card was Added Successfully!",
+              "Card Added Successfully!",
               style: TextStyle(
                 fontSize: 22,
                 fontWeight: FontWeight.bold,
