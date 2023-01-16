@@ -53,7 +53,7 @@ class _SelfiePageState extends State<SelfiePage> {
                         SizedBox(
                           height: 6,
                         ),
-                        Text('Take a selfie',
+                        Text('Take  selfie',
                             style: TextStyle(
                               fontSize: 25,
                               color: Colors.white,
