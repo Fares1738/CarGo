@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/material.dart';
 import 'package:slidable_button/slidable_button.dart';
 
 class Settings extends StatelessWidget {
