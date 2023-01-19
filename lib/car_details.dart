@@ -131,6 +131,7 @@ class ViewAddedVehicleState extends State<ViewAddedVehicle> {
                       ),
                       child: Text('Done'),
                       onPressed: () {
+                        //print(model);
                         Navigator.push(
                           context,
                           MaterialPageRoute(builder: (context) => Hostpage()),

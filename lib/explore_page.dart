@@ -7,14 +7,50 @@ import 'package:cargo/rent_page.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 
-
 class ExplorePage extends StatefulWidget {
   @override
   _ExplorePage createState() => _ExplorePage();
 }
 
+class Car {
+  String carId, carPicture, carManfacturer, carModel, carMakeYear, carLocation;
+  double carRentPrice;
+  Car(
+      {required this.carId,
+      required this.carPicture,
+      required this.carManfacturer,
+      required this.carModel,
+      required this.carMakeYear,
+      required this.carLocation,
+      required this.carRentPrice});
+}
+
+var car1 = Car(
+  carId: '123',
+  carPicture: 'teslaCar.png',
+  carManfacturer: 'Tesla',
+  carModel: 'Model X',
+  carMakeYear: '2018',
+  carLocation: 'Oxford Street',
+  carRentPrice: 20,
+);
+var car2 = Car(
+  carId: '123',
+  carPicture: 'prado.png',
+  carManfacturer: 'Toyota',
+  carModel: 'Prado',
+  carMakeYear: '2015',
+  carLocation: 'Jabra Street',
+  carRentPrice: 50,
+);
+
 class _ExplorePage extends State<ExplorePage> {
-  final List _cars = [carCard(), carCard(), oldCarCard()];
+  final List _cars = [
+    CarCardSample(car: car1),
+    CarCardSample(car: car2),
+    CarCardSample(car: car1),
+    CarCardSample(car: car2),
+  ];
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -25,14 +61,18 @@ class _ExplorePage extends State<ExplorePage> {
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
           Padding(
-            padding: const EdgeInsets.only(top: 30),
+            padding: const EdgeInsets.only(top: 10, bottom: 10),
             child: SearchElevatedButton(),
+          ),
+          Text(
+            'Explore Cars Near you!',
+            style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
           ),
           Expanded(
               child: ListView.builder(
             itemCount: _cars.length,
             itemBuilder: (context, index) {
-              return carCard();
+              return _cars[index];
             },
           ))
         ],
@@ -49,10 +89,10 @@ class _ExplorePage extends State<ExplorePage> {
       title: Padding(
         padding: const EdgeInsets.only(top: 10),
         child: Image.asset(
-          'assets/CarGo2.png',
+          'assets/CarGo.png',
           color: Colors.black,
-          height: 120.0,
-          width: 85.0,
+          height: 200.0,
+          width: 150.0,
         ),
       ),
     );
@@ -60,12 +100,7 @@ class _ExplorePage extends State<ExplorePage> {
 
   ElevatedButton SearchElevatedButton() {
     return ElevatedButton.icon(
-      onPressed: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => Cities()),
-        );
-      },
+      onPressed: () {},
       icon: Text("Search for a Location"),
       label: Icon(
         Icons.search,
@@ -73,7 +108,9 @@ class _ExplorePage extends State<ExplorePage> {
       ),
       style: ElevatedButton.styleFrom(
         minimumSize: Size(300, 40),
-        textStyle: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+        textStyle: TextStyle(
+          fontSize: 15,
+        ),
         backgroundColor: Colors.white,
         foregroundColor: Colors.black,
         shape: RoundedRectangleBorder(
@@ -85,11 +122,18 @@ class _ExplorePage extends State<ExplorePage> {
 
   CurvedNavigationBar CarGoCurvedNavigationBar() {
     return CurvedNavigationBar(
-      backgroundColor: Color.fromARGB(255, 255, 255, 255),
+      index: 0,
+      backgroundColor: Colors.white,
       color: Colors.deepPurple,
       animationDuration: Duration(milliseconds: 200),
       onTap: (int index) {
         switch (index) {
+          case 0:
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => ExplorePage()),
+            );
+            break;
           case 1:
             Navigator.push(
               context,
@@ -102,14 +146,8 @@ class _ExplorePage extends State<ExplorePage> {
               MaterialPageRoute(builder: (context) => Hostpage()),
             );
             break;
-          case 3:
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => ExplorePage()),
-            );
-            break;
         }
-      }, 
+      },
       items: const [
         Icon(Icons.explore, color: Colors.white),
         Icon(Icons.directions_car_sharp, color: Colors.white),
@@ -120,74 +158,117 @@ class _ExplorePage extends State<ExplorePage> {
   }
 }
 
-class oldCarCard extends StatelessWidget {
-  const oldCarCard({super.key});
-
+class CarCardSample extends StatefulWidget {
+  const CarCardSample({super.key, required this.car});
+  final Car car;
   @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () {
-        print("A car been Clicked...");
-      },
-      splashColor: Colors.deepPurpleAccent,
-      child: Card(
-          margin: EdgeInsets.fromLTRB(30, 30, 30, 4),
-          elevation: 10,
-          child: Column(
-            children: <Widget>[
-              Image.asset(
-                fit: BoxFit.fill,
-                'assets/teslaCar.png',
-                // height: 200,
-                // width: 350,
-              ),
-              SizedBox(
-                height: 6,
-              ),
-              Text(
-                'Tesla Model X',
-                style: TextStyle(fontSize: 18, color: Colors.black),
-              ),
-              SizedBox(height: 6),
-            ],
-          )),
-    );
-  }
+  State<CarCardSample> createState() => _CarCardSampleState();
 }
 
-class carCard extends StatelessWidget {
-  const carCard({super.key});
-
+class _CarCardSampleState extends State<CarCardSample> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {
-        print("A car been Clicked...");
-      },
+      onTap: () {},
       splashColor: Colors.deepPurpleAccent,
-      child: Card(
-          margin: EdgeInsets.fromLTRB(30, 30, 30, 4),
-          elevation: 10,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
+        child: Container(
+          width: double.infinity,
+          height: 300.0,
+          decoration: BoxDecoration(
+            color: Color.fromARGB(233, 248, 248, 251),
+            borderRadius: BorderRadius.circular(25),
+          ),
           child: Column(
             children: <Widget>[
-              Image.asset(
-                fit: BoxFit.fill,
-                'assets/teslaCar.png',
-                // height: 200,
-                // width: 350,
-              ),
-              SizedBox(
-                height: 6,
-              ),
-              Text(
-                'Tesla Model X',
-                style: TextStyle(fontSize: 18, color: Colors.black),
-              ),
-              SizedBox(height: 6),
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 10.0),
+                child: Column(
+                  children: <Widget>[
+                    Container(
+                      margin: EdgeInsets.all(10.0),
+                      width: double.infinity,
+                      height: 200,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(15.0),
+                        // ignore: prefer_const_literals_to_create_immutables
+                        boxShadow: [
+                          BoxShadow(
+                              color: Colors.black45,
+                              offset: Offset(0, 5),
+                              blurRadius: 8.0),
+                        ],
+                        image: DecorationImage(
+                          image: AssetImage('assets/${widget.car.carPicture}'),
+                          fit: BoxFit.fitWidth,
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        // ignore: prefer_const_literals_to_create_immutables
+                        children: <Widget>[
+                          Text(
+                            widget.car.carManfacturer,
+                            style: TextStyle(
+                              fontSize: 18.0,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          Text(
+                            widget.car.carModel,
+                            style: TextStyle(
+                              fontSize: 18.0,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          Text(
+                            widget.car.carMakeYear,
+                            style: TextStyle(
+                              fontSize: 18.0,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          SizedBox(width: 50),
+                          Text(
+                            '${widget.car.carRentPrice.round()} RM/hr',
+                            style: TextStyle(
+                              fontSize: 18.0,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          SizedBox(
+                            height: 30,
+                          )
+                        ],
+                        // ignore: prefer_const_literals_to_create_immutables
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                      child: Row(
+                        // ignore: prefer_const_literals_to_create_immutables
+                        children: [
+                          Text(
+                            widget.car.carLocation,
+                            style: TextStyle(
+                              fontSize: 14.0,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              )
             ],
-          )),
+          ),
+        ),
+      ),
     );
   }
-
-  
 }
