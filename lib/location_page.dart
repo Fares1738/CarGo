@@ -58,9 +58,8 @@ class _Cities extends State<Cities> {
                             leading: SizedBox(
                               width: 50,
                               height: 50,
-                              child: Image.network(
-                                location[index].image,
-                              ),
+                              child: Image.network(location[index].image,
+                                  fit: BoxFit.cover, height: 50, width: 50),
                             ),
                           ),
                         );
@@ -87,6 +86,14 @@ class _Cities extends State<Cities> {
       ),
     );
   }
+
+  List<Location> display_list = List.from(cityName);
+
+   void updateList (String value){
+    setState(() {
+
+    });
+   }
 }
 
 class Search extends StatelessWidget {
@@ -112,6 +119,7 @@ class Search extends StatelessWidget {
           padding: const EdgeInsets.only(left: 20.0),
           child: TextField(
             controller: userCity,
+            //onChanged: searchCity,
             decoration: InputDecoration(
                 suffixIcon: Align(
                   widthFactor: 1.0,
@@ -119,8 +127,11 @@ class Search extends StatelessWidget {
                   child: IconButton(
                     icon: Icon(Icons.search_rounded),
                     onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => Cars(city: Text(userCity.text))));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  Cars(city: Text(userCity.text))));
                     },
                   ),
                 ),
@@ -134,4 +145,7 @@ class Search extends StatelessWidget {
       ),
     );
   }
+
+
+
 }

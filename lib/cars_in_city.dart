@@ -94,9 +94,6 @@ class carCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {
-        print("A car been Clicked...");
-      },
       splashColor: Colors.deepPurpleAccent,
       child: Card(
           margin: EdgeInsets.fromLTRB(30, 30, 30, 4),
@@ -156,4 +153,5 @@ class carCard2 extends StatelessWidget {
           )),
     );
   }
+ 
 }
