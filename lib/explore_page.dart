@@ -91,7 +91,7 @@ class _ExplorePage extends State<ExplorePage> {
       title: Padding(
         padding: const EdgeInsets.only(top: 10),
         child: Image.asset(
-          'assets/CarGo.png',
+          'assets/CarGo2.png',
           color: Colors.black,
           height: 200.0,
           width: 150.0,
