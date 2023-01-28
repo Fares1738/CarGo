@@ -42,6 +42,9 @@ dependencies:
   firebase_core: ^2.4.1
   cloud_firestore: ^4.3.1
   provider: ^6.0.5
+  file_picker: ^5.2.5
+  slidable_button: ^2.0.0+1
+  slider_button: ^2.0.0
 
 dev_dependencies:
   flutter_test:
@@ -73,6 +76,8 @@ flutter:
     - assets/tick.jpg
     - assets/selfie.png
     - assets/teslaCar.png
+    - assets/
+
   # - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
