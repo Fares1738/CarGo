@@ -2,6 +2,7 @@
 
 import 'package:cargo/explore_page.dart';
 import 'package:cargo/services/auth.dart';
+// import 'package:cargo/settings.dart';
 import 'package:cargo/welcome_page.dart';
 import 'package:cargo/wrapper.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -30,7 +31,7 @@ class Home extends StatelessWidget {
         initialData: null,
         child: MaterialApp(
           // debugShowCheckedModeBanner: false,
-          home: Wrapper(),
+          home: WelcomePage(),
         ));
   }
 }

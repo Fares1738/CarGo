@@ -258,15 +258,6 @@ class _LoginPageState extends State<RegisterPage> {
                   ),
                 ]),
               ),
-              // Expanded(child: ElevatedButton(
-              //   onPressed: () async {
-              //     await _firebaseAuth
-              //         .signInWithEmailAndPassword(
-              //             email: _email.text, password: _password.text)
-              //         .then((value) => print('Sign Up Successful'));
-              //   },
-              // )),
-              //SizedBox(height: 25),
             ],
           ),
         )),

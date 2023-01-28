@@ -4,6 +4,7 @@ import 'package:cargo/booked_page.dart';
 import 'package:cargo/host_page.dart';
 import 'package:cargo/location_page.dart';
 import 'package:cargo/rent_page.dart';
+import 'package:cargo/settings.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 
@@ -151,7 +152,7 @@ class _ExplorePage extends State<ExplorePage> {
           case 3:
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => DeletePage()),
+              MaterialPageRoute(builder: (context) => Settings()),
             );
             break;
         }
