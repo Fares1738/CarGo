@@ -147,7 +147,7 @@ class _RentPageState extends State<RentPage> with TickerProviderStateMixin {
     return AppBar(
       backgroundColor: Colors.transparent,
       shadowColor: Colors.transparent,
-      iconTheme: IconThemeData(color: Colors.black),
+      // iconTheme: IconThemeData(color: Colors.black),
       centerTitle: true,
       title: Padding(
         padding: const EdgeInsets.only(top: 7),
