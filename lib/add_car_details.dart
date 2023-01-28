@@ -1,6 +1,5 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, non_constant_identifier_names, avoid_print, unnecessary_nullable_for_final_variable_declarations, prefer_interpolation_to_compose_strings
 
-
 import 'dart:io';
 
 import 'package:cargo/view_vehicle_pictures.dart';
@@ -29,6 +28,17 @@ class AddVehicleState extends State<AddVehicle> {
   final seats = TextEditingController();
   final transmission = TextEditingController();
   final location = TextEditingController();
+
+  List<String> wheelDriveMenu = [
+    'Rear-Wheel Drive',
+    'Front-Wheel Drive',
+    'Four-Wheel Drive',
+    'All-Wheel Drive'
+  ];
+  String? selectedWheelDrive = 'Front-Wheel Drive';
+
+  List<String> seatNum = ['2', '4', '6', '8'];
+  String? selectedSeatNum = '4';
 
   @override
   void dispose() {
@@ -251,52 +261,80 @@ class AddVehicleState extends State<AddVehicle> {
               SizedBox(height: 10),
 
               //Wheel Drive
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: Colors.grey[200],
-                    border: Border.all(color: Colors.black),
-                    borderRadius: BorderRadius.circular(15),
+
+              Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                    child: Text("Wheel Drive: ",
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.bold)),
                   ),
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 20.0),
-                    child: TextField(
-                      controller: wheelDrive,
-                      decoration: InputDecoration(
-                          border: InputBorder.none,
-                          hintText: "Front Wheel/All wheel drive",
-                          hintStyle: TextStyle(
-                            fontWeight: FontWeight.bold,
-                          )),
-                    ),
-                  ),
-                ),
+                  Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Colors.grey[200],
+                          border: Border.all(color: Colors.black),
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                        child: SizedBox(
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: 20.0),
+                            child: DropdownButton<String>(
+                                value: selectedWheelDrive,
+                                items: wheelDriveMenu
+                                    .map((item) => DropdownMenuItem<String>(
+                                        value: item,
+                                        child: Text(item,
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold))))
+                                    .toList(),
+                                onChanged: (item) =>
+                                    setState(() => selectedWheelDrive = item)),
+                          ),
+                        ),
+                      )),
+                ],
               ),
+
               SizedBox(height: 10),
 
               //Number of Seats
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: Colors.grey[200],
-                    border: Border.all(color: Colors.black),
-                    borderRadius: BorderRadius.circular(15),
+              Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                    child: Text("Number of Seats: ",
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.bold)),
                   ),
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 20.0),
-                    child: TextField(
-                      controller: seats,
-                      decoration: InputDecoration(
-                          border: InputBorder.none,
-                          hintText: "Number of seats",
-                          hintStyle: TextStyle(
-                            fontWeight: FontWeight.bold,
-                          )),
-                    ),
-                  ),
-                ),
+                  Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Colors.grey[200],
+                          border: Border.all(color: Colors.black),
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                        child: SizedBox(
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: 20.0),
+                            child: DropdownButton<String>(
+                                value: selectedSeatNum,
+                                items: seatNum
+                                    .map((item) => DropdownMenuItem<String>(
+                                        value: item,
+                                        child: Text(item,
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold))))
+                                    .toList(),
+                                onChanged: (item) =>
+                                    setState(() => selectedSeatNum = item)),
+                          ),
+                        ),
+                      )),
+                ],
               ),
               SizedBox(height: 10),
 
@@ -378,8 +416,8 @@ class AddVehicleState extends State<AddVehicle> {
                                     gasConsumption: Text(gasConsumption.text),
                                     rentPrice: Text(rentPrice.text),
                                     licenseNumber: Text(licenseNumber.text),
-                                    wheelDrive: Text(wheelDrive.text),
-                                    seats: Text(seats.text),
+                                    wheelDrive: Text(selectedWheelDrive!),
+                                    seats: Text(selectedSeatNum!),
                                     transmission: Text(transmission.text),
                                     location: Text(location.text))));
                       },
