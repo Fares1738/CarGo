@@ -1,7 +1,13 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, non_constant_identifier_names
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, non_constant_identifier_names, avoid_print, unnecessary_nullable_for_final_variable_declarations, prefer_interpolation_to_compose_strings
 
+
+import 'dart:io';
+
+import 'package:cargo/view_vehicle_pictures.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:cargo/landing_page.dart';
+import 'package:image_picker/image_picker.dart';
 import 'car_details.dart';
 
 class AddVehicle extends StatefulWidget {
@@ -344,33 +350,6 @@ class AddVehicleState extends State<AddVehicle> {
               ),
               SizedBox(height: 10),
 
-              //Add Vehicle Pictures
-              Padding(
-                padding: EdgeInsets.only(top: 20),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        minimumSize: Size(150, 45),
-                        textStyle: TextStyle(fontSize: 17),
-                        backgroundColor: Colors.deepPurple,
-                        foregroundColor: Colors.white,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30.0)),
-                      ),
-                      child: Text('Add Car Pictures'),
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => LandingPage()),
-                        );
-                      },
-                    ),
-                  ],
-                ),
-              ),
               //Add Vehicle button
               Padding(
                 padding: EdgeInsets.only(top: 10),
@@ -386,7 +365,7 @@ class AddVehicleState extends State<AddVehicle> {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(30.0)),
                       ),
-                      child: Text('Add Car'),
+                      child: Text('Next'),
                       onPressed: () {
                         Navigator.push(
                             context,

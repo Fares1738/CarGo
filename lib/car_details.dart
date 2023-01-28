@@ -1,7 +1,10 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, non_constant_identifier_names, unnecessary_this
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, non_constant_identifier_names, unnecessary_this, unnecessary_nullable_for_final_variable_declarations, prefer_interpolation_to_compose_strings, avoid_print
+
+import 'dart:io';
 
 import 'package:cargo/host_page.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
 class ViewAddedVehicle extends StatefulWidget {
   final List<Text> vehicle = <Text>[];
@@ -119,11 +122,35 @@ class ViewAddedVehicleState extends State<ViewAddedVehicle> {
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 15)),
                     widget.location,
-                    SizedBox(height: 20),
+
+                    // Select and print gridview of selected images
+                    
+                    /////////////////////////////////////////
+                    // Expanded(
+                    //   child: Padding(
+                    //     padding: const EdgeInsets.all(8.0),
+                    //     child: GridView.builder(
+                    //         padding: const EdgeInsets.all(20),
+                    //         itemCount: imageFileList!.length,
+                    //         gridDelegate:
+                    //             SliverGridDelegateWithFixedCrossAxisCount(
+                    //                 crossAxisCount: 1),
+                    //         itemBuilder: (BuildContext context, int index) {
+                    //           return Image.file(
+                    //             File(imageFileList![index].path),
+                    //             fit: BoxFit.cover,
+                    //           );
+                    //         }),
+                    //   ),
+                    // ),
+                    /////////////////////////////////////////
+
+                    SizedBox(height: 40),
+
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        minimumSize: Size(150, 50),
-                        textStyle: TextStyle(fontSize: 21),
+                        minimumSize: Size(150, 45),
+                        textStyle: TextStyle(fontSize: 17),
                         backgroundColor: Colors.deepPurple,
                         foregroundColor: Colors.white,
                         shape: RoundedRectangleBorder(
@@ -131,7 +158,6 @@ class ViewAddedVehicleState extends State<ViewAddedVehicle> {
                       ),
                       child: Text('Done'),
                       onPressed: () {
-                        //print(model);
                         Navigator.push(
                           context,
                           MaterialPageRoute(builder: (context) => Hostpage()),
@@ -165,5 +191,17 @@ class ViewAddedVehicleState extends State<ViewAddedVehicle> {
         ),
       ),
     );
+  }
+
+  final ImagePicker imagePicker = ImagePicker();
+  List<XFile>? imageFileList = [];
+
+  void selectImages() async {
+    final List<XFile>? selectedImages = await imagePicker.pickMultiImage();
+    if (selectedImages!.isNotEmpty) {
+      imageFileList!.addAll(selectedImages);
+    }
+    print("Image List Length:" + imageFileList!.length.toString());
+    setState(() {});
   }
 }
