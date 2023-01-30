@@ -2,6 +2,7 @@
 
 import 'package:cargo/booked_page.dart';
 import 'package:cargo/explore_page.dart';
+import 'package:cargo/rent_page.dart';
 import 'package:flutter/material.dart';
 
 //DateTime startDate = DateTime.now();
@@ -136,7 +137,7 @@ class _BookingConfirmationState extends State<BookingConfirmation> {
                                 ),
                                 SizedBox(width: 50),
                                 Text(
-                                  '${widget.carRentPrice} RM/hr',
+                                  '${widget.carRentPrice.round()} RM/hr',
                                   style: TextStyle(
                                     fontSize: 18.0,
                                     fontWeight: FontWeight.w600,
@@ -256,12 +257,12 @@ AppBar CarGoAppBar() {
     shadowColor: Colors.transparent,
     centerTitle: true,
     title: Padding(
-      padding: const EdgeInsets.only(top: 10),
+      padding: const EdgeInsets.only(top: 2),
       child: Image.asset(
-        'assets/CarGo.png',
+        'assets/CarGo2.png',
         color: Colors.black,
-        height: 200.0,
-        width: 150.0,
+        height: 120.0,
+        width: 90.0,
       ),
     ),
   );
@@ -309,8 +310,8 @@ Padding manageBookingsButton(BuildContext context) {
             ),
             child: Text('Manage Bookings'),
             onPressed: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => BookedPage()));
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => RentPage()));
             }),
       ],
     ),

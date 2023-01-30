@@ -90,12 +90,12 @@ class _ExplorePage extends State<ExplorePage> {
       shadowColor: Colors.transparent,
       centerTitle: true,
       title: Padding(
-        padding: const EdgeInsets.only(top: 10),
+        padding: const EdgeInsets.only(top: 2),
         child: Image.asset(
           'assets/CarGo2.png',
           color: Colors.black,
-          height: 200.0,
-          width: 150.0,
+          height: 120.0,
+          width: 90.0,
         ),
       ),
     );

@@ -466,10 +466,8 @@ class _BookCarDetailsState extends State<BookCarDetails> {
                       carRentPrice: 50,
                       carLocation: 'Jabra Street',
                       carLicenseNumber: 'KGR 3451',
-                      startDate: DateTime.now(),
-                      endDate: DateTime.now().add(
-                        Duration(hours: 24),
-                      ),
+                      startDate: startDateTime,
+                      endDate: endDateTime,
                     ),
                   ),
                 );
@@ -592,12 +590,12 @@ AppBar CarGoAppBar() {
     shadowColor: Colors.transparent,
     centerTitle: true,
     title: Padding(
-      padding: const EdgeInsets.only(top: 10),
+      padding: const EdgeInsets.only(top: 2),
       child: Image.asset(
-        'assets/CarGo.png',
+        'assets/CarGo2.png',
         color: Colors.black,
-        height: 200.0,
-        width: 150.0,
+        height: 120.0,
+        width: 90.0,
       ),
     ),
   );

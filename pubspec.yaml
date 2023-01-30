@@ -76,7 +76,7 @@ flutter:
     - assets/tick.jpg
     - assets/selfie.png
     - assets/teslaCar.png
-    # - assets/
+    - assets/
     - assets/prado.png
     - assets/teslaCar.png
 
