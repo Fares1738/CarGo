@@ -103,7 +103,12 @@ class _ExplorePage extends State<ExplorePage> {
 
   ElevatedButton SearchElevatedButton() {
     return ElevatedButton.icon(
-      onPressed: () {},
+      onPressed: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => RentPage()),
+        );
+      },
       icon: Text("Search for a Location"),
       label: Icon(
         Icons.search,

@@ -37,7 +37,7 @@ class Home extends StatelessWidget {
 
 void CarGoPhoneSystemActionBar() {
   return SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-    statusBarIconBrightness: Brightness.dark,
+    statusBarIconBrightness: Brightness.light,
     statusBarColor: Colors.deepPurple,
   ));
 }
