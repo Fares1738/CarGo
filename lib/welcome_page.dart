@@ -4,7 +4,9 @@ import 'package:cargo/landing_page.dart';
 import 'package:flutter/material.dart';
 
 class WelcomePage extends StatefulWidget {
-  const WelcomePage({Key? key}) : super(key: key);
+  final toggleView;
+
+  const WelcomePage({Key? key, this.toggleView}) : super(key: key);
 
   @override
   State<WelcomePage> createState() => _WelcomePageState();

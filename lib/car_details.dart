@@ -3,6 +3,7 @@
 import 'dart:io';
 
 import 'package:cargo/host_page.dart';
+import 'package:cargo/view_vehicle_pictures.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -22,6 +23,7 @@ class ViewAddedVehicle extends StatefulWidget {
     required this.seats,
     required this.transmission,
     required this.location,
+    required this.city,
   });
   final Text manufacturer;
   final Text model;
@@ -34,6 +36,7 @@ class ViewAddedVehicle extends StatefulWidget {
   final Text seats;
   final Text transmission;
   final Text location;
+  final Text city;
 
   @override
   State<StatefulWidget> createState() => ViewAddedVehicleState();
@@ -118,13 +121,20 @@ class ViewAddedVehicleState extends State<ViewAddedVehicle> {
                             fontWeight: FontWeight.bold, fontSize: 15)),
                     widget.transmission,
                     SizedBox(height: 8),
+
+                    Text("City",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 15)),
+                    widget.city,
+                    SizedBox(height: 8),
+
                     Text("Location",
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 15)),
                     widget.location,
 
                     // Select and print gridview of selected images
-                    
+
                     /////////////////////////////////////////
                     // Expanded(
                     //   child: Padding(
@@ -145,7 +155,34 @@ class ViewAddedVehicleState extends State<ViewAddedVehicle> {
                     // ),
                     /////////////////////////////////////////
 
-                    SizedBox(height: 40),
+                    SizedBox(height: 15),
+
+                    Padding(
+                      padding: EdgeInsets.only(top: 10),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              minimumSize: Size(150, 45),
+                              textStyle: TextStyle(fontSize: 17),
+                              backgroundColor: Colors.deepPurple,
+                              foregroundColor: Colors.white,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(30.0)),
+                            ),
+                            child: Text('Add Car Pictures'),
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => VehiclePictures()));
+                            },
+                          ),
+                          SizedBox(height: 5),
+                        ],
+                      ),
+                    ),
 
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(

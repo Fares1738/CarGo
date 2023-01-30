@@ -7,6 +7,8 @@ import 'package:cargo/rent_page.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 
+import 'DELETEAFTERWARDS.dart';
+
 class ExplorePage extends StatefulWidget {
   @override
   _ExplorePage createState() => _ExplorePage();
@@ -144,6 +146,12 @@ class _ExplorePage extends State<ExplorePage> {
             Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => Hostpage()),
+            );
+            break;
+          case 3:
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => DeletePage()),
             );
             break;
         }

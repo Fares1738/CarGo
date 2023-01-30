@@ -1,7 +1,7 @@
 // ignore_for_file: camel_case_types, library_private_types_in_public_api, non_constant_identifier_names, prefer_const_constructors_in_immutables
 
 import 'package:cargo/cars_in_city.dart';
-import 'package:cargo/location_model.dart';
+import 'package:cargo/model/location_model.dart';
 import 'package:flutter/material.dart';
 
 class Cities extends StatefulWidget {
