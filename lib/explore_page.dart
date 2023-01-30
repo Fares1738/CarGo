@@ -228,27 +228,13 @@ class _CarCardSampleState extends State<CarCardSample> {
                         // ignore: prefer_const_literals_to_create_immutables
                         children: <Widget>[
                           Text(
-                            widget.car.carManfacturer,
+                            '${widget.car.carManfacturer} ${widget.car.carModel} ${widget.car.carMakeYear}',
                             style: TextStyle(
                               fontSize: 18.0,
                               fontWeight: FontWeight.w600,
                             ),
                           ),
-                          Text(
-                            widget.car.carModel,
-                            style: TextStyle(
-                              fontSize: 18.0,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                          Text(
-                            widget.car.carMakeYear,
-                            style: TextStyle(
-                              fontSize: 18.0,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                          SizedBox(width: 50),
+                          SizedBox(width: 60),
                           Text(
                             '${widget.car.carRentPrice.round()} RM/hr',
                             style: TextStyle(
