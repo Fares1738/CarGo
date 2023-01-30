@@ -8,6 +8,7 @@ import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 
 import 'DELETEAFTERWARDS.dart';
+import 'bookCarDetailsPage.dart';
 
 class ExplorePage extends StatefulWidget {
   @override
@@ -37,7 +38,7 @@ var car1 = Car(
   carRentPrice: 20,
 );
 var car2 = Car(
-  carId: '123',
+  carId: '124',
   carPicture: 'prado.png',
   carManfacturer: 'Toyota',
   carModel: 'Prado',
@@ -177,7 +178,14 @@ class _CarCardSampleState extends State<CarCardSample> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => BookCarDetails(
+                      carId: widget.car.carId,
+                    )));
+      },
       splashColor: Colors.deepPurpleAccent,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
