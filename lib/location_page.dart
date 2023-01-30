@@ -6,6 +6,8 @@ import 'package:cargo/model/location_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
+import 'reusable_widget/Custom_AppBar.dart';
+
 class Cities extends StatefulWidget {
   final userCity = TextEditingController();
 
@@ -120,23 +122,5 @@ class _Cities extends State<Cities> {
                 )
               ],
             )));
-  }
-
-  AppBar CarGoAppBar() {
-    return AppBar(
-      backgroundColor: Colors.transparent,
-      shadowColor: Colors.transparent,
-      iconTheme: IconThemeData(color: Colors.black),
-      centerTitle: true,
-      title: Padding(
-        padding: const EdgeInsets.only(top: 7),
-        child: Image.asset(
-          'assets/CarGo2.png',
-          color: Colors.black,
-          height: 120.0,
-          width: 90.0,
-        ),
-      ),
-    );
   }
 }

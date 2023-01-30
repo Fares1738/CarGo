@@ -10,6 +10,7 @@ import 'package:flutter/material.dart';
 
 import 'rent_page.dart';
 import 'explore_page.dart';
+import 'reusable_widget/Custom_AppBar.dart';
 
 // ignore: use_key_in_widget_constructors
 class Hostpage extends StatefulWidget {
@@ -109,25 +110,6 @@ class _Hostpage extends State<Hostpage> {
         Icon(Icons.car_rental, color: Colors.white),
         Icon(Icons.settings, color: Colors.white),
       ],
-    );
-  }
-
-  // ignore: non_constant_identifier_names
-  AppBar CarGoAppBar() {
-    return AppBar(
-      backgroundColor: Colors.transparent,
-      shadowColor: Colors.transparent,
-      iconTheme: IconThemeData(color: Colors.black),
-      centerTitle: true,
-      title: Padding(
-        padding: const EdgeInsets.only(top: 7),
-        child: Image.asset(
-          'assets/CarGo2.png',
-          color: Colors.black,
-          height: 120.0,
-          width: 90.0,
-        ),
-      ),
     );
   }
 }
