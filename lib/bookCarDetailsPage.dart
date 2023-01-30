@@ -445,35 +445,87 @@ class _BookCarDetailsState extends State<BookCarDetails> {
                 if (paymentStatus && userDocumentStatus) {
                   print(
                       "Book has been pressed with these dates: $startDateTime ### $endDateTime");
-                } else {
-                  print(
-                      "###Please provide payment method and upload required documents###");
-                }
-                if (endDateTime.difference(startDateTime).inHours < 1) {
-                  print(
-                      '###You have to choose a date that has at least 1 hr difference###');
-                } else {
-                  print('###Thank you for your booking###');
-                }
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => BookingConfirmation(
-                      carPicture: 'prado',
-                      carManfacturer: 'Toyota',
-                      carModel: 'Prado',
-                      carMakeYear: '2015',
-                      carRentPrice: 50,
-                      carLocation: 'Jabra Street',
-                      carLicenseNumber: 'KGR 3451',
-                      startDate: startDateTime,
-                      endDate: endDateTime,
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => BookingConfirmation(
+                        carPicture: 'prado',
+                        carManfacturer: 'Toyota',
+                        carModel: 'Prado',
+                        carMakeYear: '2015',
+                        carRentPrice: 50,
+                        carLocation: 'Jabra Street',
+                        carLicenseNumber: 'KGR 3451',
+                        startDate: startDateTime,
+                        endDate: endDateTime,
+                      ),
                     ),
-                  ),
-                );
+                  );
+                } else {
+                  //Documents and payment method pop up message
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: popUpMessage(),
+                      behavior: SnackBarBehavior.floating,
+                      backgroundColor: Colors.transparent,
+                      elevation: 0,
+                      duration: Duration(seconds: 5),
+                    ),
+                  );
+                }
+                // if (endDateTime.difference(startDateTime).inHours < 1) {
+                //   print(
+                //       '###You have to choose a date that has at least 1 hr difference###');
+                // } else {
+                //   print('###Thank you for your booking###');
+                // }
               }),
         ],
       ),
+    );
+  }
+
+  Stack popUpMessage() {
+    return Stack(
+      children: [
+        Container(
+          padding: EdgeInsets.all(15),
+          height: 90,
+          decoration: BoxDecoration(
+            color: Color(0xFFC72C41),
+            borderRadius: BorderRadius.all(Radius.circular(30)),
+          ),
+          child: Row(
+            children: [
+              //const SizedBox(width: 48),
+              Expanded(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "Reminder!",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(fontSize: 18, color: Colors.white),
+                    ),
+                    SizedBox(height: 3),
+                    Text(
+                      'Please Provide required documents and payment method in your Profile.',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 12.0,
+                        color: Colors.white,
+                        //fontWeight: FontWeight.bold,
+                      ),
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
     );
   }
 
