@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:cargo/landing_page.dart';
 import 'package:image_picker/image_picker.dart';
 import 'car_details.dart';
+import 'reusable_widget/Custom_AppBar.dart';
 
 class AddVehicle extends StatefulWidget {
   const AddVehicle({super.key});
@@ -423,21 +424,4 @@ class AddVehicleState extends State<AddVehicle> {
     );
   }
 
-  AppBar CarGoAppBar() {
-    return AppBar(
-      backgroundColor: Colors.transparent,
-      shadowColor: Colors.transparent,
-      iconTheme: IconThemeData(color: Colors.black),
-      centerTitle: true,
-      title: Padding(
-        padding: const EdgeInsets.only(top: 7),
-        child: Image.asset(
-          'assets/CarGo2.png',
-          color: Colors.black,
-          height: 120.0,
-          width: 90.0,
-        ),
-      ),
-    );
-  }
 }

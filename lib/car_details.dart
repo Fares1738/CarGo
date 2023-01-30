@@ -7,6 +7,8 @@ import 'package:cargo/view_vehicle_pictures.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
+import 'reusable_widget/Custom_AppBar.dart';
+
 class ViewAddedVehicle extends StatefulWidget {
   final List<Text> vehicle = <Text>[];
 
@@ -212,23 +214,7 @@ class ViewAddedVehicleState extends State<ViewAddedVehicle> {
     );
   }
 
-  AppBar CarGoAppBar() {
-    return AppBar(
-      backgroundColor: Colors.transparent,
-      shadowColor: Colors.transparent,
-      iconTheme: IconThemeData(color: Colors.black),
-      centerTitle: true,
-      title: Padding(
-        padding: const EdgeInsets.only(top: 7),
-        child: Image.asset(
-          'assets/CarGo2.png',
-          color: Colors.black,
-          height: 120.0,
-          width: 90.0,
-        ),
-      ),
-    );
-  }
+
 
   final ImagePicker imagePicker = ImagePicker();
   List<XFile>? imageFileList = [];
