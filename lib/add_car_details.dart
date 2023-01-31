@@ -485,7 +485,7 @@ class AddVehicleState extends State<AddVehicle> {
                                     transmission: Text(selectedTransType!),
                                     location: Text(location.text),
                                     city: Text(selectedCity!),
-                                    // images: imageFileList!,
+                                    /// images: imageFileList!,
                                     hoursRented: 0,
                                     timesRented: 0,
                                     imageUrl: imageUrl)));
