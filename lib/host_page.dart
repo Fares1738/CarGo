@@ -5,6 +5,7 @@
 import 'package:cargo/add_car_details.dart';
 import 'package:cargo/login_page.dart';
 import 'package:cargo/register_page.dart';
+import 'package:cargo/settings.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 
@@ -103,6 +104,12 @@ class _Hostpage extends State<Hostpage> {
             Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => Hostpage()),
+            );
+            break;
+          case 3:
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => Settings()),
             );
             break;
         }
