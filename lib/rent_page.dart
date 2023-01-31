@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 
 import 'booked_page.dart';
+import 'location_page.dart';
 
 class RentPage extends StatefulWidget {
   const RentPage({Key? key}) : super(key: key);
@@ -81,7 +82,12 @@ class _RentPageState extends State<RentPage> with TickerProviderStateMixin {
 
   ElevatedButton SearchElevatedButton() {
     return ElevatedButton.icon(
-      onPressed: () {},
+      onPressed: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => Cities()),
+        );
+      },
       icon: Text("Search for a Location"),
       label: Icon(
         Icons.search,
