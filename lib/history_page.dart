@@ -23,7 +23,7 @@ var car1 = Car(
   carRentPrice: 20,
 );
 var car2 = Car(
-  carId: '123',
+  carId: '124',
   carPicture: 'prado.png',
   carManfacturer: 'Toyota',
   carModel: 'Prado',
@@ -33,13 +33,13 @@ var car2 = Car(
 );
 
 class HistoryPage extends StatelessWidget {
+  @override
   final List _cars = [
     CarCardSample(car: car1),
     CarCardSample(car: car2),
     CarCardSample(car: car1),
     CarCardSample(car: car2),
   ];
-  @override
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
@@ -51,7 +51,7 @@ class HistoryPage extends StatelessWidget {
             padding: const EdgeInsets.only(top: 10, bottom: 10),
           ),
           Text(
-            "All Your Rent's History",
+            "Your Rent's History",
             style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
           ),
           Expanded(
@@ -78,7 +78,14 @@ class _CarCardSampleState extends State<CarCardSample> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        // Navigator.push(
+        //     context,
+        //     MaterialPageRoute(
+        //         builder: (context) => BookCarDetails(
+        //               carId: widget.car.carId,
+        //             )));
+      },
       splashColor: Colors.deepPurpleAccent,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
@@ -121,27 +128,13 @@ class _CarCardSampleState extends State<CarCardSample> {
                         // ignore: prefer_const_literals_to_create_immutables
                         children: <Widget>[
                           Text(
-                            widget.car.carManfacturer,
+                            '${widget.car.carManfacturer} ${widget.car.carModel} ${widget.car.carMakeYear}',
                             style: TextStyle(
                               fontSize: 18.0,
                               fontWeight: FontWeight.w600,
                             ),
                           ),
-                          Text(
-                            widget.car.carModel,
-                            style: TextStyle(
-                              fontSize: 18.0,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                          Text(
-                            widget.car.carMakeYear,
-                            style: TextStyle(
-                              fontSize: 18.0,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                          SizedBox(width: 50),
+                          SizedBox(width: 60),
                           Text(
                             '${widget.car.carRentPrice.round()} RM/hr',
                             style: TextStyle(
