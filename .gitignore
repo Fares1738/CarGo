@@ -78,3 +78,4 @@ android/.gradle/7.4/checksums/sha1-checksums.bin
 .gitignore
 android/.gradle/7.4/checksums/checksums.lock
 android/.gradle/file-system.probe
+android/local.properties
