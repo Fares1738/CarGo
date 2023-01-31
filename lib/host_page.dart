@@ -25,50 +25,53 @@ class _Hostpage extends State<Hostpage> {
     return Scaffold(
       appBar: CarGoAppBar(),
       backgroundColor: Color.fromARGB(255, 255, 255, 255),
-      body: Center(
-        child: Column(
-          children: [
-            SizedBox(height: 30),
-            Text("Total Earnings: 520 RM",
-                textAlign: TextAlign.center,
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25)),
-            SizedBox(height: 30),
-            Image.asset(
-              'assets/rav4.jpg',
-              width: 350,
-              height: 200,
-            ),
-            SizedBox(height: 15),
-            Text("Toyata Rav4 2022",
-                textAlign: TextAlign.center,
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
-            SizedBox(height: 50),
-            Padding(
-              padding: EdgeInsets.only(top: 20),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        minimumSize: Size(200, 50),
-                        textStyle: TextStyle(fontSize: 25),
-                        backgroundColor: Colors.deepPurple,
-                        foregroundColor: Colors.white,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30.0)),
-                      ),
-                      child: Text('Add a New Car'),
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => AddVehicle()),
-                        );
-                      }),
-                  SizedBox(height: 20),
-                ],
+      body: SingleChildScrollView(
+        child: Center(
+          child: Column(
+            children: [
+              SizedBox(height: 30),
+              Text("Total Earnings: 520 RM",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25)),
+              SizedBox(height: 30),
+              Image.asset(
+                'assets/rav4.jpg',
+                width: 350,
+                height: 200,
               ),
-            ),
-          ],
+              SizedBox(height: 15),
+              Text("Toyata Rav4 2022",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
+              SizedBox(height: 50),
+              Padding(
+                padding: EdgeInsets.only(top: 20),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          minimumSize: Size(200, 50),
+                          textStyle: TextStyle(fontSize: 25),
+                          backgroundColor: Colors.deepPurple,
+                          foregroundColor: Colors.white,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(30.0)),
+                        ),
+                        child: Text('Add a New Car'),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => AddVehicle()),
+                          );
+                        }),
+                    SizedBox(height: 20),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
       bottomNavigationBar: CarGoCurvedNavigationBar(),
