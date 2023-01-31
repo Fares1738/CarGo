@@ -4,10 +4,12 @@ import 'package:cargo/booked_page.dart';
 import 'package:cargo/host_page.dart';
 import 'package:cargo/location_page.dart';
 import 'package:cargo/rent_page.dart';
+import 'package:cargo/settings.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 
 import 'DELETEAFTERWARDS.dart';
+import 'bookCarDetailsPage.dart';
 
 class ExplorePage extends StatefulWidget {
   @override
@@ -37,7 +39,7 @@ var car1 = Car(
   carRentPrice: 20,
 );
 var car2 = Car(
-  carId: '123',
+  carId: '124',
   carPicture: 'prado.png',
   carManfacturer: 'Toyota',
   carModel: 'Prado',
@@ -89,12 +91,12 @@ class _ExplorePage extends State<ExplorePage> {
       shadowColor: Colors.transparent,
       centerTitle: true,
       title: Padding(
-        padding: const EdgeInsets.only(top: 10),
+        padding: const EdgeInsets.only(top: 2),
         child: Image.asset(
           'assets/CarGo2.png',
           color: Colors.black,
-          height: 100.0,
-          width: 100.0,
+          height: 120.0,
+          width: 90.0,
         ),
       ),
     );
@@ -102,7 +104,12 @@ class _ExplorePage extends State<ExplorePage> {
 
   ElevatedButton SearchElevatedButton() {
     return ElevatedButton.icon(
-      onPressed: () {},
+      onPressed: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => Cities()),
+        );
+      },
       icon: Text("Search for a Location"),
       label: Icon(
         Icons.search,
@@ -151,7 +158,7 @@ class _ExplorePage extends State<ExplorePage> {
           case 3:
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => DeletePage()),
+              MaterialPageRoute(builder: (context) => Settings()),
             );
             break;
         }
@@ -177,7 +184,14 @@ class _CarCardSampleState extends State<CarCardSample> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => BookCarDetails(
+                      carId: widget.car.carId,
+                    )));
+      },
       splashColor: Colors.deepPurpleAccent,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
@@ -220,27 +234,13 @@ class _CarCardSampleState extends State<CarCardSample> {
                         // ignore: prefer_const_literals_to_create_immutables
                         children: <Widget>[
                           Text(
-                            widget.car.carManfacturer,
+                            '${widget.car.carManfacturer} ${widget.car.carModel} ${widget.car.carMakeYear}',
                             style: TextStyle(
                               fontSize: 18.0,
                               fontWeight: FontWeight.w600,
                             ),
                           ),
-                          Text(
-                            widget.car.carModel,
-                            style: TextStyle(
-                              fontSize: 18.0,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                          Text(
-                            widget.car.carMakeYear,
-                            style: TextStyle(
-                              fontSize: 18.0,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                          SizedBox(width: 50),
+                          SizedBox(width: 60),
                           Text(
                             '${widget.car.carRentPrice.round()} RM/hr',
                             style: TextStyle(
