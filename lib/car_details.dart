@@ -3,6 +3,7 @@
 import 'dart:io';
 
 import 'package:cargo/host_page.dart';
+import 'package:cargo/services/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -42,13 +43,17 @@ class ViewAddedVehicle extends StatefulWidget {
   final List<XFile>? images;
 
   @override
-  State<StatefulWidget> createState() => ViewAddedVehicleState(images);
+  State<StatefulWidget> createState() =>
+      ViewAddedVehicleState(images, manufacturer);
 }
 
 class ViewAddedVehicleState extends State<ViewAddedVehicle> {
-  final List<XFile>? images;
+  final AuthService _auth = AuthService();
 
-  ViewAddedVehicleState(this.images);
+  final List<XFile>? images;
+  Text manufacturer;
+
+  ViewAddedVehicleState(this.images, this.manufacturer);
 
   @override
   Widget build(BuildContext context) {
@@ -195,10 +200,28 @@ class ViewAddedVehicleState extends State<ViewAddedVehicle> {
                       ),
                       child: Text('Add Car'),
                       onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => Hostpage()),
-                        );
+                        //database
+
+                        dynamic result = _auth.createCarCollectionUser(
+                            '${widget.manufacturer.data}',
+                            '${widget.model.data}',
+                            int.parse('${widget.makeyear.data}'),
+                            int.parse('${widget.mileage.data}'),
+                            int.parse('${widget.gasConsumption.data}'),
+                            int.parse('${widget.rentPrice.data}'),
+                            '${widget.licenseNumber.data}',
+                            '${widget.location.data}',
+                            '${widget.city.data}');
+
+                        if (result == null) {
+                          print("Error");
+                        } else {
+                          print("successful");
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => Hostpage()),
+                          );
+                        }
                       },
                     ),
                     SizedBox(height: 20),
