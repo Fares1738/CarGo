@@ -3,10 +3,7 @@
 import 'dart:io';
 
 import 'package:cargo/reusable_widget/InputDeco.dart';
-import 'package:cargo/view_vehicle_pictures.dart';
-import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:cargo/landing_page.dart';
 import 'package:image_picker/image_picker.dart';
 import 'car_details.dart';
 import 'reusable_widget/Custom_AppBar.dart';
@@ -367,17 +364,37 @@ class AddVehicleState extends State<AddVehicle> {
                       ),
                       child: Text('Add Car Pictures'),
                       onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => VehiclePictures()));
+                        selectImages();
                       },
                     ),
                   ],
                 ),
               ),
 
-              //Add Vehicle button
+              // Print gridview of images
+              Container(
+                margin: const EdgeInsets.all(15),
+                padding: const EdgeInsets.all(3.0),
+                decoration:
+                    BoxDecoration(border: Border.all(color: Colors.black)),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: GridView.builder(
+                      shrinkWrap: true,
+                      padding: const EdgeInsets.all(5),
+                      itemCount: imageFileList!.length,
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 3),
+                      itemBuilder: (BuildContext context, int index) {
+                        return Image.file(
+                          File(imageFileList![index].path),
+                          fit: BoxFit.cover,
+                        );
+                      }),
+                ),
+              ),
+
+              //Next Page Button
               Padding(
                 padding: EdgeInsets.only(top: 10),
                 child: Column(
@@ -409,7 +426,8 @@ class AddVehicleState extends State<AddVehicle> {
                                     seats: Text(selectedSeatNum!),
                                     transmission: Text(selectedTransType!),
                                     location: Text(location.text),
-                                    city: Text(selectedCity!))));
+                                    city: Text(selectedCity!),
+                                    images: imageFileList!)));
                       },
                     ),
                   ],
@@ -424,4 +442,15 @@ class AddVehicleState extends State<AddVehicle> {
     );
   }
 
+  final ImagePicker imagePicker = ImagePicker();
+  List<XFile>? imageFileList = [];
+
+  void selectImages() async {
+    final List<XFile>? selectedImages = await imagePicker.pickMultiImage();
+    if (selectedImages!.isNotEmpty) {
+      imageFileList!.addAll(selectedImages);
+    }
+    print("Image List Length:" + imageFileList!.length.toString());
+    setState(() {});
+  }
 }
