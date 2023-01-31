@@ -29,7 +29,7 @@ class AuthService {
       User? user = result.user;
       await DatabaseService(uid: user!.uid)
           .updateUserData(fullname, email, password);
-      return _userFromFirebaseUser(user!);
+      return _userFromFirebaseUser(user);
     } catch (e) {
       print(e.toString());
       return null;
@@ -61,24 +61,23 @@ class AuthService {
 
   // register with email and password
   Future createCarCollectionUser(
-      String manufacturer,
-      String model,
-      int makeyear,
-      int mileage,
-      int gasConsumption,
-      int rentPrice,
-      String licenseNumber,
-      String location,
-      String city,
-      // String email,
-      // String password,
-      // String userId
-      ) async {
+    String manufacturer,
+    String model,
+    int makeyear,
+    int mileage,
+    int gasConsumption,
+    int rentPrice,
+    String licenseNumber,
+    String location,
+    String city,
+    // String email,
+    // String password,
+    // String userId
+  ) async {
     try {
-        final User? user = _auth.currentUser;
-        final userId = user?.uid;
-        // here you write the codes to input the data into firestore
-      
+      final User? user = _auth.currentUser;
+      final userId = user?.uid;
+      // here you write the codes to input the data into firestore
 
       // UserCredential? result = await _auth.createUserWithEmailAndPassword(
       //     email: email, password: password);
