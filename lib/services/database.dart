@@ -3,6 +3,8 @@ import 'package:file_picker/file_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 
+import '../model/Cars.dart';
+
 class DatabaseService {
   //Collection Reference
 
@@ -57,7 +59,7 @@ class DatabaseService {
       'seats': seats,
       'hoursRented': hoursRented,
       'timesRented': timesRented,
-      'imageUrl' : imageUrl
+      'imageUrl': imageUrl
     });
   }
 
@@ -76,5 +78,59 @@ class DatabaseService {
       'bookingEndDate': bookingEndDate,
       'bookingStatus': bookingStatus,
     });
+  }
+
+  // car list
+  List<Cars> _carListFromSnapshot(QuerySnapshot snapshot) {
+    try {
+      return snapshot.docs.map((d) {
+        return Cars(
+          manufacturer: d.data().toString().contains('manufacturer')
+              ? d.get('manufacturer')
+              : '' "",
+          model: d.data().toString().contains('model') ? d.get('model') : '' "",
+          makeyear:
+              d.data().toString().contains('makeyear') ? d.get('makeyear') : 0,
+          mileage:
+              d.data().toString().contains('mileage') ? d.get('mileage') : 0,
+          gasConsumption: d.data().toString().contains('gasConsumption')
+              ? d.get('gasConsumption')
+              : 0,
+          rentPrice: d.data().toString().contains('rentPrice')
+              ? d.get('rentPrice')
+              : 0,
+          licenseNumber: d.data().toString().contains('licenseNumber')
+              ? d.get('licenseNumber')
+              : '' "",
+          location: d.data().toString().contains('location')
+              ? d.get('location')
+              : '' "",
+          city: d.data().toString().contains('city') ? d.get('city') : '' "",
+          wheelDrive: d.data().toString().contains('wheelDrive')
+              ? d.get('wheelDrive')
+              : '' "",
+          transmission: d.data().toString().contains('transmission')
+              ? d.get('transmission')
+              : '' "",
+          seats: d.data().toString().contains('seats') ? d.get('seats') : 0,
+          hoursRented: d.data().toString().contains('hoursRented')
+              ? d.get('hoursRented')
+              : 0,
+          timesRented: d.data().toString().contains('timesRented')
+              ? d.get('timesRented')
+              : 0,
+          imageUrl: d.data().toString().contains('imageUrl')
+              ? d.get('imageUrl')
+              : '' "",
+        );
+      }).toList();
+    } catch (e) {
+      print(e.toString());
+      return [];
+    }
+  }
+
+  Stream<List<Cars>> get cars {
+    return carCollection.snapshots().map(_carListFromSnapshot);
   }
 }

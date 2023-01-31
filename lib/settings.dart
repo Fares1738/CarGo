@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:slidable_button/slidable_button.dart';
 
-class Settings extends StatelessWidget {
-  const Settings({super.key});
+class Settings1 extends StatelessWidget {
+  const Settings1({super.key});
 
   @override
   Widget build(BuildContext context) {
