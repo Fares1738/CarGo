@@ -1,7 +1,12 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, non_constant_identifier_names, unnecessary_this
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, non_constant_identifier_names, unnecessary_this, unnecessary_nullable_for_final_variable_declarations, prefer_interpolation_to_compose_strings, avoid_print, no_logic_in_create_state
+
+import 'dart:io';
 
 import 'package:cargo/host_page.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
+
+import 'reusable_widget/Custom_AppBar.dart';
 
 class ViewAddedVehicle extends StatefulWidget {
   final List<Text> vehicle = <Text>[];
@@ -19,6 +24,8 @@ class ViewAddedVehicle extends StatefulWidget {
     required this.seats,
     required this.transmission,
     required this.location,
+    required this.city,
+    required this.images,
   });
   final Text manufacturer;
   final Text model;
@@ -31,12 +38,18 @@ class ViewAddedVehicle extends StatefulWidget {
   final Text seats;
   final Text transmission;
   final Text location;
+  final Text city;
+  final List<XFile>? images;
 
   @override
-  State<StatefulWidget> createState() => ViewAddedVehicleState();
+  State<StatefulWidget> createState() => ViewAddedVehicleState(images);
 }
 
 class ViewAddedVehicleState extends State<ViewAddedVehicle> {
+  final List<XFile>? images;
+
+  ViewAddedVehicleState(this.images);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -83,17 +96,26 @@ class ViewAddedVehicleState extends State<ViewAddedVehicle> {
                     Text("Gas Consumption",
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 15)),
-                    widget.gasConsumption,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [widget.gasConsumption, Text(" KM/L")],
+                    ),
                     SizedBox(height: 8),
                     Text("Mileage",
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 15)),
-                    widget.mileage,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [widget.mileage, Text(" KM")],
+                    ),
                     SizedBox(height: 8),
                     Text("Rent Price",
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 15)),
-                    widget.rentPrice,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [widget.rentPrice, Text(" RM/Hour")],
+                    ),
                     SizedBox(height: 8),
                     Text("License Number",
                         style: TextStyle(
@@ -108,30 +130,71 @@ class ViewAddedVehicleState extends State<ViewAddedVehicle> {
                     Text("Number of seats",
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 15)),
-                    widget.seats,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [widget.seats, Text(" Seats")],
+                    ),
                     SizedBox(height: 8),
                     Text("Transmission",
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 15)),
                     widget.transmission,
                     SizedBox(height: 8),
+                    Text("City",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 15)),
+                    widget.city,
+                    SizedBox(height: 8),
                     Text("Location",
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 15)),
-                    widget.location,
-                    SizedBox(height: 20),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        widget.location,
+                      ],
+                    ),
+                    SizedBox(height: 10),
+
+                    Text("Car Pictures",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 15)),
+
+                    // Print gridview of images
+                    Container(
+                      margin: const EdgeInsets.all(15),
+                      padding: const EdgeInsets.all(3.0),
+                      decoration: BoxDecoration(
+                          border: Border.all(color: Colors.black)),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: GridView.builder(
+                            shrinkWrap: true,
+                            padding: const EdgeInsets.all(5),
+                            itemCount: images!.length,
+                            gridDelegate:
+                                SliverGridDelegateWithFixedCrossAxisCount(
+                                    crossAxisCount: 3),
+                            itemBuilder: (BuildContext context, int index) {
+                              return Image.file(
+                                File(images![index].path),
+                                fit: BoxFit.cover,
+                              );
+                            }),
+                      ),
+                    ),
+
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        minimumSize: Size(150, 50),
-                        textStyle: TextStyle(fontSize: 21),
+                        minimumSize: Size(150, 45),
+                        textStyle: TextStyle(fontSize: 17),
                         backgroundColor: Colors.deepPurple,
                         foregroundColor: Colors.white,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(30.0)),
                       ),
-                      child: Text('Done'),
+                      child: Text('Add Car'),
                       onPressed: () {
-                        //print(model);
                         Navigator.push(
                           context,
                           MaterialPageRoute(builder: (context) => Hostpage()),
@@ -149,21 +212,15 @@ class ViewAddedVehicleState extends State<ViewAddedVehicle> {
     );
   }
 
-  AppBar CarGoAppBar() {
-    return AppBar(
-      backgroundColor: Colors.transparent,
-      shadowColor: Colors.transparent,
-      iconTheme: IconThemeData(color: Colors.black),
-      centerTitle: true,
-      title: Padding(
-        padding: const EdgeInsets.only(top: 7),
-        child: Image.asset(
-          'assets/CarGo2.png',
-          color: Colors.black,
-          height: 120.0,
-          width: 90.0,
-        ),
-      ),
-    );
+  final ImagePicker imagePicker = ImagePicker();
+  List<XFile>? imageFileList = [];
+
+  void selectImages() async {
+    final List<XFile>? selectedImages = await imagePicker.pickMultiImage();
+    if (selectedImages!.isNotEmpty) {
+      imageFileList!.addAll(selectedImages);
+    }
+    print("Image List Length:" + imageFileList!.length.toString());
+    setState(() {});
   }
 }

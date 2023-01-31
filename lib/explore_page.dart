@@ -94,8 +94,8 @@ class _ExplorePage extends State<ExplorePage> {
         child: Image.asset(
           'assets/CarGo2.png',
           color: Colors.black,
-          height: 200.0,
-          width: 150.0,
+          height: 100.0,
+          width: 100.0,
         ),
       ),
     );

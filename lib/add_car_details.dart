@@ -1,8 +1,12 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, non_constant_identifier_names
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, non_constant_identifier_names, avoid_print, unnecessary_nullable_for_final_variable_declarations, prefer_interpolation_to_compose_strings
 
+import 'dart:io';
+
+import 'package:cargo/reusable_widget/InputDeco.dart';
 import 'package:flutter/material.dart';
-import 'package:cargo/landing_page.dart';
+import 'package:image_picker/image_picker.dart';
 import 'car_details.dart';
+import 'reusable_widget/Custom_AppBar.dart';
 
 class AddVehicle extends StatefulWidget {
   const AddVehicle({super.key});
@@ -19,10 +23,32 @@ class AddVehicleState extends State<AddVehicle> {
   final gasConsumption = TextEditingController();
   final rentPrice = TextEditingController();
   final licenseNumber = TextEditingController();
-  final wheelDrive = TextEditingController();
-  final seats = TextEditingController();
-  final transmission = TextEditingController();
   final location = TextEditingController();
+  final city = TextEditingController();
+
+  List<String> wheelDriveMenu = [
+    'Rear-Wheel Drive',
+    'Front-Wheel Drive',
+    'Four-Wheel Drive',
+    'All-Wheel Drive'
+  ];
+  String? selectedWheelDrive = 'Front-Wheel Drive';
+
+  List<String> seatNum = ['2', '4', '6', '8'];
+  String? selectedSeatNum = '4';
+
+  List<String> TransmissionType = ['Automatic', 'Manual'];
+  String? selectedTransType = 'Automatic';
+
+  List<String> cityName = [
+    'Kuala Lumpur',
+    'Alor Setar',
+    'Kuching',
+    'Ipoh',
+    'Melacca',
+    'Johor Bahru'
+  ];
+  String? selectedCity = 'Johor Bahru';
 
   @override
   void dispose() {
@@ -34,10 +60,8 @@ class AddVehicleState extends State<AddVehicle> {
     gasConsumption.dispose();
     rentPrice.dispose();
     licenseNumber.dispose();
-    wheelDrive.dispose();
-    seats.dispose();
-    transmission.dispose();
     location.dispose();
+    city.dispose();
     super.dispose();
   }
 
@@ -68,24 +92,12 @@ class AddVehicleState extends State<AddVehicle> {
               //Manufacturer
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: Colors.grey[100],
-                    border: Border.all(color: Colors.black),
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 20.0),
-                    child: TextField(
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 0.0),
+                  child: TextField(
                       controller: manufacturer,
-                      decoration: InputDecoration(
-                          border: InputBorder.none,
-                          hintText: "Manufacturer",
-                          hintStyle: TextStyle(
-                            fontWeight: FontWeight.bold,
-                          )),
-                    ),
-                  ),
+                      decoration: buildInputDecoration(
+                          Icons.precision_manufacturing, "Manufacturer")),
                 ),
               ),
 
@@ -94,24 +106,12 @@ class AddVehicleState extends State<AddVehicle> {
               //Model
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: Colors.grey[100],
-                    border: Border.all(color: Colors.black),
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 20.0),
-                    child: TextField(
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 0.0),
+                  child: TextField(
                       controller: model,
-                      decoration: InputDecoration(
-                          border: InputBorder.none,
-                          hintText: "Model",
-                          hintStyle: TextStyle(
-                            fontWeight: FontWeight.bold,
-                          )),
-                    ),
-                  ),
+                      decoration:
+                          buildInputDecoration(Icons.car_crash, "Model")),
                 ),
               ),
 
@@ -120,24 +120,12 @@ class AddVehicleState extends State<AddVehicle> {
               //Make Year
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: Colors.grey[200],
-                    border: Border.all(color: Colors.black),
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 20.0),
-                    child: TextField(
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 0.0),
+                  child: TextField(
                       controller: makeyear,
-                      decoration: InputDecoration(
-                          border: InputBorder.none,
-                          hintText: "Make year",
-                          hintStyle: TextStyle(
-                            fontWeight: FontWeight.bold,
-                          )),
-                    ),
-                  ),
+                      decoration:
+                          buildInputDecoration(Icons.date_range, "Make Year")),
                 ),
               ),
 
@@ -146,24 +134,11 @@ class AddVehicleState extends State<AddVehicle> {
               //Mileage
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: Colors.grey[200],
-                    border: Border.all(color: Colors.black),
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 20.0),
-                    child: TextField(
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 0.0),
+                  child: TextField(
                       controller: mileage,
-                      decoration: InputDecoration(
-                          border: InputBorder.none,
-                          hintText: "Mileage (In KM)",
-                          hintStyle: TextStyle(
-                            fontWeight: FontWeight.bold,
-                          )),
-                    ),
-                  ),
+                      decoration: buildInputDecoration(Icons.speed, "Mileage")),
                 ),
               ),
 
@@ -172,24 +147,12 @@ class AddVehicleState extends State<AddVehicle> {
               //Gas Consumption
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: Colors.grey[200],
-                    border: Border.all(color: Colors.black),
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 20.0),
-                    child: TextField(
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 0.0),
+                  child: TextField(
                       controller: gasConsumption,
-                      decoration: InputDecoration(
-                          border: InputBorder.none,
-                          hintText: "Gas Consumption (In KM/L)",
-                          hintStyle: TextStyle(
-                            fontWeight: FontWeight.bold,
-                          )),
-                    ),
-                  ),
+                      decoration: buildInputDecoration(Icons.gas_meter_outlined,
+                          "Gas Consumption (in KM/L)")),
                 ),
               ),
               SizedBox(height: 10),
@@ -197,24 +160,13 @@ class AddVehicleState extends State<AddVehicle> {
               //Rent Price
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: Colors.grey[200],
-                    border: Border.all(color: Colors.black),
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 20.0),
-                    child: TextField(
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 0.0),
+                  child: TextField(
                       controller: rentPrice,
-                      decoration: InputDecoration(
-                          border: InputBorder.none,
-                          hintText: "Rent Price per Hour (RM)",
-                          hintStyle: TextStyle(
-                            fontWeight: FontWeight.bold,
-                          )),
-                    ),
-                  ),
+                      decoration: buildInputDecoration(
+                          Icons.attach_money_rounded,
+                          "Rent Price per Hour (RM)")),
                 ),
               ),
               SizedBox(height: 10),
@@ -222,99 +174,12 @@ class AddVehicleState extends State<AddVehicle> {
               //License Plate Number
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: Colors.grey[200],
-                    border: Border.all(color: Colors.black),
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 20.0),
-                    child: TextField(
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 0.0),
+                  child: TextField(
                       controller: licenseNumber,
-                      decoration: InputDecoration(
-                          border: InputBorder.none,
-                          hintText: "License Plate Number",
-                          hintStyle: TextStyle(
-                            fontWeight: FontWeight.bold,
-                          )),
-                    ),
-                  ),
-                ),
-              ),
-              SizedBox(height: 10),
-
-              //Wheel Drive
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: Colors.grey[200],
-                    border: Border.all(color: Colors.black),
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 20.0),
-                    child: TextField(
-                      controller: wheelDrive,
-                      decoration: InputDecoration(
-                          border: InputBorder.none,
-                          hintText: "Front Wheel/All wheel drive",
-                          hintStyle: TextStyle(
-                            fontWeight: FontWeight.bold,
-                          )),
-                    ),
-                  ),
-                ),
-              ),
-              SizedBox(height: 10),
-
-              //Number of Seats
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: Colors.grey[200],
-                    border: Border.all(color: Colors.black),
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 20.0),
-                    child: TextField(
-                      controller: seats,
-                      decoration: InputDecoration(
-                          border: InputBorder.none,
-                          hintText: "Number of seats",
-                          hintStyle: TextStyle(
-                            fontWeight: FontWeight.bold,
-                          )),
-                    ),
-                  ),
-                ),
-              ),
-              SizedBox(height: 10),
-
-              //Transmission
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: Colors.grey[200],
-                    border: Border.all(color: Colors.black),
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 20.0),
-                    child: TextField(
-                      controller: transmission,
-                      decoration: InputDecoration(
-                          border: InputBorder.none,
-                          hintText: "Transmission (Manual/Auto)",
-                          hintStyle: TextStyle(
-                            fontWeight: FontWeight.bold,
-                          )),
-                    ),
-                  ),
+                      decoration: buildInputDecoration(
+                          Icons.numbers_rounded, "License Plate Number")),
                 ),
               ),
               SizedBox(height: 10),
@@ -322,31 +187,169 @@ class AddVehicleState extends State<AddVehicle> {
               //Location
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: Colors.grey[200],
-                    border: Border.all(color: Colors.black),
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 20.0),
-                    child: TextField(
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 0.0),
+                  child: TextField(
                       controller: location,
-                      decoration: InputDecoration(
-                          border: InputBorder.none,
-                          hintText: "Location",
-                          hintStyle: TextStyle(
-                            fontWeight: FontWeight.bold,
-                          )),
-                    ),
-                  ),
+                      decoration:
+                          buildInputDecoration(Icons.location_on, "Location")),
                 ),
               ),
               SizedBox(height: 10),
 
-              //Add Vehicle Pictures
+              //City
+              Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                    child: Text("City: ",
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.bold)),
+                  ),
+                  Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 82.0),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Colors.black),
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: SizedBox(
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: 15.0),
+                            child: DropdownButton<String>(
+                                value: selectedCity,
+                                items: cityName
+                                    .map((item) => DropdownMenuItem<String>(
+                                        value: item,
+                                        child: Text(item,
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold))))
+                                    .toList(),
+                                onChanged: (item) =>
+                                    setState(() => selectedCity = item)),
+                          ),
+                        ),
+                      )),
+                ],
+              ),
+              SizedBox(height: 10),
+
+              //Wheel Drive
+
+              Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                    child: Text("Wheel Drive: ",
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.bold)),
+                  ),
+                  Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Colors.black),
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: SizedBox(
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: 15.0),
+                            child: DropdownButton<String>(
+                                value: selectedWheelDrive,
+                                items: wheelDriveMenu
+                                    .map((item) => DropdownMenuItem<String>(
+                                        value: item,
+                                        child: Text(item,
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold))))
+                                    .toList(),
+                                onChanged: (item) =>
+                                    setState(() => selectedWheelDrive = item)),
+                          ),
+                        ),
+                      )),
+                ],
+              ),
+
+              SizedBox(height: 10),
+
+              //Transmission
+              Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                    child: Text("Transmission: ",
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.bold)),
+                  ),
+                  Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Colors.black),
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: SizedBox(
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: 15.0),
+                            child: DropdownButton<String>(
+                                value: selectedTransType,
+                                items: TransmissionType.map((item) =>
+                                    DropdownMenuItem<String>(
+                                        value: item,
+                                        child: Text(item,
+                                            style: TextStyle(
+                                                fontWeight: FontWeight
+                                                    .bold)))).toList(),
+                                onChanged: (item) =>
+                                    setState(() => selectedTransType = item)),
+                          ),
+                        ),
+                      )),
+                ],
+              ),
+
+              SizedBox(height: 10),
+
+              //Number of Seats
+              Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                    child: Text("Number of Seats: ",
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.bold)),
+                  ),
+                  Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 0.0),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Colors.black),
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: SizedBox(
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: 15.0),
+                            child: DropdownButton<String>(
+                                value: selectedSeatNum,
+                                items: seatNum
+                                    .map((item) => DropdownMenuItem<String>(
+                                        value: item,
+                                        child: Text(item,
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold))))
+                                    .toList(),
+                                onChanged: (item) =>
+                                    setState(() => selectedSeatNum = item)),
+                          ),
+                        ),
+                      )),
+                ],
+              ),
+              SizedBox(height: 10),
+
               Padding(
-                padding: EdgeInsets.only(top: 20),
+                padding: EdgeInsets.only(top: 10),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
@@ -361,17 +364,37 @@ class AddVehicleState extends State<AddVehicle> {
                       ),
                       child: Text('Add Car Pictures'),
                       onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => LandingPage()),
-                        );
+                        selectImages();
                       },
                     ),
                   ],
                 ),
               ),
-              //Add Vehicle button
+
+              // Print gridview of images
+              Container(
+                margin: const EdgeInsets.all(15),
+                padding: const EdgeInsets.all(3.0),
+                decoration:
+                    BoxDecoration(border: Border.all(color: Colors.black)),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: GridView.builder(
+                      shrinkWrap: true,
+                      padding: const EdgeInsets.all(5),
+                      itemCount: imageFileList!.length,
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 3),
+                      itemBuilder: (BuildContext context, int index) {
+                        return Image.file(
+                          File(imageFileList![index].path),
+                          fit: BoxFit.cover,
+                        );
+                      }),
+                ),
+              ),
+
+              //Next Page Button
               Padding(
                 padding: EdgeInsets.only(top: 10),
                 child: Column(
@@ -386,7 +409,7 @@ class AddVehicleState extends State<AddVehicle> {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(30.0)),
                       ),
-                      child: Text('Add Car'),
+                      child: Text('Next'),
                       onPressed: () {
                         Navigator.push(
                             context,
@@ -399,15 +422,18 @@ class AddVehicleState extends State<AddVehicle> {
                                     gasConsumption: Text(gasConsumption.text),
                                     rentPrice: Text(rentPrice.text),
                                     licenseNumber: Text(licenseNumber.text),
-                                    wheelDrive: Text(wheelDrive.text),
-                                    seats: Text(seats.text),
-                                    transmission: Text(transmission.text),
-                                    location: Text(location.text))));
+                                    wheelDrive: Text(selectedWheelDrive!),
+                                    seats: Text(selectedSeatNum!),
+                                    transmission: Text(selectedTransType!),
+                                    location: Text(location.text),
+                                    city: Text(selectedCity!),
+                                    images: imageFileList!)));
                       },
                     ),
                   ],
                 ),
               ),
+
               SizedBox(height: 10),
             ],
           ),
@@ -416,21 +442,15 @@ class AddVehicleState extends State<AddVehicle> {
     );
   }
 
-  AppBar CarGoAppBar() {
-    return AppBar(
-      backgroundColor: Colors.transparent,
-      shadowColor: Colors.transparent,
-      iconTheme: IconThemeData(color: Colors.black),
-      centerTitle: true,
-      title: Padding(
-        padding: const EdgeInsets.only(top: 7),
-        child: Image.asset(
-          'assets/CarGo2.png',
-          color: Colors.black,
-          height: 120.0,
-          width: 90.0,
-        ),
-      ),
-    );
+  final ImagePicker imagePicker = ImagePicker();
+  List<XFile>? imageFileList = [];
+
+  void selectImages() async {
+    final List<XFile>? selectedImages = await imagePicker.pickMultiImage();
+    if (selectedImages!.isNotEmpty) {
+      imageFileList!.addAll(selectedImages);
+    }
+    print("Image List Length:" + imageFileList!.length.toString());
+    setState(() {});
   }
 }
