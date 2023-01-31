@@ -30,6 +30,7 @@ class AddVehicleState extends State<AddVehicle> {
   final city = TextEditingController();
   int hoursRented = 0;
   int timesRented = 0;
+  String imageUrl = '';
 
   List<String> wheelDriveMenu = [
     'Rear-Wheel Drive',
@@ -69,8 +70,6 @@ class AddVehicleState extends State<AddVehicle> {
     city.dispose();
     super.dispose();
   }
-
-  String imageUrl = '';
 
   @override
   Widget build(BuildContext context) {
@@ -372,12 +371,6 @@ class AddVehicleState extends State<AddVehicle> {
 
                       //Pick image from phone storage and save it in firebase storage, and also generate download link//
                       onPressed: (() async {
-                        if (imageUrl.isEmpty) {
-                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                              content: Text("Please upload an image")));
-
-                          return;
-                        }
                         ImagePicker imagePicker = ImagePicker();
                         XFile? file = await imagePicker.pickImage(
                             source: ImageSource.gallery);
@@ -399,7 +392,14 @@ class AddVehicleState extends State<AddVehicle> {
                               .putFile(File(file!.path));
                           imageUrl =
                               await referenceImageToUpload.getDownloadURL();
+                          print(imageUrl);
                         } catch (e) {}
+
+                        if (imageUrl.isEmpty) {
+                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                              content: Text("Please upload an image")));
+                          return;
+                        }
                       }),
                       //selectFile,
                       child: Text('Add Car Pictures'),
