@@ -59,21 +59,27 @@ class AuthService {
     }
   }
 
-  // register with email and password
+  // Create a new car collection when user adds a new car
   Future createCarCollectionUser(
-    String manufacturer,
-    String model,
-    int makeyear,
-    int mileage,
-    int gasConsumption,
-    int rentPrice,
-    String licenseNumber,
-    String location,
-    String city,
-    // String email,
-    // String password,
-    // String userId
-  ) async {
+      String manufacturer,
+      String model,
+      int makeyear,
+      int mileage,
+      int gasConsumption,
+      int rentPrice,
+      String licenseNumber,
+      String location,
+      String city,
+      String wheelDrive,
+      String transmission,
+      int seats,
+      int hoursRented,
+      int timesRented,
+      String imageUrl
+      // String email,
+      // String password,
+      // String userId
+      ) async {
     try {
       final User? user = _auth.currentUser;
       final userId = user?.uid;
@@ -91,11 +97,18 @@ class AuthService {
           rentPrice,
           licenseNumber,
           location,
-          city);
+          city,
+          transmission,
+          seats,
+          hoursRented,
+          timesRented,
+          imageUrl);
       // return _userFromFirebaseUser(userId);
     } catch (e) {
       print(e.toString());
       return null;
     }
   }
+
+  
 }

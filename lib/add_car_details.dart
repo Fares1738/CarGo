@@ -1,15 +1,18 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, non_constant_identifier_names, avoid_print, unnecessary_nullable_for_final_variable_declarations, prefer_interpolation_to_compose_strings
 
 import 'dart:io';
-
 import 'package:cargo/reusable_widget/InputDeco.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'car_details.dart';
 import 'reusable_widget/Custom_AppBar.dart';
 
 class AddVehicle extends StatefulWidget {
-  const AddVehicle({super.key});
+  
+  final FirebaseStorage storage = FirebaseStorage.instance;
+
+  AddVehicle({super.key});
 
   @override
   State<StatefulWidget> createState() => AddVehicleState();
@@ -25,6 +28,8 @@ class AddVehicleState extends State<AddVehicle> {
   final licenseNumber = TextEditingController();
   final location = TextEditingController();
   final city = TextEditingController();
+  int hoursRented = 0;
+  int timesRented = 0;
 
   List<String> wheelDriveMenu = [
     'Rear-Wheel Drive',
@@ -50,6 +55,9 @@ class AddVehicleState extends State<AddVehicle> {
   ];
   String? selectedCity = 'Johor Bahru';
 
+
+
+
   @override
   void dispose() {
     // Clean up the controller when the widget is disposed.
@@ -65,8 +73,12 @@ class AddVehicleState extends State<AddVehicle> {
     super.dispose();
   }
 
+  String imageUrl = '';
+  
+
   @override
   Widget build(BuildContext context) {
+    
     return Scaffold(
       //Transparent appbar and back button icon
       extendBodyBehindAppBar: true,
@@ -362,16 +374,48 @@ class AddVehicleState extends State<AddVehicle> {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(30.0)),
                       ),
+
+                      //Pick image from phone storage and save it in firebase storage, and also generate download link
+                      onPressed: (() async {
+                        if (imageUrl.isEmpty) {
+                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                              content: Text("Please upload an image")));
+
+                          return;
+                        }
+                        ImagePicker imagePicker = ImagePicker();
+                        XFile? file = await imagePicker.pickImage(
+                            source: ImageSource.gallery);
+                        print('${file?.path}');
+
+                        String uniqueFileName =
+                            DateTime.now().millisecondsSinceEpoch.toString();
+
+                        Reference referenceRoot =
+                            FirebaseStorage.instance.ref();
+                        Reference referenceDirImages =
+                            referenceRoot.child('images');
+
+                        Reference referenceImageToUpload =
+                            referenceDirImages.child(uniqueFileName);
+
+                        try {
+                          await referenceImageToUpload
+                              .putFile(File(file!.path));
+                          imageUrl =
+                              await referenceImageToUpload.getDownloadURL();
+                        } catch (e) {}
+                      }),
+                      //selectFile,
                       child: Text('Add Car Pictures'),
-                      onPressed: () {
-                        selectImages();
-                      },
+                      //selectImages();
                     ),
                   ],
                 ),
               ),
 
-              // Print gridview of images
+              // Print image
+              //   if (pickedFile != null)
               Container(
                 margin: const EdgeInsets.all(15),
                 padding: const EdgeInsets.all(3.0),
@@ -379,20 +423,38 @@ class AddVehicleState extends State<AddVehicle> {
                     BoxDecoration(border: Border.all(color: Colors.black)),
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: GridView.builder(
-                      shrinkWrap: true,
-                      padding: const EdgeInsets.all(5),
-                      itemCount: imageFileList!.length,
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 3),
-                      itemBuilder: (BuildContext context, int index) {
-                        return Image.file(
-                          File(imageFileList![index].path),
-                          fit: BoxFit.cover,
-                        );
-                      }),
+                  child: Container(
+                    padding: const EdgeInsets.all(5),
+                    // child: Image.file(
+                    //   File(pickedFile!.path!),
+                    //   fit: BoxFit.cover,
+                    // ),
+                  ),
                 ),
               ),
+
+              // Print gridview of images
+              // Container(
+              //   margin: const EdgeInsets.all(15),
+              //   padding: const EdgeInsets.all(3.0),
+              //   decoration:
+              //       BoxDecoration(border: Border.all(color: Colors.black)),
+              //   child: Padding(
+              //     padding: const EdgeInsets.all(8.0),
+              //     child: GridView.builder(
+              //         shrinkWrap: true,
+              //         padding: const EdgeInsets.all(5),
+              //         itemCount: imageFileList!.length,
+              //         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              //             crossAxisCount: 3),
+              //         itemBuilder: (BuildContext context, int index) {
+              //           return Image.file(
+              //             File(imageFileList![index].path),
+              //             fit: BoxFit.cover,
+              //           );
+              //         }),
+              //   ),
+              // ),
 
               //Next Page Button
               Padding(
@@ -411,6 +473,7 @@ class AddVehicleState extends State<AddVehicle> {
                       ),
                       child: Text('Next'),
                       onPressed: () {
+                        //uploadFile;
                         Navigator.push(
                             context,
                             MaterialPageRoute(
@@ -427,7 +490,10 @@ class AddVehicleState extends State<AddVehicle> {
                                     transmission: Text(selectedTransType!),
                                     location: Text(location.text),
                                     city: Text(selectedCity!),
-                                    images: imageFileList!)));
+                                    // images: imageFileList!,
+                                    hoursRented: 0,
+                                    timesRented: 0,
+                                    imageUrl: imageUrl)));
                       },
                     ),
                   ],
@@ -442,15 +508,36 @@ class AddVehicleState extends State<AddVehicle> {
     );
   }
 
-  final ImagePicker imagePicker = ImagePicker();
-  List<XFile>? imageFileList = [];
+  // PlatformFile? pickedFile;
 
-  void selectImages() async {
-    final List<XFile>? selectedImages = await imagePicker.pickMultiImage();
-    if (selectedImages!.isNotEmpty) {
-      imageFileList!.addAll(selectedImages);
-    }
-    print("Image List Length:" + imageFileList!.length.toString());
-    setState(() {});
-  }
+  // Future selectFile() async {
+  //   final result = await FilePicker.platform.pickFiles();
+  //   if (result == null) return;
+
+  //   setState(() {
+  //     pickedFile = result.files.first;
+  //   });
+  // }
+
+  // Future uploadFile() async {
+  //   final path = 'files/${pickedFile!.name}';
+  //   final file = File(pickedFile!.path!);
+
+  //   final ref = FirebaseStorage.instance.ref().child(path);
+  //   ref.putFile(file);
+  // }
+
+  // Multi-image picker
+
+  // final ImagePicker imagePicker = ImagePicker();
+  // List<XFile>? imageFileList = [];
+
+  // void selectImages() async {
+  //   final List<XFile>? selectedImages = await imagePicker.pickMultiImage();
+  //   if (selectedImages!.isNotEmpty) {
+  //     imageFileList!.addAll(selectedImages);
+  //   }
+  //   print("Image List Length:" + imageFileList!.length.toString());
+  //   setState(() {});
+  // }
 }
