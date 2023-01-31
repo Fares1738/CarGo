@@ -1,4 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:file_picker/file_picker.dart';
+import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/cupertino.dart';
 
 class DatabaseService {
   //Collection Reference
@@ -34,7 +37,12 @@ class DatabaseService {
       int rentPrice,
       String licenseNumber,
       String location,
-      String city) async {
+      String city,
+      String transmission,
+      int seats,
+      int hoursRented,
+      int timesRented,
+      String imageUrl) async {
     return await carCollection.doc(uid).set({
       'manufacturer': manufacturer,
       'model': model,
@@ -44,7 +52,12 @@ class DatabaseService {
       'rentPrice': rentPrice,
       'licenseNumber': licenseNumber,
       'location': location,
-      'city': city
+      'city': city,
+      'transmission': transmission,
+      'seats': seats,
+      'hoursRented': hoursRented,
+      'timesRented': timesRented,
+      'imageUrl' : imageUrl
     });
   }
 

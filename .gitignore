@@ -79,8 +79,6 @@ android/.gradle/7.4/checksums/sha1-checksums.bin
 android/.gradle/7.4/checksums/checksums.lock
 android/.gradle/file-system.probe
 android/local.properties
-<<<<<<< HEAD
-=======
 android/.gradle/7.4/checksums/checksums.lock
 android/.gradle/7.4/checksums/checksums.lock
 .gitignore
@@ -113,4 +111,3 @@ android/.gradle/7.4/executionHistory/executionHistory.lock
 android/.gradle/7.4/fileHashes/fileHashes.bin
 android/.gradle/7.4/fileHashes/fileHashes.lock
 android/.gradle/buildOutputCleanup/buildOutputCleanup.lock
->>>>>>> b080acf8a7e7063cea047f62774c7dab2b4d6759
