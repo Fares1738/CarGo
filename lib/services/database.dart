@@ -21,4 +21,27 @@ class DatabaseService {
       'userPassword': userPassword,
     });
   }
+
+  Future carDetailsCollection(
+      String manufacturer,
+      String model,
+      int makeyear,
+      int mileage,
+      int gasConsumption,
+      int rentPrice,
+      String licenseNumber,
+      String location,
+      String city) async {
+    return await carCollection.doc(uid).set({
+      'manufacturer': manufacturer,
+      'model': model,
+      'makeyear': makeyear,
+      'mileage': mileage,
+      'gasConsumption': gasConsumption,
+      'rentPrice': rentPrice,
+      'licenseNumber': licenseNumber,
+      'location': location,
+      'city': city
+    });
+  }
 }
