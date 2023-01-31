@@ -370,7 +370,7 @@ class AddVehicleState extends State<AddVehicle> {
                             borderRadius: BorderRadius.circular(30.0)),
                       ),
 
-                      //Pick image from phone storage and save it in firebase storage, and also generate download link
+                      //Pick image from phone storage and save it in firebase storage, and also generate download link//
                       onPressed: (() async {
                         if (imageUrl.isEmpty) {
                           ScaffoldMessenger.of(context).showSnackBar(SnackBar(
