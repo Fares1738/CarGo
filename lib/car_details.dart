@@ -96,17 +96,26 @@ class ViewAddedVehicleState extends State<ViewAddedVehicle> {
                     Text("Gas Consumption",
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 15)),
-                    widget.gasConsumption,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [widget.gasConsumption, Text(" KM/L")],
+                    ),
                     SizedBox(height: 8),
                     Text("Mileage",
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 15)),
-                    widget.mileage,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [widget.mileage, Text(" KM")],
+                    ),
                     SizedBox(height: 8),
                     Text("Rent Price",
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 15)),
-                    widget.rentPrice,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [widget.rentPrice, Text(" RM/Hour")],
+                    ),
                     SizedBox(height: 8),
                     Text("License Number",
                         style: TextStyle(
@@ -121,7 +130,10 @@ class ViewAddedVehicleState extends State<ViewAddedVehicle> {
                     Text("Number of seats",
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 15)),
-                    widget.seats,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [widget.seats, Text(" Seats")],
+                    ),
                     SizedBox(height: 8),
                     Text("Transmission",
                         style: TextStyle(
@@ -136,7 +148,12 @@ class ViewAddedVehicleState extends State<ViewAddedVehicle> {
                     Text("Location",
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 15)),
-                    widget.location,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        widget.location,
+                      ],
+                    ),
                     SizedBox(height: 10),
 
                     Text("Car Pictures",

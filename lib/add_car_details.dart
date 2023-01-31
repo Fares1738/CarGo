@@ -151,7 +151,7 @@ class AddVehicleState extends State<AddVehicle> {
                   padding: const EdgeInsets.only(left: 0.0),
                   child: TextField(
                       controller: gasConsumption,
-                      decoration: buildInputDecoration(Icons.gas_meter_rounded,
+                      decoration: buildInputDecoration(Icons.gas_meter_outlined,
                           "Gas Consumption (in KM/L)")),
                 ),
               ),
