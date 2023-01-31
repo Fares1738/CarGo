@@ -9,7 +9,6 @@ import 'car_details.dart';
 import 'reusable_widget/Custom_AppBar.dart';
 
 class AddVehicle extends StatefulWidget {
-  
   final FirebaseStorage storage = FirebaseStorage.instance;
 
   AddVehicle({super.key});
@@ -55,9 +54,6 @@ class AddVehicleState extends State<AddVehicle> {
   ];
   String? selectedCity = 'Johor Bahru';
 
-
-
-
   @override
   void dispose() {
     // Clean up the controller when the widget is disposed.
@@ -74,11 +70,9 @@ class AddVehicleState extends State<AddVehicle> {
   }
 
   String imageUrl = '';
-  
 
   @override
   Widget build(BuildContext context) {
-    
     return Scaffold(
       //Transparent appbar and back button icon
       extendBodyBehindAppBar: true,
