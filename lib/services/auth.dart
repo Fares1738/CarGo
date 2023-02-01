@@ -84,11 +84,6 @@ class AuthService {
     try {
       final User? user = _auth.currentUser;
       final userId = user?.uid;
-      // here you write the codes to input the data into firestore
-
-      // UserCredential? result = await _auth.createUserWithEmailAndPassword(
-      //     email: email, password: password);
-      // User? user;
       await DatabaseService(uid: userId).carDetailsCollection(
           manufacturer,
           model,
@@ -110,6 +105,4 @@ class AuthService {
       return null;
     }
   }
-
-  
 }

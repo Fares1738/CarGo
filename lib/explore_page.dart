@@ -4,12 +4,20 @@ import 'package:cargo/booked_page.dart';
 import 'package:cargo/host_page.dart';
 import 'package:cargo/location_page.dart';
 import 'package:cargo/rent_page.dart';
+import 'package:cargo/services/auth.dart';
 import 'package:cargo/settings.dart';
+// import 'package:cargo/settings.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:cargo/services/database.dart';
+import 'package:provider/provider.dart';
+import 'package:cargo/car_list.dart';
 
 import 'DELETEAFTERWARDS.dart';
 import 'bookCarDetailsPage.dart';
+import 'model/Cars.dart';
 
 class ExplorePage extends StatefulWidget {
   @override
@@ -49,6 +57,8 @@ var car2 = Car(
 );
 
 class _ExplorePage extends State<ExplorePage> {
+  final AuthService _auth = AuthService();
+
   final List _cars = [
     CarCardSample(car: car1),
     CarCardSample(car: car2),
@@ -57,32 +67,65 @@ class _ExplorePage extends State<ExplorePage> {
   ];
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
+    return StreamProvider<List<Cars>?>.value(
+      initialData: null,
+      value: DatabaseService().cars,
+      child: SafeArea(
         child: Scaffold(
-      appBar: CarGoAppBar(),
-      backgroundColor: Colors.white,
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.only(top: 10, bottom: 10),
-            child: SearchElevatedButton(),
-          ),
-          Text(
-            'Explore Cars Near you!',
-            style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
-          ),
-          Expanded(
-              child: ListView.builder(
-            itemCount: _cars.length,
-            itemBuilder: (context, index) {
-              return _cars[index];
-            },
-          ))
-        ],
+          appBar: CarGoAppBar(),
+          backgroundColor: Colors.white,
+          body: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.only(top: 10, bottom: 10),
+                  child: SearchElevatedButton(),
+                ),
+                Text(
+                  'Explore Cars Near you!',
+                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                ),
+                Expanded(
+                  child: CarList(),
+                ),
+              ]),
+          bottomNavigationBar: CarGoCurvedNavigationBar(),
+        ),
       ),
-      bottomNavigationBar: CarGoCurvedNavigationBar(),
-    ));
+    );
+
+    // initialData: null,
+    //   child: SafeArea(
+    //     child: Scaffold(
+    //       appBar: CarGoAppBar(),
+    //       backgroundColor: Colors.white,
+    //       body: Column(
+    //         mainAxisAlignment: MainAxisAlignment.start,
+    //         children: <Widget>[
+    //           Padding(
+    //             padding: const EdgeInsets.only(top: 10, bottom: 10),
+    //             child: SearchElevatedButton(),
+    //           ),
+    //           Text(
+    //             'Explore Cars Near you!',
+    //             style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+    //           ),
+    //           Expanded(
+    //               child: ListView.builder(
+    //             itemCount: _cars.length,
+    //             itemBuilder: (context, index) {
+    //               return _cars[index];
+    //             },
+    //           )),
+    //           // Container(
+    //           //   child: CarList(),
+    //           // ),
+    //         ],
+    //       ),
+    //       bottomNavigationBar: CarGoCurvedNavigationBar(),
+    //     ),
+    //   ),
+    // );
   }
 
   AppBar CarGoAppBar() {
@@ -158,7 +201,7 @@ class _ExplorePage extends State<ExplorePage> {
           case 3:
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => Settings()),
+              MaterialPageRoute(builder: (context) => Settings1()),
             );
             break;
         }

@@ -109,7 +109,7 @@ class _Hostpage extends State<Hostpage> {
           case 3:
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => Settings()),
+              MaterialPageRoute(builder: (context) => Settings1()),
             );
             break;
         }

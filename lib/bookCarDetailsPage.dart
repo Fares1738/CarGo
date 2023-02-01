@@ -1,7 +1,13 @@
 // ignore_for_file: file_names, prefer_const_literals_to_create_immutables, prefer_const_constructors, non_constant_identifier_names
 import 'package:cargo/bookingConfirmationPage.dart';
+import 'package:cargo/services/auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import 'model/Cars.dart';
 
 class Car {
   String carId,
@@ -55,11 +61,15 @@ var car2 = Car(
 class BookCarDetails extends StatefulWidget {
   const BookCarDetails({super.key, required this.carId});
   final String carId;
+  // final Cars car;
+
   @override
   State<BookCarDetails> createState() => _BookCarDetailsState();
 }
 
 class _BookCarDetailsState extends State<BookCarDetails> {
+  AuthService _auth = AuthService();
+
   DateTime startDateTime = DateTime.now();
   DateTime gapDate = DateTime.now();
   DateTime endDateTime = DateTime.now();
@@ -131,10 +141,10 @@ class _BookCarDetailsState extends State<BookCarDetails> {
                             offset: Offset(0, 5),
                             blurRadius: 8),
                       ],
-                      image: DecorationImage(
-                        image: AssetImage('assets/${car.carPicture}.png'),
-                        fit: BoxFit.fitWidth,
-                      ),
+                      // image: DecorationImage(
+                      //   image: NetworkImage('${car.imageUrl}'),
+                      //   fit: BoxFit.fitWidth,
+                      // ),
                     ),
                   ),
                   Padding(
