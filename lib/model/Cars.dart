@@ -1,36 +1,40 @@
 // import 'dart:core';
 
 class Cars {
-  final String manufacturer;
-  final String model;
-  final int makeyear;
-  final int mileage;
-  final int gasConsumption;
-  final int rentPrice;
-  final String licenseNumber;
-  final String location;
-  final String city;
-  final String wheelDrive;
-  final String transmission;
-  final int seats;
-  final int hoursRented;
-  final int timesRented;
-  final String imageUrl;
+  final String carId;
+  final String carHostId;
+  final String carManufacturer;
+  final String carModel;
+  final int carMakeYear;
+  final int carMileage;
+  final int carGasConsumption;
+  final int carRentPrice;
+  final String carLicenseNumber;
+  final String carLocation;
+  final String carCity;
+  final String carWheelDrive;
+  final String carTransmission;
+  final int carSeats;
+  final int carHoursRented;
+  final int carTimesRented;
+  final String carImageUrl;
 
   Cars(
-      {required this.manufacturer,
-      required this.model,
-      required this.makeyear,
-      required this.mileage,
-      required this.gasConsumption,
-      required this.rentPrice,
-      required this.licenseNumber,
-      required this.location,
-      required this.city,
-      required this.wheelDrive,
-      required this.transmission,
-      required this.seats,
-      required this.hoursRented,
-      required this.timesRented,
-      required this.imageUrl});
+      {required this.carId,
+      required this.carHostId,
+      required this.carManufacturer,
+      required this.carModel,
+      required this.carMakeYear,
+      required this.carMileage,
+      required this.carGasConsumption,
+      required this.carRentPrice,
+      required this.carLicenseNumber,
+      required this.carLocation,
+      required this.carCity,
+      required this.carWheelDrive,
+      required this.carTransmission,
+      required this.carSeats,
+      required this.carHoursRented,
+      required this.carTimesRented,
+      required this.carImageUrl});
 }

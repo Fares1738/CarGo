@@ -1,5 +1,6 @@
 // ignore_for_file: camel_case_types, library_private_types_in_public_api, non_constant_identifier_names, prefer_const_constructors_in_immutables, no_logic_in_create_state, must_be_immutable
 
+import 'package:cargo/car_tile.dart';
 import 'package:cargo/explore_page.dart';
 import 'package:cargo/model/location_model.dart';
 import 'package:flutter/material.dart';
@@ -46,8 +47,8 @@ class _SearchByCitySelection extends State<SearchByCitySelection> {
                         ])),
                   ],
                 ),
-                CarCardSample(car: car1),
-                CarCardSample(car: car2),
+                // CarTile(car: car1),
+                // CarTile(car: car2),
                 SizedBox(height: 20),
               ]),
             )));

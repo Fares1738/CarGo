@@ -59,8 +59,8 @@ var car2 = Car(
 );
 
 class BookCarDetails extends StatefulWidget {
-  const BookCarDetails({super.key, required this.carId});
-  final String carId;
+  const BookCarDetails({super.key, required this.car});
+  final Cars car;
   // final Cars car;
 
   @override
@@ -68,7 +68,7 @@ class BookCarDetails extends StatefulWidget {
 }
 
 class _BookCarDetailsState extends State<BookCarDetails> {
-  AuthService _auth = AuthService();
+  //AuthService _auth = AuthService();
 
   DateTime startDateTime = DateTime.now();
   DateTime gapDate = DateTime.now();
@@ -77,6 +77,7 @@ class _BookCarDetailsState extends State<BookCarDetails> {
   String endDateBox = 'End Date';
   bool paymentStatus = true;
   bool userDocumentStatus = true;
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -105,7 +106,7 @@ class _BookCarDetailsState extends State<BookCarDetails> {
                   ],
                 ),
               ),
-              bookCarContainer(context, car2),
+              bookCarContainer(context, widget.car),
             ],
           ),
         ),
@@ -113,7 +114,7 @@ class _BookCarDetailsState extends State<BookCarDetails> {
     );
   }
 
-  Padding bookCarContainer(BuildContext context, Car car) {
+  Padding bookCarContainer(BuildContext context, Cars car) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 5),
       child: Container(
@@ -141,10 +142,10 @@ class _BookCarDetailsState extends State<BookCarDetails> {
                             offset: Offset(0, 5),
                             blurRadius: 8),
                       ],
-                      // image: DecorationImage(
-                      //   image: NetworkImage('${car.imageUrl}'),
-                      //   fit: BoxFit.fitWidth,
-                      // ),
+                      image: DecorationImage(
+                        image: NetworkImage(car.carImageUrl),
+                        fit: BoxFit.fitWidth,
+                      ),
                     ),
                   ),
                   Padding(
@@ -153,7 +154,7 @@ class _BookCarDetailsState extends State<BookCarDetails> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
                         Text(
-                          '${car.carManfacturer} ${car.carModel} ${car.carMakeYear}',
+                          '${car.carManufacturer} ${car.carModel} ${car.carMakeYear}',
                           style: TextStyle(
                             fontSize: 18.0,
                             fontWeight: FontWeight.w600,
@@ -238,7 +239,7 @@ class _BookCarDetailsState extends State<BookCarDetails> {
                             ),
                             SizedBox(width: 5),
                             Text(
-                              car.carHostName,
+                              'carHostName',
                               style: TextStyle(
                                 fontSize: 14.0,
                                 fontWeight: FontWeight.w600,
@@ -297,7 +298,7 @@ class _BookCarDetailsState extends State<BookCarDetails> {
                                   width: 30,
                                 ),
                                 Text(
-                                  car.carSeats,
+                                  '${car.carSeats.toString()} Seats',
                                   style: TextStyle(
                                     fontSize: 14.0,
                                   ),
@@ -312,7 +313,7 @@ class _BookCarDetailsState extends State<BookCarDetails> {
                                   width: 25,
                                 ),
                                 Text(
-                                  car.carGearBox,
+                                  car.carTransmission,
                                   style: TextStyle(
                                     fontSize: 14.0,
                                   ),
@@ -327,7 +328,7 @@ class _BookCarDetailsState extends State<BookCarDetails> {
                                   width: 25,
                                 ),
                                 Text(
-                                  car.carFuelConsumption,
+                                  '${car.carGasConsumption.toString()} Km/L',
                                   style: TextStyle(
                                     fontSize: 14.0,
                                   ),
@@ -342,7 +343,7 @@ class _BookCarDetailsState extends State<BookCarDetails> {
                                   width: 30,
                                 ),
                                 Text(
-                                  car.carMileage,
+                                  '${car.carMileage.toString()} Km',
                                   style: TextStyle(
                                     fontSize: 14.0,
                                   ),

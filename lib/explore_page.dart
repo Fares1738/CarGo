@@ -23,47 +23,47 @@ class ExplorePage extends StatefulWidget {
   _ExplorePage createState() => _ExplorePage();
 }
 
-class Car {
-  String carId, carPicture, carManfacturer, carModel, carMakeYear, carLocation;
-  double carRentPrice;
-  Car(
-      {required this.carId,
-      required this.carPicture,
-      required this.carManfacturer,
-      required this.carModel,
-      required this.carMakeYear,
-      required this.carLocation,
-      required this.carRentPrice});
-}
+// class Car {
+//   String carId, carPicture, carManfacturer, carModel, carMakeYear, carLocation;
+//   double carRentPrice;
+//   Car(
+//       {required this.carId,
+//       required this.carPicture,
+//       required this.carManfacturer,
+//       required this.carModel,
+//       required this.carMakeYear,
+//       required this.carLocation,
+//       required this.carRentPrice});
+// }
 
-var car1 = Car(
-  carId: '123',
-  carPicture: 'teslaCar.png',
-  carManfacturer: 'Tesla',
-  carModel: 'Model X',
-  carMakeYear: '2018',
-  carLocation: 'Oxford Street',
-  carRentPrice: 20,
-);
-var car2 = Car(
-  carId: '124',
-  carPicture: 'prado.png',
-  carManfacturer: 'Toyota',
-  carModel: 'Prado',
-  carMakeYear: '2015',
-  carLocation: 'Jabra Street',
-  carRentPrice: 50,
-);
+// var car1 = Car(
+//   carId: '123',
+//   carPicture: 'teslaCar.png',
+//   carManfacturer: 'Tesla',
+//   carModel: 'Model X',
+//   carMakeYear: '2018',
+//   carLocation: 'Oxford Street',
+//   carRentPrice: 20,
+// );
+// var car2 = Car(
+//   carId: '124',
+//   carPicture: 'prado.png',
+//   carManfacturer: 'Toyota',
+//   carModel: 'Prado',
+//   carMakeYear: '2015',
+//   carLocation: 'Jabra Street',
+//   carRentPrice: 50,
+// );
 
 class _ExplorePage extends State<ExplorePage> {
   final AuthService _auth = AuthService();
 
-  final List _cars = [
-    CarCardSample(car: car1),
-    CarCardSample(car: car2),
-    CarCardSample(car: car1),
-    CarCardSample(car: car2),
-  ];
+  // final List _cars = [
+  //   CarCardSample(car: car1),
+  //   CarCardSample(car: car2),
+  //   CarCardSample(car: car1),
+  //   CarCardSample(car: car2),
+  // ];
   @override
   Widget build(BuildContext context) {
     return StreamProvider<List<Cars>?>.value(
@@ -81,7 +81,7 @@ class _ExplorePage extends State<ExplorePage> {
                   child: SearchElevatedButton(),
                 ),
                 Text(
-                  'Explore Cars Near you!',
+                  'Explore Cars!',
                   style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
                 ),
                 Expanded(
@@ -200,7 +200,7 @@ class _ExplorePage extends State<ExplorePage> {
           case 3:
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => Settings1()),
+              MaterialPageRoute(builder: (context) => DeletePage()),
             );
             break;
         }
@@ -215,110 +215,110 @@ class _ExplorePage extends State<ExplorePage> {
   }
 }
 
-class CarCardSample extends StatefulWidget {
-  const CarCardSample({super.key, required this.car});
-  final Car car;
-  @override
-  State<CarCardSample> createState() => _CarCardSampleState();
-}
+// class CarCardSample extends StatefulWidget {
+//   const CarCardSample({super.key, required this.car});
+//   final Cars car;
+//   @override
+//   State<CarCardSample> createState() => _CarCardSampleState();
+// }
 
-class _CarCardSampleState extends State<CarCardSample> {
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () {
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) => BookCarDetails(
-                      carId: widget.car.carId,
-                    )));
-      },
-      splashColor: Colors.deepPurpleAccent,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
-        child: Container(
-          width: double.infinity,
-          height: 300.0,
-          decoration: BoxDecoration(
-            color: Color.fromARGB(233, 248, 248, 251),
-            borderRadius: BorderRadius.circular(25),
-          ),
-          child: Column(
-            children: <Widget>[
-              Padding(
-                padding: EdgeInsets.symmetric(vertical: 10.0),
-                child: Column(
-                  children: <Widget>[
-                    Container(
-                      margin: EdgeInsets.all(10.0),
-                      width: double.infinity,
-                      height: 200,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15.0),
-                        // ignore: prefer_const_literals_to_create_immutables
-                        boxShadow: [
-                          BoxShadow(
-                              color: Colors.black45,
-                              offset: Offset(0, 5),
-                              blurRadius: 8.0),
-                        ],
-                        image: DecorationImage(
-                          image: AssetImage('assets/${widget.car.carPicture}'),
-                          fit: BoxFit.fitWidth,
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        // ignore: prefer_const_literals_to_create_immutables
-                        children: <Widget>[
-                          Text(
-                            '${widget.car.carManfacturer} ${widget.car.carModel} ${widget.car.carMakeYear}',
-                            style: TextStyle(
-                              fontSize: 18.0,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                          SizedBox(width: 60),
-                          Text(
-                            '${widget.car.carRentPrice.round()} RM/hr',
-                            style: TextStyle(
-                              fontSize: 18.0,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                          SizedBox(
-                            height: 30,
-                          )
-                        ],
-                        // ignore: prefer_const_literals_to_create_immutables
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                      child: Row(
-                        // ignore: prefer_const_literals_to_create_immutables
-                        children: [
-                          Text(
-                            widget.car.carLocation,
-                            style: TextStyle(
-                              fontSize: 14.0,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              )
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
+// class _CarCardSampleState extends State<CarCardSample> {
+//   @override
+//   Widget build(BuildContext context) {
+//     return InkWell(
+//       onTap: () {
+//         Navigator.push(
+//             context,
+//             MaterialPageRoute(
+//                 builder: (context) => BookCarDetails(
+//                       car: widget.car,
+//                     )));
+//       },
+//       splashColor: Colors.deepPurpleAccent,
+//       child: Padding(
+//         padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
+//         child: Container(
+//           width: double.infinity,
+//           height: 300.0,
+//           decoration: BoxDecoration(
+//             color: Color.fromARGB(233, 248, 248, 251),
+//             borderRadius: BorderRadius.circular(25),
+//           ),
+//           child: Column(
+//             children: <Widget>[
+//               Padding(
+//                 padding: EdgeInsets.symmetric(vertical: 10.0),
+//                 child: Column(
+//                   children: <Widget>[
+//                     Container(
+//                       margin: EdgeInsets.all(10.0),
+//                       width: double.infinity,
+//                       height: 200,
+//                       decoration: BoxDecoration(
+//                         borderRadius: BorderRadius.circular(15.0),
+//                         // ignore: prefer_const_literals_to_create_immutables
+//                         boxShadow: [
+//                           BoxShadow(
+//                               color: Colors.black45,
+//                               offset: Offset(0, 5),
+//                               blurRadius: 8.0),
+//                         ],
+//                         image: DecorationImage(
+//                           image: AssetImage('assets/${widget.car.carPicture}'),
+//                           fit: BoxFit.fitWidth,
+//                         ),
+//                       ),
+//                     ),
+//                     Padding(
+//                       padding: const EdgeInsets.symmetric(horizontal: 20),
+//                       child: Row(
+//                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//                         // ignore: prefer_const_literals_to_create_immutables
+//                         children: <Widget>[
+//                           Text(
+//                             '${widget.car.carManfacturer} ${widget.car.carModel} ${widget.car.carMakeYear}',
+//                             style: TextStyle(
+//                               fontSize: 18.0,
+//                               fontWeight: FontWeight.w600,
+//                             ),
+//                           ),
+//                           SizedBox(width: 60),
+//                           Text(
+//                             '${widget.car.carRentPrice.round()} RM/hr',
+//                             style: TextStyle(
+//                               fontSize: 18.0,
+//                               fontWeight: FontWeight.w600,
+//                             ),
+//                           ),
+//                           SizedBox(
+//                             height: 30,
+//                           )
+//                         ],
+//                         // ignore: prefer_const_literals_to_create_immutables
+//                       ),
+//                     ),
+//                     Padding(
+//                       padding: const EdgeInsets.symmetric(horizontal: 20.0),
+//                       child: Row(
+//                         // ignore: prefer_const_literals_to_create_immutables
+//                         children: [
+//                           Text(
+//                             widget.car.carLocation,
+//                             style: TextStyle(
+//                               fontSize: 14.0,
+//                               fontWeight: FontWeight.w600,
+//                             ),
+//                           )
+//                         ],
+//                       ),
+//                     ),
+//                   ],
+//                 ),
+//               )
+//             ],
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }

@@ -37,12 +37,10 @@ class AddVehicleState extends State<AddVehicle> {
   String imageUrl = '';
 
   List<String> wheelDriveMenu = [
-    'Rear-Wheel Drive',
-    'Front-Wheel Drive',
-    'Four-Wheel Drive',
-    'All-Wheel Drive'
+    '4WD',
+    '2WD',
   ];
-  String? selectedWheelDrive = 'Front-Wheel Drive';
+  String? selectedWheelDrive = '2WD';
 
   List<String> seatNum = ['2', '4', '6', '8'];
   String? selectedSeatNum = '4';
@@ -531,18 +529,5 @@ class AddVehicleState extends State<AddVehicle> {
           .showSnackBar(SnackBar(content: Text("Please upload an image")));
       return;
     }
-
-    // Create container to display image selected
-    Container(
-        margin: const EdgeInsets.all(15),
-        padding: const EdgeInsets.all(3.0),
-        decoration: BoxDecoration(border: Border.all(color: Colors.black)),
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Container(
-            padding: const EdgeInsets.all(5),
-            child: Image.file(File(fileImage.path), fit: BoxFit.cover),
-          ),
-        ));
   }
 }

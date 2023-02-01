@@ -8,6 +8,12 @@ import 'database.dart';
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
+  String getUserId() {
+    final User? user = _auth.currentUser;
+    final userId = user?.uid;
+    return userId.toString();
+  }
+
   MyUser? _userFromFirebaseUser(User? user) {
     return user != null ? MyUser(uid: user.uid) : null;
   }
@@ -62,38 +68,38 @@ class AuthService {
 
   // Create a new car collection when user adds a new car
   Future createCarCollectionUser(
-      String manufacturer,
-      String model,
-      int makeyear,
-      int mileage,
-      int gasConsumption,
-      int rentPrice,
-      String licenseNumber,
-      String location,
-      String city,
-      String wheelDrive,
-      String transmission,
-      int seats,
-      int hoursRented,
-      int timesRented,
-      String imageUrl
-      // String email,
-      // String password,
-      // String userId
-      ) async {
+    String hostId,
+    String manufacturer,
+    String model,
+    int makeYear,
+    int mileage,
+    int gasConsumption,
+    int rentPrice,
+    String licenseNumber,
+    String location,
+    String city,
+    String wheelDrive,
+    String transmission,
+    int seats,
+    int hoursRented,
+    int timesRented,
+    String imageUrl,
+  ) async {
     try {
       final User? user = _auth.currentUser;
       final userId = user?.uid;
       await DatabaseService(uid: userId).carDetailsCollection(
+          hostId,
           manufacturer,
           model,
-          makeyear,
+          makeYear,
           mileage,
           gasConsumption,
           rentPrice,
           licenseNumber,
           location,
           city,
+          wheelDrive,
           transmission,
           seats,
           hoursRented,

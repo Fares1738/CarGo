@@ -1,3 +1,4 @@
+import 'package:cargo/services/database.dart';
 import 'package:flutter/material.dart';
 import 'package:cargo/model/Cars.dart';
 
@@ -11,11 +12,12 @@ class CarTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
+        DatabaseService().getCurrentUser(car.carHostId);
         Navigator.push(
             context,
             MaterialPageRoute(
                 builder: (context) => BookCarDetails(
-                      carId: car.licenseNumber,
+                      car: car,
                     )));
       },
       splashColor: Colors.deepPurpleAccent,
@@ -48,7 +50,7 @@ class CarTile extends StatelessWidget {
                               blurRadius: 8.0),
                         ],
                         image: DecorationImage(
-                          image: NetworkImage('${car.imageUrl}'),
+                          image: NetworkImage(car.carImageUrl),
                           fit: BoxFit.fitWidth,
                         ),
                       ),
@@ -60,7 +62,7 @@ class CarTile extends StatelessWidget {
                         // ignore: prefer_const_literals_to_create_immutables
                         children: <Widget>[
                           Text(
-                            '${car.manufacturer} ${car.model} ${car.makeyear}',
+                            '${car.carManufacturer} ${car.carModel} ${car.carMakeYear}',
                             style: TextStyle(
                               fontSize: 18.0,
                               fontWeight: FontWeight.w600,
@@ -69,7 +71,7 @@ class CarTile extends StatelessWidget {
                           SizedBox(width: 60),
                           Text(
                             // ignore: prefer_interpolation_to_compose_strings
-                            '${car.rentPrice} RM/hr',
+                            '${car.carRentPrice} RM/hr',
                             style: TextStyle(
                               fontSize: 18.0,
                               fontWeight: FontWeight.w600,
@@ -88,7 +90,7 @@ class CarTile extends StatelessWidget {
                         // ignore: prefer_const_literals_to_create_immutables
                         children: [
                           Text(
-                            car.city,
+                            car.carCity,
                             style: TextStyle(
                               fontSize: 14.0,
                               fontWeight: FontWeight.w600,
