@@ -56,7 +56,7 @@ class ExplorePage extends StatefulWidget {
 // );
 
 class _ExplorePage extends State<ExplorePage> {
-  final AuthService _auth = AuthService();
+  //final AuthService _auth = AuthService();
 
   // final List _cars = [
   //   CarCardSample(car: car1),

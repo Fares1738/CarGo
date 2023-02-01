@@ -72,17 +72,27 @@ class DatabaseService {
     });
   }
 
+  Future updateTimesHoursRentedCarCollection(
+    String carId,
+    int hoursRented,
+    int timesRented,
+  ) async {
+    return await carCollection.doc(carId).update({
+      'carHoursRented': hoursRented,
+      'carTimesRented': timesRented,
+    });
+  }
+
   Future updateBookedCarsCollection(
-      String carId,
-      String userId,
-      String hostId,
-      String bookingStartDate,
-      String bookingEndDate,
-      String bookingStatus) async {
-    return await usersCollection.doc(uid).set({
+    String carId,
+    String customerId,
+    DateTime bookingStartDate,
+    DateTime bookingEndDate,
+    String bookingStatus,
+  ) async {
+    return await bookedCarsCollection.doc().set({
       'carId': carId,
-      'userId': userId,
-      'hostId': hostId,
+      'customerId': customerId,
       'bookingStartDate': bookingStartDate,
       'bookingEndDate': bookingEndDate,
       'bookingStatus': bookingStatus,
@@ -94,7 +104,7 @@ class DatabaseService {
     try {
       return snapshot.docs.map((d) {
         return Cars(
-          carId: d.data().toString().contains('carId') ? d.get('carId') : '' "",
+          carId: d.id,
           carHostId: d.data().toString().contains('carHostId')
               ? d.get('carHostId')
               : '' "",
@@ -155,20 +165,93 @@ class DatabaseService {
     return carCollection.snapshots().map(_carListFromSnapshot);
   }
 
+  // Cars getHostCars() {
+  //   Cars localCar;
+  //   carCollection.doc().snapshots().map((event) {
+  //     return Cars(
+  //       carId: event.id,
+  //       carHostId: event.data().toString().contains('carHostId')
+  //           ? event.get('carHostId')
+  //           : '' "",
+  //       carManufacturer: event.data().toString().contains('carHostId')
+  //           ? event.get('carManufacturer')
+  //           : '' "",
+  //       carModel: event.data().toString().contains('carModel')
+  //           ? event.get('carModel')
+  //           : '' "",
+  //       carMakeYear: event.data().toString().contains('carMakeYear')
+  //           ? event.get('carMakeYear')
+  //           : 0,
+  //       carMileage: event.data().toString().contains('carMileage')
+  //           ? event.get('carMileage')
+  //           : 0,
+  //       carGasConsumption: event.data().toString().contains('carGasConsumption')
+  //           ? event.get('carGasConsumption')
+  //           : 0,
+  //       carRentPrice: event.data().toString().contains('carRentPrice')
+  //           ? event.get('carRentPrice')
+  //           : 0,
+  //       carLicenseNumber: event.data().toString().contains('carLicenseNumber')
+  //           ? event.get('carLicenseNumber')
+  //           : '' "",
+  //       carLocation: event.data().toString().contains('carLocation')
+  //           ? event.get('carLocation')
+  //           : '' "",
+  //       carCity: event.data().toString().contains('carCity')
+  //           ? event.get('carCity')
+  //           : '' "",
+  //       carWheelDrive: event.data().toString().contains('carWheelDrive')
+  //           ? event.get('carWheelDrive')
+  //           : '' "",
+  //       carTransmission: event.data().toString().contains('carTransmission')
+  //           ? event.get('carTransmission')
+  //           : '' "",
+  //       carSeats: event.data().toString().contains('carSeats')
+  //           ? event.get('carSeats')
+  //           : 0,
+  //       carHoursRented: event.data().toString().contains('carHoursRented')
+  //           ? event.get('carHoursRented')
+  //           : 0,
+  //       carTimesRented: event.data().toString().contains('carTimesRented')
+  //           ? event.get('carTimesRented')
+  //           : 0,
+  //       carImageUrl: event.data().toString().contains('carImageUrl')
+  //           ? event.get('carImageUrl')
+  //           : '' "",
+  //     );
+  //   });
+  // return localCar;
+}
   // Stream<List<UserTemplate>> get users {
   //   return usersCollection.snapshots().map(_usersListFromSnapshot);
   // }
 
-  getCurrentUser(String hostId) {
-    String userFullName;
-    usersCollection.doc(hostId).get().then(
-      (value) {
-        userFullName = value.get('userFullName');
-      },
-    );
-    print(userFullName);
-  }
+  // getCurrentUser(String hostId) {
+  //   var userFullName;
+  //   userFullName = usersCollection.doc(hostId);
+  //   print(userFullName.get());
+  // }
 
+  // Future<String> getCurrentUser(String hostId) async {
+  //   String userFullName;
+  //   var value = await usersCollection.doc(hostId).get();
+  //   userFullName = value.get('userFullName');
+  //   print(userFullName);
+  //   return userFullName;
+  // }
+
+  // Future<String> getCurrentUser(String hostId) async {
+  //   // ignore: prefer_typing_uninitialized_variables
+  //   var userFullName;
+  //   var value = await usersCollection
+  //       .doc(hostId)
+  //       .get()
+  //       .then((value) => userFullName = value.get('userFullName'));
+  //   print(userFullName);
+  //   print("#####");
+  //   print(value.toString());
+  //   return value.toString();
+  // }
   //   var snapshot = usersCollection.snapshots();
   //   try {
   //     return snapshot.docs.map((d) {
@@ -195,5 +278,24 @@ class DatabaseService {
   //       .where("userId", isEqualTo: hostId);
   //   // .get(userFullName);
   //   return userFullName;
+  // }List<Cars> _carListFromSnapshot(QuerySnapshot snapshot) {
+  // List<UserTemplate> _usersListFromSnapshot(QuerySnapshot snapshot) {
+  //   try {
+  //     return snapshot.docs.map((d) {
+  //       return UserTemplate(
+  //         userFullName: d.data().toString().contains('userFullName')
+  //             ? d.get('carHostId')
+  //             : '' "",
+  //       );
+  //     }).toList();
+  //   } catch (e) {
+  //     // ignore: avoid_print
+  //     print(e.toString());
+  //     return [];
+  //   }
   // }
-}
+
+  // Stream<List<UserTemplate>> get users {
+  //   return usersCollection.snapshots().map(_usersListFromSnapshot);
+  // }
+

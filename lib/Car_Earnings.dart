@@ -1,26 +1,29 @@
+// ignore_for_file: unused_import
+
+// ignore_for_file: prefer_const_constructors
+
 import 'package:cargo/services/database.dart';
 import 'package:flutter/material.dart';
 import 'package:cargo/model/Cars.dart';
 
 import 'bookCarDetailsPage.dart';
 
-class CarTile extends StatelessWidget {
+// ignore: use_key_in_widget_constructors
+class CarEarnings extends StatefulWidget {
   final Cars car;
-  CarTile({required this.car});
 
+  const CarEarnings({super.key, required this.car});
+  @override
+  // ignore: library_private_types_in_public_api
+  _CarEarnings createState() => _CarEarnings();
+}
+
+class _CarEarnings extends State<CarEarnings> {
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () {
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) => BookCarDetails(
-                      car: car,
-                    )));
-      },
-      splashColor: Colors.deepPurpleAccent,
-      child: Padding(
+    return Scaffold(
+      appBar: CarGoAppBar(),
+      body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
         child: Container(
           width: double.infinity,
@@ -49,7 +52,7 @@ class CarTile extends StatelessWidget {
                               blurRadius: 8.0),
                         ],
                         image: DecorationImage(
-                          image: NetworkImage(car.carImageUrl),
+                          image: NetworkImage(widget.car.carImageUrl),
                           fit: BoxFit.fitWidth,
                         ),
                       ),
@@ -61,7 +64,7 @@ class CarTile extends StatelessWidget {
                         // ignore: prefer_const_literals_to_create_immutables
                         children: <Widget>[
                           Text(
-                            '${car.carManufacturer} ${car.carModel} ${car.carMakeYear}',
+                            '${widget.car.carManufacturer} ${widget.car.carModel} ${widget.car.carMakeYear}',
                             style: TextStyle(
                               fontSize: 18.0,
                               fontWeight: FontWeight.w600,
@@ -70,7 +73,7 @@ class CarTile extends StatelessWidget {
                           SizedBox(width: 60),
                           Text(
                             // ignore: prefer_interpolation_to_compose_strings
-                            '${car.carRentPrice} RM/hr',
+                            '${widget.car.carRentPrice} RM/hr',
                             style: TextStyle(
                               fontSize: 18.0,
                               fontWeight: FontWeight.w600,
@@ -89,7 +92,7 @@ class CarTile extends StatelessWidget {
                         // ignore: prefer_const_literals_to_create_immutables
                         children: [
                           Text(
-                            car.carCity,
+                            widget.car.carCity,
                             style: TextStyle(
                               fontSize: 14.0,
                               fontWeight: FontWeight.w600,

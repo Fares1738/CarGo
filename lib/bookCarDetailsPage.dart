@@ -1,6 +1,7 @@
 // ignore_for_file: file_names, prefer_const_literals_to_create_immutables, prefer_const_constructors, non_constant_identifier_names
 import 'package:cargo/bookingConfirmationPage.dart';
 import 'package:cargo/services/auth.dart';
+import 'package:cargo/services/database.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
@@ -68,7 +69,7 @@ class BookCarDetails extends StatefulWidget {
 }
 
 class _BookCarDetailsState extends State<BookCarDetails> {
-  //AuthService _auth = AuthService();
+  AuthService _auth = AuthService();
 
   DateTime startDateTime = DateTime.now();
   DateTime gapDate = DateTime.now();
@@ -77,7 +78,7 @@ class _BookCarDetailsState extends State<BookCarDetails> {
   String endDateBox = 'End Date';
   bool paymentStatus = true;
   bool userDocumentStatus = true;
-
+  String hostName = '';
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -239,7 +240,7 @@ class _BookCarDetailsState extends State<BookCarDetails> {
                             ),
                             SizedBox(width: 5),
                             Text(
-                              'carHostName',
+                              '{CarHostName}',
                               style: TextStyle(
                                 fontSize: 14.0,
                                 fontWeight: FontWeight.w600,
@@ -456,17 +457,23 @@ class _BookCarDetailsState extends State<BookCarDetails> {
                 if (paymentStatus && userDocumentStatus) {
                   print(
                       "Book has been pressed with these dates: $startDateTime ### $endDateTime");
+                  _auth.updateBookedCollection(
+                    widget.car.carId,
+                    startDateTime,
+                    endDateTime,
+                    'booked',
+                  );
+                  int newHoursRented =
+                      endDateTime.difference(startDateTime).inHours +
+                          widget.car.carHoursRented;
+                  int newTimesRented = 1 + widget.car.carTimesRented;
+                  DatabaseService().updateTimesHoursRentedCarCollection(
+                      widget.car.carId, newHoursRented, newTimesRented);
                   Navigator.push(
                     context,
                     MaterialPageRoute(
                       builder: (context) => BookingConfirmation(
-                        carPicture: 'prado',
-                        carManfacturer: 'Toyota',
-                        carModel: 'Prado',
-                        carMakeYear: '2015',
-                        carRentPrice: 50,
-                        carLocation: 'Jabra Street',
-                        carLicenseNumber: 'KGR 3451',
+                        car: widget.car,
                         startDate: startDateTime,
                         endDate: endDateTime,
                       ),
@@ -484,12 +491,6 @@ class _BookCarDetailsState extends State<BookCarDetails> {
                     ),
                   );
                 }
-                // if (endDateTime.difference(startDateTime).inHours < 1) {
-                //   print(
-                //       '###You have to choose a date that has at least 1 hr difference###');
-                // } else {
-                //   print('###Thank you for your booking###');
-                // }
               }),
         ],
       ),

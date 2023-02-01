@@ -5,29 +5,19 @@ import 'package:cargo/explore_page.dart';
 import 'package:cargo/rent_page.dart';
 import 'package:flutter/material.dart';
 
+import 'model/Cars.dart';
+
 //DateTime startDate = DateTime.now();
 //DateTime endDate = startDate.add(Duration(hours: 24));
 
 class BookingConfirmation extends StatefulWidget {
-  final String carPicture;
-  final String carManfacturer;
-  final String carModel;
-  final String carMakeYear;
-  final double carRentPrice;
-  final String carLocation;
-  final String carLicenseNumber;
+  final Cars car;
   final DateTime startDate;
   final DateTime endDate;
 
   const BookingConfirmation({
     super.key,
-    required this.carPicture,
-    required this.carManfacturer,
-    required this.carModel,
-    required this.carMakeYear,
-    required this.carRentPrice,
-    required this.carLocation,
-    required this.carLicenseNumber,
+    required this.car,
     required this.startDate,
     required this.endDate,
   });
@@ -116,8 +106,7 @@ class _BookingConfirmationState extends State<BookingConfirmation> {
                                     blurRadius: 8.0),
                               ],
                               image: DecorationImage(
-                                image: AssetImage(
-                                    'assets/${widget.carPicture}.png'),
+                                image: NetworkImage(widget.car.carImageUrl),
                                 fit: BoxFit.fitWidth,
                               ),
                             ),
@@ -129,7 +118,7 @@ class _BookingConfirmationState extends State<BookingConfirmation> {
                               // ignore: prefer_const_literals_to_create_immutables
                               children: <Widget>[
                                 Text(
-                                  '${widget.carManfacturer} ${widget.carModel} ${widget.carMakeYear}',
+                                  '${widget.car.carManufacturer} ${widget.car.carModel} ${widget.car.carMakeYear}',
                                   style: TextStyle(
                                     fontSize: 18.0,
                                     fontWeight: FontWeight.w600,
@@ -137,7 +126,7 @@ class _BookingConfirmationState extends State<BookingConfirmation> {
                                 ),
                                 SizedBox(width: 50),
                                 Text(
-                                  '${widget.carRentPrice.round()} RM/hr',
+                                  '${widget.car.carRentPrice.round()} RM/hr',
                                   style: TextStyle(
                                     fontSize: 18.0,
                                     fontWeight: FontWeight.w600,
@@ -157,7 +146,7 @@ class _BookingConfirmationState extends State<BookingConfirmation> {
                               // ignore: prefer_const_literals_to_create_immutables
                               children: [
                                 Text(
-                                  widget.carLocation,
+                                  widget.car.carLocation,
                                   style: TextStyle(
                                     fontSize: 14.0,
                                     fontWeight: FontWeight.w600,
@@ -173,7 +162,7 @@ class _BookingConfirmationState extends State<BookingConfirmation> {
                                     borderRadius: BorderRadius.circular(25),
                                   ),
                                   child: Text(
-                                    widget.carLicenseNumber,
+                                    widget.car.carLicenseNumber,
                                     style: TextStyle(
                                       color: Colors.black,
                                       fontSize: 14.0,
@@ -220,7 +209,7 @@ class _BookingConfirmationState extends State<BookingConfirmation> {
                                     ),
                                     SizedBox(height: 5),
                                     Text(
-                                      'Total Amount: ${widget.endDate.difference(widget.startDate).inHours * widget.carRentPrice.round()} RM',
+                                      'Total Amount: ${widget.endDate.difference(widget.startDate).inHours * widget.car.carRentPrice.round()} RM',
                                       style: TextStyle(
                                         color: Colors.black,
                                         fontSize: 14.0,

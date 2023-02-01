@@ -9,9 +9,11 @@ import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 
 import 'booked_page.dart';
 import 'location_page.dart';
+import 'model/Cars.dart';
 
 class RentPage extends StatefulWidget {
-  const RentPage({Key? key}) : super(key: key);
+  // final Cars car;
+  // const RentPage({Key? key, required this.car}) : super(key: key);
 
   @override
   State<RentPage> createState() => _RentPageState();

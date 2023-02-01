@@ -2,19 +2,25 @@
 
 // ignore_for_file: prefer_const_constructors
 
+import 'package:cargo/Car_Earnings.dart';
 import 'package:cargo/add_car_details.dart';
 import 'package:cargo/login_page.dart';
 import 'package:cargo/register_page.dart';
+import 'package:cargo/services/database.dart';
 import 'package:cargo/settings.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import 'model/Cars.dart';
 import 'rent_page.dart';
 import 'explore_page.dart';
 import 'reusable_widget/Custom_AppBar.dart';
+import 'package:cargo/services/auth.dart';
 
 // ignore: use_key_in_widget_constructors
 class Hostpage extends StatefulWidget {
+  const Hostpage({super.key});
   @override
   // ignore: library_private_types_in_public_api
   _Hostpage createState() => _Hostpage();
@@ -23,59 +29,188 @@ class Hostpage extends StatefulWidget {
 class _Hostpage extends State<Hostpage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: CarGoAppBar(),
-      backgroundColor: Color.fromARGB(255, 255, 255, 255),
-      body: SingleChildScrollView(
-        child: Center(
+    return Scaffold(); //  // var cars = DatabaseService().getHostCars();
+    //   print("##############################");
+    //  // print(cars.length);
+    //   print("##############################");
+    //   // final Cars car = FirebaseAuth.instance.currentUser;
+    //  // for (Cars car in cars) {
+    //     print("##############################");
+    //    // print(car);
+    //     print("##############################");
+  }
+  // List<Cars> hostCars = [];
+  // double totalEarnings = 0;
+  // AuthService auth = AuthService();
+  // final String userId = auth.getUserId();
+  // for (var car in cars) {
+  //   if (car.carHostId == userId) {
+  //     hostCars.add(car);
+  //     totalEarnings += car.carHoursRented * car.carRentPrice;
+  //     setState(() {});
+  //   }
+  // }
+  // Stream<List<Cars>> carsStream = DatabaseService().cars;
+  // List<Cars> hostCars = carsStream.then((value) => value as List<Cars>);
+  // double totalEarnings = 0;
+  // AuthService auth = AuthService();
+  // final String userId = auth.getUserId();
+  // for (var car in hostCars) {
+  //   if (car.carHostId == userId) {
+  //     hostCars.add(car);
+  //     totalEarnings += car.carHoursRented * car.carRentPrice;
+  //   }
+  // }
+
+  // print("##");
+  // print(hostCars);
+
+  // print("##");
+
+  // return StreamProvider<List<Cars>?>.value(
+  //   initialData: null,
+  //   value: DatabaseService().cars,
+  //     return SafeArea(
+  //       child: Scaffold(
+  //         appBar: CarGoAppBar(),
+  //         backgroundColor: Color.fromARGB(255, 255, 255, 255),
+  //         body: Column(
+  //           children: [
+  //             SizedBox(height: 30),
+  //             Text(
+  //               "Total Earnings: ${totalEarnings.round()} RM",
+  //               textAlign: TextAlign.center,
+  //               style: TextStyle(
+  //                 fontWeight: FontWeight.bold,
+  //                 fontSize: 25,
+  //               ),
+  //             ),
+  //             SizedBox(height: 30),
+  //             Padding(
+  //               padding: EdgeInsets.only(top: 20),
+  //               child: Column(
+  //                 mainAxisAlignment: MainAxisAlignment.center,
+  //                 children: <Widget>[
+  //                   ElevatedButton(
+  //                       style: ElevatedButton.styleFrom(
+  //                         minimumSize: Size(200, 50),
+  //                         textStyle: TextStyle(fontSize: 25),
+  //                         backgroundColor: Colors.deepPurple,
+  //                         foregroundColor: Colors.white,
+  //                         shape: RoundedRectangleBorder(
+  //                             borderRadius: BorderRadius.circular(30.0)),
+  //                       ),
+  //                       child: Text('Add a New Car'),
+  //                       onPressed: () {
+  //                         Navigator.push(
+  //                           context,
+  //                           MaterialPageRoute(
+  //                               builder: (context) => AddVehicle()),
+  //                         );
+  //                       }),
+  //                   SizedBox(height: 20),
+  //                 ],
+  //               ),
+  //             ),
+  //           ],
+  //         ),
+  //         bottomNavigationBar: CarGoCurvedNavigationBar(),
+  //       ),
+  //     ),
+  //   );}
+
+  InkWell hostCarTile({required Cars car}) {
+    return InkWell(
+      onTap: () {
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => CarEarnings(car: car)));
+      },
+      splashColor: Colors.deepPurpleAccent,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
+        child: Container(
+          width: double.infinity,
+          height: 300.0,
+          decoration: BoxDecoration(
+            color: Color.fromARGB(233, 248, 248, 251),
+            borderRadius: BorderRadius.circular(25),
+          ),
           child: Column(
-            children: [
-              SizedBox(height: 30),
-              Text("Total Earnings: 520 RM",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25)),
-              SizedBox(height: 30),
-              Image.asset(
-                'assets/rav4.jpg',
-                width: 350,
-                height: 200,
-              ),
-              SizedBox(height: 15),
-              Text("Toyata Rav4 2022",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
-              SizedBox(height: 50),
+            children: <Widget>[
               Padding(
-                padding: EdgeInsets.only(top: 20),
+                padding: EdgeInsets.symmetric(vertical: 10.0),
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          minimumSize: Size(200, 50),
-                          textStyle: TextStyle(fontSize: 25),
-                          backgroundColor: Colors.deepPurple,
-                          foregroundColor: Colors.white,
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(30.0)),
+                    Container(
+                      margin: EdgeInsets.all(10.0),
+                      width: double.infinity,
+                      height: 200,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(15.0),
+                        // ignore: prefer_const_literals_to_create_immutables
+                        boxShadow: [
+                          BoxShadow(
+                              color: Colors.black45,
+                              offset: Offset(0, 5),
+                              blurRadius: 8.0),
+                        ],
+                        image: DecorationImage(
+                          image: NetworkImage(car.carImageUrl),
+                          fit: BoxFit.fitWidth,
                         ),
-                        child: Text('Add a New Car'),
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => AddVehicle()),
-                          );
-                        }),
-                    SizedBox(height: 20),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        // ignore: prefer_const_literals_to_create_immutables
+                        children: <Widget>[
+                          Text(
+                            '${car.carManufacturer} ${car.carModel} ${car.carMakeYear}',
+                            style: TextStyle(
+                              fontSize: 18.0,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          SizedBox(width: 60),
+                          Text(
+                            // ignore: prefer_interpolation_to_compose_strings
+                            '${car.carRentPrice} RM/hr',
+                            style: TextStyle(
+                              fontSize: 18.0,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          SizedBox(
+                            height: 30,
+                          )
+                        ],
+                        // ignore: prefer_const_literals_to_create_immutables
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                      child: Row(
+                        // ignore: prefer_const_literals_to_create_immutables
+                        children: [
+                          Text(
+                            car.carCity,
+                            style: TextStyle(
+                              fontSize: 14.0,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
                   ],
                 ),
-              ),
+              )
             ],
           ),
         ),
       ),
-      bottomNavigationBar: CarGoCurvedNavigationBar(),
     );
   }
 

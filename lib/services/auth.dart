@@ -111,4 +111,27 @@ class AuthService {
       return null;
     }
   }
+
+  Future updateBookedCollection(
+    String carId,
+    DateTime bookingStartDate,
+    DateTime bookingEndDate,
+    String bookingStatus,
+  ) async {
+    try {
+      final User? user = _auth.currentUser;
+      final userId = user?.uid;
+      await DatabaseService(uid: userId).updateBookedCarsCollection(
+        carId,
+        userId!,
+        bookingStartDate,
+        bookingEndDate,
+        bookingStatus,
+      );
+      // return _userFromFirebaseUser(userId);
+    } catch (e) {
+      print(e.toString());
+      return null;
+    }
+  }
 }
