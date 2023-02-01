@@ -6,7 +6,6 @@ import 'package:cargo/location_page.dart';
 import 'package:cargo/rent_page.dart';
 import 'package:cargo/services/auth.dart';
 import 'package:cargo/settings.dart';
-// import 'package:cargo/settings.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
