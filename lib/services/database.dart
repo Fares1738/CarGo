@@ -1,5 +1,6 @@
 // ignore_for_file: avoid_print
 
+import 'package:cargo/model/CarBooking.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -163,6 +164,44 @@ class DatabaseService {
 
   Stream<List<Cars>> get cars {
     return carCollection.snapshots().map(_carListFromSnapshot);
+  }
+
+//Car Booking
+  List<CarBooking> _carBookingsListFromSnapshot(QuerySnapshot snapshot) {
+    try {
+      return snapshot.docs.map((d) {
+        return CarBooking(
+          carBookingId: d.id,
+          carId: d.data().toString().contains('carId') ? d.get('carId') : '' "",
+          carCustomerId: d.data().toString().contains('customerId')
+              ? d.get('customerId')
+              : '' "",
+          carBookingStartDate: d.data().toString().contains('bookingStartDate')
+              ? d.get('bookingStartDate').toDate()
+              : DateTime(0),
+          carBookingEndDate: d.data().toString().contains('bookingEndDate')
+              ? d.get('bookingEndDate').toDate()
+              : DateTime(0),
+          carBookingStatus: d.data().toString().contains('bookingStatus')
+              ? d.get('bookingStatus')
+              : '' "",
+        );
+      }).toList();
+    } catch (e) {
+      // ignore: avoid_print
+      print(e.toString());
+      return [];
+    }
+  }
+
+  Stream<List<CarBooking>> get carBookings {
+    return bookedCarsCollection.snapshots().map(_carBookingsListFromSnapshot);
+  }
+
+  Future updateBookingStatus(CarBooking carBooking) async {
+    return await bookedCarsCollection.doc(carBooking.carBookingId).update({
+      'bookingStatus': "history",
+    });
   }
 
   // Cars getHostCars() {

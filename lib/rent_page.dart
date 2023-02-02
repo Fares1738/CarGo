@@ -31,39 +31,42 @@ class _RentPageState extends State<RentPage> with TickerProviderStateMixin {
           body: SafeArea(
             child: Center(
               child: Column(children: [
-                TabBar(
-                  labelColor: Colors.white,
-                  unselectedLabelColor: Colors.deepPurple,
-                  indicatorSize: TabBarIndicatorSize.label,
-                  indicator: BoxDecoration(
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(50),
-                      topRight: Radius.circular(50),
-                      bottomRight: Radius.circular(50),
-                      bottomLeft: Radius.circular(50),
+                Padding(
+                  padding: const EdgeInsets.only(top: 8),
+                  child: TabBar(
+                    labelColor: Colors.white,
+                    unselectedLabelColor: Colors.deepPurple,
+                    indicatorSize: TabBarIndicatorSize.label,
+                    indicator: BoxDecoration(
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(50),
+                        topRight: Radius.circular(50),
+                        bottomRight: Radius.circular(50),
+                        bottomLeft: Radius.circular(50),
+                      ),
+                      color: Colors.deepPurple,
                     ),
-                    color: Colors.deepPurple,
+                    tabs: [
+                      Tab(
+                        child: Align(
+                          alignment: Alignment.center,
+                          child: Text("Rent"),
+                        ),
+                      ),
+                      Tab(
+                        child: Align(
+                          alignment: Alignment.center,
+                          child: Text("Booked"),
+                        ),
+                      ),
+                      Tab(
+                        child: Align(
+                          alignment: Alignment.center,
+                          child: Text("History"),
+                        ),
+                      ),
+                    ],
                   ),
-                  tabs: [
-                    Tab(
-                      child: Align(
-                        alignment: Alignment.center,
-                        child: Text("Rent"),
-                      ),
-                    ),
-                    Tab(
-                      child: Align(
-                        alignment: Alignment.center,
-                        child: Text("Booked"),
-                      ),
-                    ),
-                    Tab(
-                      child: Align(
-                        alignment: Alignment.center,
-                        child: Text("History"),
-                      ),
-                    ),
-                  ],
                 ),
                 Expanded(
                   child: TabBarView(children: [
@@ -151,7 +154,7 @@ class _RentPageState extends State<RentPage> with TickerProviderStateMixin {
     return AppBar(
       backgroundColor: Colors.transparent,
       shadowColor: Colors.transparent,
-      // iconTheme: IconThemeData(color: Colors.black),
+      iconTheme: IconThemeData(color: Colors.black),
       centerTitle: true,
       title: Padding(
         padding: const EdgeInsets.only(top: 7),
