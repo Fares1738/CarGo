@@ -4,6 +4,7 @@
 
 import 'package:cargo/Car_Earnings.dart';
 import 'package:cargo/add_car_details.dart';
+import 'package:cargo/dashboard.dart';
 import 'package:cargo/hostCarList.dart';
 import 'package:cargo/login_page.dart';
 import 'package:cargo/register_page.dart';
@@ -261,7 +262,7 @@ class _Hostpage extends State<Hostpage> {
           case 3:
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => Settings1()),
+              MaterialPageRoute(builder: (context) => Dashboa()),
             );
             break;
         }

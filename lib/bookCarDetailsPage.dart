@@ -78,7 +78,7 @@ class _BookCarDetailsState extends State<BookCarDetails> {
   String endDateBox = 'End Date';
   bool paymentStatus = true;
   bool userDocumentStatus = true;
-  String hostName = '';
+  String hostName = 'Hassan Mustafa';
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -240,7 +240,7 @@ class _BookCarDetailsState extends State<BookCarDetails> {
                             ),
                             SizedBox(width: 5),
                             Text(
-                              '{CarHostName}',
+                              hostName,
                               style: TextStyle(
                                 fontSize: 14.0,
                                 fontWeight: FontWeight.w600,

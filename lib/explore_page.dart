@@ -1,6 +1,7 @@
 // ignore_for_file: avoid_print, prefer_const_constructors, library_private_types_in_public_api, use_key_in_widget_constructors, non_constant_identifier_names, unused_import, camel_case_types
 
 import 'package:cargo/booked_page.dart';
+import 'package:cargo/dashboard.dart';
 import 'package:cargo/host_page.dart';
 import 'package:cargo/location_page.dart';
 import 'package:cargo/rent_page.dart';
@@ -200,7 +201,7 @@ class _ExplorePage extends State<ExplorePage> {
           case 3:
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => DeletePage()),
+              MaterialPageRoute(builder: (context) => Dashboa()),
             );
             break;
         }

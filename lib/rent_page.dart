@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'package:cargo/dashboard.dart';
 import 'package:cargo/history_page.dart';
 import 'package:cargo/landing_page.dart';
 import 'package:cargo/host_page.dart';
@@ -135,7 +136,7 @@ class _RentPageState extends State<RentPage> with TickerProviderStateMixin {
           case 3:
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => ExplorePage()),
+              MaterialPageRoute(builder: (context) => Dashboa()),
             );
             break;
         }

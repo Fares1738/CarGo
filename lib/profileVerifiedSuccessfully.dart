@@ -1,39 +1,14 @@
-import 'package:cargo/payment2nd.dart';
+import 'package:cargo/dashboard.dart';
+import 'package:cargo/reusable_widget/Custom_AppBar.dart';
 import 'package:flutter/material.dart';
 
-import 'package:flutter/material.dart';
-
-class PaymendAdd extends StatelessWidget {
-  const PaymendAdd({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Appbar(),
-    );
-  }
-}
-
-class Appbar extends StatelessWidget {
-  const Appbar({super.key});
+class VerifySuccessful extends StatelessWidget {
+  const VerifySuccessful({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 255, 255, 255),
-        shadowColor: Color.fromARGB(255, 255, 255, 255),
-        centerTitle: true,
-        title: Padding(
-          padding: const EdgeInsets.only(top: 10),
-          child: Image.asset(
-            'assets/CarGo2.png',
-            color: Colors.black,
-            height: 120.0,
-            width: 85.0,
-          ),
-        ),
-      ),
+      appBar: CarGoAppBarWithoutBack(),
       body: Container(
         alignment: Alignment.center,
         child: Column(
@@ -46,49 +21,57 @@ class Appbar extends StatelessWidget {
                 Flexible(
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset(
+                        "assets/congoo.png",
+                        width: 120,
+                        height: 120,
+                      ),
+                    ],
                   ),
                 )
               ],
             ),
+            SizedBox(
+              height: 5,
+            ),
             Text(
-              "Payment Options",
+              "Congratulations",
               style: TextStyle(
-                color: Color.fromARGB(255, 255, 0, 0),
                 fontSize: 25,
                 fontWeight: FontWeight.bold,
               ),
             ),
             SizedBox(
-              height: 30,
+              height: 10,
             ),
             Text(
-              "Credit/Debit Card",
+              "Profile Verified Successfully!",
               style: TextStyle(
-                fontSize: 20,
+                fontSize: 22,
+                fontWeight: FontWeight.bold,
               ),
             ),
             SizedBox(
-              height: 10,
+              height: 15,
             ),
             Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(18)),
-                color: Color.fromARGB(255, 255, 0, 0),
+                color: Color.fromARGB(255, 104, 127, 255),
               ),
               child: TextButton(
-                  style: TextButton.styleFrom(fixedSize: const Size(250, 50)),
+                  style: TextButton.styleFrom(fixedSize: const Size(180, 50)),
                   onPressed: () {
                     Navigator.pushAndRemoveUntil(
                         context,
                         PageRouteBuilder(
-                            pageBuilder: (context, a, b) => Payment2nd()),
+                            pageBuilder: (context, a, b) => Dashboa()),
                         (route) => false);
                   },
                   child: Text(
-                    "+ Add Credit/Debit Card     ",
-                    style: TextStyle(
-                        color: Color.fromARGB(255, 255, 255, 255),
-                        fontSize: 20),
+                    " Dashboard",
+                    style: TextStyle(color: Colors.white, fontSize: 18),
                   )),
             ),
           ],

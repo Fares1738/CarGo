@@ -1,29 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:slidable_button/slidable_button.dart';
 
+import 'reusable_widget/Custom_AppBar.dart';
+
 class Settings1 extends StatelessWidget {
   const Settings1({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 255, 255, 255),
-        shadowColor: Color.fromARGB(255, 255, 255, 255),
-        centerTitle: true,
-        title: Padding(
-          padding: const EdgeInsets.only(top: 10),
-          child: Image.asset(
-            'assets/CarGo2.png',
-            color: Colors.black,
-            height: 120.0,
-            width: 85.0,
-          ),
-        ),
-      ),
+      appBar: CarGoAppBar(),
       body: Container(
         alignment: Alignment.centerLeft,
-        margin: EdgeInsets.all(30),
+        margin: EdgeInsets.all(25),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
@@ -45,6 +34,7 @@ class Settings1 extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
+            SizedBox(height: 10),
             Text(
               "Notifications",
               style: TextStyle(
@@ -59,7 +49,7 @@ class Settings1 extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                   Text(
-                    'messeges',
+                    'Messeges',
                     style: TextStyle(
                       fontSize: 15,
                       fontWeight: FontWeight.bold,

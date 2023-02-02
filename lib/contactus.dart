@@ -1,7 +1,8 @@
+import 'package:cargo/reusable_widget/Custom_AppBar.dart';
 import 'package:flutter/material.dart';
 
-class AppBarApp extends StatelessWidget {
-  const AppBarApp({super.key});
+class ContactUs extends StatelessWidget {
+  const ContactUs({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,20 +18,7 @@ class AppBarExample extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 255, 255, 255),
-        shadowColor: Color.fromARGB(255, 255, 255, 255),
-        centerTitle: true,
-        title: Padding(
-          padding: const EdgeInsets.only(top: 10),
-          child: Image.asset(
-            'assets/CarGo2.png',
-            color: Colors.black,
-            height: 120.0,
-            width: 85.0,
-          ),
-        ),
-      ),
+      appBar: CarGoAppBar(),
       body: Container(
         alignment: Alignment.center,
         child: Column(
