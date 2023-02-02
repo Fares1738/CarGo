@@ -5,7 +5,9 @@ import 'package:cargo/explore_page.dart';
 import 'package:cargo/model/location_model.dart';
 import 'package:flutter/material.dart';
 
-import 'reusable_widget/Custom_AppBar.dart';
+import 'package:cargo/reusable_widget/Custom_AppBar.dart';
+
+import 'hostCarList.dart';
 
 class SearchByCitySelection extends StatefulWidget {
   final Location locationObject;
@@ -45,9 +47,12 @@ class _SearchByCitySelection extends State<SearchByCitySelection> {
                                 fontSize: 20,
                               ))
                         ])),
+                    Expanded(
+                      child: HostCarList(),
+                    ),
                   ],
                 ),
-                // CarTile(car: car1),
+
                 // CarTile(car: car2),
                 SizedBox(height: 20),
               ]),

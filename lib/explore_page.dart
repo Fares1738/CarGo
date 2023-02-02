@@ -76,10 +76,10 @@ class _ExplorePage extends State<ExplorePage> {
           backgroundColor: Colors.white,
           body: Column(
               mainAxisAlignment: MainAxisAlignment.start,
-              children: <Widget>[
+              children: const <Widget>[
                 Padding(
-                  padding: const EdgeInsets.only(top: 10, bottom: 10),
-                  child: SearchElevatedButton(),
+                  padding: EdgeInsets.only(top: 10, bottom: 10),
+                  // child: SearchElevatedButton(),
                 ),
                 Text(
                   'Explore Cars!',

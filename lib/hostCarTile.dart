@@ -98,7 +98,7 @@ class HostCarTile extends StatelessWidget {
                           // ignore: prefer_const_literals_to_create_immutables
                           children: [
                             Text(
-                              car.carCity,
+                              '${car.carLocation}, ${car.carCity}',
                               style: TextStyle(
                                 fontSize: 14.0,
                                 fontWeight: FontWeight.w600,

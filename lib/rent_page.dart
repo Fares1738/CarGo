@@ -73,8 +73,8 @@ class _RentPageState extends State<RentPage> with TickerProviderStateMixin {
                   child: TabBarView(children: [
                     Container(
                         child: Center(
-                      child: SearchElevatedButton(),
-                    )),
+                            //child: SearchElevatedButton(),
+                            )),
                     BookedPage(),
                     HistoryPage(),
                   ]),
