@@ -27,13 +27,21 @@ class _CarEarnings extends State<CarEarnings> {
         padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
         child: Container(
           width: double.infinity,
-          height: 300.0,
+          height: 450.0,
           decoration: BoxDecoration(
             color: Color.fromARGB(233, 248, 248, 251),
             borderRadius: BorderRadius.circular(25),
           ),
           child: Column(
             children: <Widget>[
+              SizedBox(height: 20),
+              Text(
+                "Car Details",
+                style: TextStyle(
+                  fontSize: 25.0,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
               Padding(
                 padding: EdgeInsets.symmetric(vertical: 10.0),
                 child: Column(
@@ -92,18 +100,42 @@ class _CarEarnings extends State<CarEarnings> {
                         // ignore: prefer_const_literals_to_create_immutables
                         children: [
                           Text(
-                            widget.car.carCity,
+                            '${widget.car.carLocation}, ${widget.car.carCity}',
                             style: TextStyle(
                               fontSize: 14.0,
                               fontWeight: FontWeight.w600,
                             ),
-                          )
+                          ),
                         ],
                       ),
                     ),
                   ],
                 ),
-              )
+              ),
+              SizedBox(height: 10),
+              Text(
+                'Hours Rented: ${widget.car.carHoursRented}',
+                style: TextStyle(
+                  fontSize: 14.0,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              SizedBox(height: 10),
+              Text(
+                'Times Rented: ${widget.car.carTimesRented}',
+                style: TextStyle(
+                  fontSize: 14.0,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              SizedBox(height: 10),
+              Text(
+                'Total Earnings: ${widget.car.carHoursRented * widget.car.carRentPrice} RM',
+                style: TextStyle(
+                  fontSize: 14.0,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
             ],
           ),
         ),

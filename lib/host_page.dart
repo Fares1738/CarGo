@@ -4,6 +4,7 @@
 
 import 'package:cargo/Car_Earnings.dart';
 import 'package:cargo/add_car_details.dart';
+import 'package:cargo/hostCarList.dart';
 import 'package:cargo/login_page.dart';
 import 'package:cargo/register_page.dart';
 import 'package:cargo/services/database.dart';
@@ -29,7 +30,7 @@ class Hostpage extends StatefulWidget {
 class _Hostpage extends State<Hostpage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(); //  // var cars = DatabaseService().getHostCars();
+    //  // var cars = DatabaseService().getHostCars();
     //   print("##############################");
     //  // print(cars.length);
     //   print("##############################");
@@ -38,86 +39,102 @@ class _Hostpage extends State<Hostpage> {
     //     print("##############################");
     //    // print(car);
     //     print("##############################");
+
+    // List<Cars> hostCars = [];
+    // double totalEarnings = 0;
+    // AuthService auth = AuthService();
+    // final String userId = auth.getUserId();
+    // for (var car in cars) {
+    //   if (car.carHostId == userId) {
+    //     hostCars.add(car);
+    //     totalEarnings += car.carHoursRented * car.carRentPrice;
+    //     setState(() {});
+    //   }
+    // }
+    // Stream<List<Cars>> carsStream = DatabaseService().cars;
+    // List<Cars> hostCars = carsStream.then((value) => value as List<Cars>);
+    double totalEarnings = 0;
+    // AuthService auth = AuthService();
+    // final String userId = auth.getUserId();
+    // for (var car in hostCars) {
+    //   if (car.carHostId == userId) {
+    //     hostCars.add(car);
+    //     totalEarnings += car.carHoursRented * car.carRentPrice;
+    //   }
+    // }
+
+    // print("##");
+    // print(hostCars);
+
+    // print("##");
+
+    return StreamProvider<List<Cars>?>.value(
+      initialData: null,
+      value: DatabaseService().cars,
+      child: SafeArea(
+        child: Scaffold(
+          appBar: CarGoAppBar(),
+          backgroundColor: Color.fromARGB(255, 255, 255, 255),
+          body: Column(
+            children: [
+              //////////////////////// DELETE ////////////////
+              // SizedBox(height: 30),
+              // Text(
+              //   "Total Earnings: ${totalEarnings.round()} RM",
+              //   textAlign: TextAlign.center,
+              //   style: TextStyle(
+              //     fontWeight: FontWeight.bold,
+              //     fontSize: 25,
+              //   ),
+              // ),
+              // SizedBox(height: 30),
+              //////////////////////// DELETE ////////////////
+
+              SizedBox(height: 20),
+              Text(
+                "My Cars",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 26,
+                ),
+              ),
+              Expanded(
+                child: HostCarList(),
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: 20),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          minimumSize: Size(200, 50),
+                          textStyle: TextStyle(fontSize: 25),
+                          backgroundColor: Colors.deepPurple,
+                          foregroundColor: Colors.white,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(30.0)),
+                        ),
+                        child: Text('Add a New Car'),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => AddVehicle()),
+                          );
+                        }),
+                    SizedBox(height: 20),
+                  ],
+                ),
+              ),
+            ],
+          ),
+          bottomNavigationBar: CarGoCurvedNavigationBar(),
+        ),
+      ),
+    );
   }
-  // List<Cars> hostCars = [];
-  // double totalEarnings = 0;
-  // AuthService auth = AuthService();
-  // final String userId = auth.getUserId();
-  // for (var car in cars) {
-  //   if (car.carHostId == userId) {
-  //     hostCars.add(car);
-  //     totalEarnings += car.carHoursRented * car.carRentPrice;
-  //     setState(() {});
-  //   }
-  // }
-  // Stream<List<Cars>> carsStream = DatabaseService().cars;
-  // List<Cars> hostCars = carsStream.then((value) => value as List<Cars>);
-  // double totalEarnings = 0;
-  // AuthService auth = AuthService();
-  // final String userId = auth.getUserId();
-  // for (var car in hostCars) {
-  //   if (car.carHostId == userId) {
-  //     hostCars.add(car);
-  //     totalEarnings += car.carHoursRented * car.carRentPrice;
-  //   }
-  // }
-
-  // print("##");
-  // print(hostCars);
-
-  // print("##");
-
-  // return StreamProvider<List<Cars>?>.value(
-  //   initialData: null,
-  //   value: DatabaseService().cars,
-  //     return SafeArea(
-  //       child: Scaffold(
-  //         appBar: CarGoAppBar(),
-  //         backgroundColor: Color.fromARGB(255, 255, 255, 255),
-  //         body: Column(
-  //           children: [
-  //             SizedBox(height: 30),
-  //             Text(
-  //               "Total Earnings: ${totalEarnings.round()} RM",
-  //               textAlign: TextAlign.center,
-  //               style: TextStyle(
-  //                 fontWeight: FontWeight.bold,
-  //                 fontSize: 25,
-  //               ),
-  //             ),
-  //             SizedBox(height: 30),
-  //             Padding(
-  //               padding: EdgeInsets.only(top: 20),
-  //               child: Column(
-  //                 mainAxisAlignment: MainAxisAlignment.center,
-  //                 children: <Widget>[
-  //                   ElevatedButton(
-  //                       style: ElevatedButton.styleFrom(
-  //                         minimumSize: Size(200, 50),
-  //                         textStyle: TextStyle(fontSize: 25),
-  //                         backgroundColor: Colors.deepPurple,
-  //                         foregroundColor: Colors.white,
-  //                         shape: RoundedRectangleBorder(
-  //                             borderRadius: BorderRadius.circular(30.0)),
-  //                       ),
-  //                       child: Text('Add a New Car'),
-  //                       onPressed: () {
-  //                         Navigator.push(
-  //                           context,
-  //                           MaterialPageRoute(
-  //                               builder: (context) => AddVehicle()),
-  //                         );
-  //                       }),
-  //                   SizedBox(height: 20),
-  //                 ],
-  //               ),
-  //             ),
-  //           ],
-  //         ),
-  //         bottomNavigationBar: CarGoCurvedNavigationBar(),
-  //       ),
-  //     ),
-  //   );}
 
   InkWell hostCarTile({required Cars car}) {
     return InkWell(
