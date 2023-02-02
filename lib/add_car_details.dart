@@ -1,17 +1,21 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, non_constant_identifier_names, avoid_print, unnecessary_nullable_for_final_variable_declarations, prefer_interpolation_to_compose_strings
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, non_constant_identifier_names, avoid_print, unnecessary_nullable_for_final_variable_declarations, prefer_interpolation_to_compose_strings, use_build_context_synchronously, must_be_immutable, no_leading_underscores_for_local_identifiers
 
 import 'dart:io';
 import 'package:cargo/reusable_widget/InputDeco.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'car_details.dart';
 import 'reusable_widget/Custom_AppBar.dart';
+import 'package:cargo/services/database.dart';
+import 'package:provider/provider.dart';
 
 class AddVehicle extends StatefulWidget {
   final FirebaseStorage storage = FirebaseStorage.instance;
 
-  AddVehicle({super.key});
+  AddVehicle({Key? key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => AddVehicleState();
@@ -30,14 +34,13 @@ class AddVehicleState extends State<AddVehicle> {
   final city = TextEditingController();
   int hoursRented = 0;
   int timesRented = 0;
+  String imageUrl = '';
 
   List<String> wheelDriveMenu = [
-    'Rear-Wheel Drive',
-    'Front-Wheel Drive',
-    'Four-Wheel Drive',
-    'All-Wheel Drive'
+    '4WD',
+    '2WD',
   ];
-  String? selectedWheelDrive = 'Front-Wheel Drive';
+  String? selectedWheelDrive = '2WD';
 
   List<String> seatNum = ['2', '4', '6', '8'];
   String? selectedSeatNum = '4';
@@ -70,7 +73,8 @@ class AddVehicleState extends State<AddVehicle> {
     super.dispose();
   }
 
-  String imageUrl = '';
+  bool isFile = false;
+  late XFile fileImage;
 
   @override
   Widget build(BuildContext context) {
@@ -361,72 +365,28 @@ class AddVehicleState extends State<AddVehicle> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        minimumSize: Size(150, 45),
-                        textStyle: TextStyle(fontSize: 17),
-                        backgroundColor: Colors.deepPurple,
-                        foregroundColor: Colors.white,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30.0)),
-                      ),
+                        style: ElevatedButton.styleFrom(
+                          minimumSize: Size(150, 45),
+                          textStyle: TextStyle(fontSize: 17),
+                          backgroundColor: Colors.deepPurple,
+                          foregroundColor: Colors.white,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(30.0)),
+                        ),
 
-                      //Pick image from phone storage and save it in firebase storage, and also generate download link//
-                      onPressed: (() async {
-                        if (imageUrl.isEmpty) {
-                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                              content: Text("Please upload an image")));
+                        //Pick image from phone storage and save it in firebase storage, and also generate download link//
+                        onPressed: chooseImage,
+                        //selectFile
 
-                          return;
-                        }
-                        ImagePicker imagePicker = ImagePicker();
-                        XFile? file = await imagePicker.pickImage(
-                            source: ImageSource.gallery);
-                        print('${file?.path}');
-
-                        String uniqueFileName =
-                            DateTime.now().millisecondsSinceEpoch.toString();
-
-                        Reference referenceRoot =
-                            FirebaseStorage.instance.ref();
-                        Reference referenceDirImages =
-                            referenceRoot.child('images');
-
-                        Reference referenceImageToUpload =
-                            referenceDirImages.child(uniqueFileName);
-
-                        try {
-                          await referenceImageToUpload
-                              .putFile(File(file!.path));
-                          imageUrl =
-                              await referenceImageToUpload.getDownloadURL();
-                        } catch (e) {}
-                      }),
-                      //selectFile,
-                      child: Text('Add Car Pictures'),
-                      //selectImages();
-                    ),
+                        child: Text('Add Car Pictures')
+                        //selectImages();
+                        ),
                   ],
                 ),
               ),
 
               // Print image
               //   if (pickedFile != null)
-              Container(
-                margin: const EdgeInsets.all(15),
-                padding: const EdgeInsets.all(3.0),
-                decoration:
-                    BoxDecoration(border: Border.all(color: Colors.black)),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Container(
-                    padding: const EdgeInsets.all(5),
-                    // child: Image.file(
-                    //   File(pickedFile!.path!),
-                    //   fit: BoxFit.cover,
-                    // ),
-                  ),
-                ),
-              ),
 
               // Print gridview of images
               // Container(
@@ -485,7 +445,8 @@ class AddVehicleState extends State<AddVehicle> {
                                     transmission: Text(selectedTransType!),
                                     location: Text(location.text),
                                     city: Text(selectedCity!),
-                                    // images: imageFileList!,
+
+                                    /// images: imageFileList!,
                                     hoursRented: 0,
                                     timesRented: 0,
                                     imageUrl: imageUrl)));
@@ -503,7 +464,7 @@ class AddVehicleState extends State<AddVehicle> {
     );
   }
 
-  // PlatformFile? pickedFile;
+  // PlatformFile pickedFile;
 
   // Future selectFile() async {
   //   final result = await FilePicker.platform.pickFiles();
@@ -515,8 +476,8 @@ class AddVehicleState extends State<AddVehicle> {
   // }
 
   // Future uploadFile() async {
-  //   final path = 'files/${pickedFile!.name}';
-  //   final file = File(pickedFile!.path!);
+  //   final path = 'files/${pickedFile.name}';
+  //   final file = File(pickedFile.path!);
 
   //   final ref = FirebaseStorage.instance.ref().child(path);
   //   ref.putFile(file);
@@ -535,4 +496,38 @@ class AddVehicleState extends State<AddVehicle> {
   //   print("Image List Length:" + imageFileList!.length.toString());
   //   setState(() {});
   // }
+
+  void chooseImage() async {
+    ImagePicker imagePicker = ImagePicker();
+    final file = await imagePicker.pickImage(source: ImageSource.gallery);
+    print('${file?.path}');
+
+    if (file == null) return;
+
+    setState(() {
+      fileImage = file;
+    });
+
+    String uniqueFileName = DateTime.now().toString();
+
+    Reference referenceRoot = FirebaseStorage.instance.ref();
+
+    Reference referenceDirImages = referenceRoot.child('images');
+
+    Reference referenceImageToUpload = referenceDirImages.child(uniqueFileName);
+
+    try {
+      await referenceImageToUpload.putFile(File(file.path));
+      imageUrl = await referenceImageToUpload.getDownloadURL();
+      print(imageUrl);
+    } catch (e) {
+      print(e);
+    }
+
+    if (imageUrl.isEmpty) {
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text("Please upload an image")));
+      return;
+    }
+  }
 }

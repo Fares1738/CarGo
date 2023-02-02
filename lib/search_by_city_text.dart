@@ -43,12 +43,10 @@ class _SearchByCityText extends State<SearchByCityText> {
                         ])),
                   ],
                 ),
-                CarCardSample(car: car1),
-                CarCardSample(car: car2),
+                // CarCardSample(car: car1),
+                // CarCardSample(car: car2),
                 SizedBox(height: 20),
               ]),
             )));
   }
-
-
 }

@@ -3,7 +3,7 @@
 import 'package:cargo/search_by_city_selection.dart';
 import 'package:cargo/search_by_city_text.dart';
 import 'package:cargo/model/location_model.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+//import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 import 'reusable_widget/Custom_AppBar.dart';

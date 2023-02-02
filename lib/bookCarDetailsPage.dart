@@ -1,6 +1,7 @@
 // ignore_for_file: file_names, prefer_const_literals_to_create_immutables, prefer_const_constructors, non_constant_identifier_names
 import 'package:cargo/bookingConfirmationPage.dart';
 import 'package:cargo/services/auth.dart';
+import 'package:cargo/services/database.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
@@ -59,8 +60,8 @@ var car2 = Car(
 );
 
 class BookCarDetails extends StatefulWidget {
-  const BookCarDetails({super.key, required this.carId});
-  final String carId;
+  const BookCarDetails({super.key, required this.car});
+  final Cars car;
   // final Cars car;
 
   @override
@@ -77,6 +78,7 @@ class _BookCarDetailsState extends State<BookCarDetails> {
   String endDateBox = 'End Date';
   bool paymentStatus = true;
   bool userDocumentStatus = true;
+  String hostName = '';
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -105,7 +107,7 @@ class _BookCarDetailsState extends State<BookCarDetails> {
                   ],
                 ),
               ),
-              bookCarContainer(context, car2),
+              bookCarContainer(context, widget.car),
             ],
           ),
         ),
@@ -113,7 +115,7 @@ class _BookCarDetailsState extends State<BookCarDetails> {
     );
   }
 
-  Padding bookCarContainer(BuildContext context, Car car) {
+  Padding bookCarContainer(BuildContext context, Cars car) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 5),
       child: Container(
@@ -141,10 +143,10 @@ class _BookCarDetailsState extends State<BookCarDetails> {
                             offset: Offset(0, 5),
                             blurRadius: 8),
                       ],
-                      // image: DecorationImage(
-                      //   image: NetworkImage('${car.imageUrl}'),
-                      //   fit: BoxFit.fitWidth,
-                      // ),
+                      image: DecorationImage(
+                        image: NetworkImage(car.carImageUrl),
+                        fit: BoxFit.fitWidth,
+                      ),
                     ),
                   ),
                   Padding(
@@ -153,7 +155,7 @@ class _BookCarDetailsState extends State<BookCarDetails> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
                         Text(
-                          '${car.carManfacturer} ${car.carModel} ${car.carMakeYear}',
+                          '${car.carManufacturer} ${car.carModel} ${car.carMakeYear}',
                           style: TextStyle(
                             fontSize: 18.0,
                             fontWeight: FontWeight.w600,
@@ -238,7 +240,7 @@ class _BookCarDetailsState extends State<BookCarDetails> {
                             ),
                             SizedBox(width: 5),
                             Text(
-                              car.carHostName,
+                              '{CarHostName}',
                               style: TextStyle(
                                 fontSize: 14.0,
                                 fontWeight: FontWeight.w600,
@@ -297,7 +299,7 @@ class _BookCarDetailsState extends State<BookCarDetails> {
                                   width: 30,
                                 ),
                                 Text(
-                                  car.carSeats,
+                                  '${car.carSeats.toString()} Seats',
                                   style: TextStyle(
                                     fontSize: 14.0,
                                   ),
@@ -312,7 +314,7 @@ class _BookCarDetailsState extends State<BookCarDetails> {
                                   width: 25,
                                 ),
                                 Text(
-                                  car.carGearBox,
+                                  car.carTransmission,
                                   style: TextStyle(
                                     fontSize: 14.0,
                                   ),
@@ -327,7 +329,7 @@ class _BookCarDetailsState extends State<BookCarDetails> {
                                   width: 25,
                                 ),
                                 Text(
-                                  car.carFuelConsumption,
+                                  '${car.carGasConsumption.toString()} Km/L',
                                   style: TextStyle(
                                     fontSize: 14.0,
                                   ),
@@ -342,7 +344,7 @@ class _BookCarDetailsState extends State<BookCarDetails> {
                                   width: 30,
                                 ),
                                 Text(
-                                  car.carMileage,
+                                  '${car.carMileage.toString()} Km',
                                   style: TextStyle(
                                     fontSize: 14.0,
                                   ),
@@ -455,17 +457,23 @@ class _BookCarDetailsState extends State<BookCarDetails> {
                 if (paymentStatus && userDocumentStatus) {
                   print(
                       "Book has been pressed with these dates: $startDateTime ### $endDateTime");
+                  _auth.updateBookedCollection(
+                    widget.car.carId,
+                    startDateTime,
+                    endDateTime,
+                    'booked',
+                  );
+                  int newHoursRented =
+                      endDateTime.difference(startDateTime).inHours +
+                          widget.car.carHoursRented;
+                  int newTimesRented = 1 + widget.car.carTimesRented;
+                  DatabaseService().updateTimesHoursRentedCarCollection(
+                      widget.car.carId, newHoursRented, newTimesRented);
                   Navigator.push(
                     context,
                     MaterialPageRoute(
                       builder: (context) => BookingConfirmation(
-                        carPicture: 'prado',
-                        carManfacturer: 'Toyota',
-                        carModel: 'Prado',
-                        carMakeYear: '2015',
-                        carRentPrice: 50,
-                        carLocation: 'Jabra Street',
-                        carLicenseNumber: 'KGR 3451',
+                        car: widget.car,
                         startDate: startDateTime,
                         endDate: endDateTime,
                       ),
@@ -483,12 +491,6 @@ class _BookCarDetailsState extends State<BookCarDetails> {
                     ),
                   );
                 }
-                // if (endDateTime.difference(startDateTime).inHours < 1) {
-                //   print(
-                //       '###You have to choose a date that has at least 1 hr difference###');
-                // } else {
-                //   print('###Thank you for your booking###');
-                // }
               }),
         ],
       ),

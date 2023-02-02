@@ -212,24 +212,25 @@ class ViewAddedVehicleState extends State<ViewAddedVehicle> {
                       child: Text('Add Car'),
                       onPressed: () {
                         //database
-
+                        final String hostId = _auth.getUserId();
                         dynamic result = _auth.createCarCollectionUser(
-                            '${widget.manufacturer.data}',
-                            '${widget.model.data}',
-                            int.parse('${widget.makeyear.data}'),
-                            int.parse('${widget.mileage.data}'),
-                            int.parse('${widget.gasConsumption.data}'),
-                            int.parse('${widget.rentPrice.data}'),
-                            '${widget.licenseNumber.data}',
-                            '${widget.location.data}',
-                            '${widget.city.data}',
-                            '${widget.wheelDrive.data}',
-                            '${widget.rentPrice.data}',
-                            int.parse('${widget.seats.data}'),
-                            hoursRented,
-                            timesRented,
-                            imageUrl);
-
+                          hostId,
+                          '${widget.manufacturer.data}',
+                          '${widget.model.data}',
+                          int.parse('${widget.makeyear.data}'),
+                          int.parse('${widget.mileage.data}'),
+                          int.parse('${widget.gasConsumption.data}'),
+                          int.parse('${widget.rentPrice.data}'),
+                          '${widget.licenseNumber.data}',
+                          '${widget.location.data}',
+                          '${widget.city.data}',
+                          '${widget.wheelDrive.data}',
+                          '${widget.transmission.data}',
+                          int.parse('${widget.seats.data}'),
+                          widget.hoursRented,
+                          widget.timesRented,
+                          widget.imageUrl,
+                        );
                         if (result == null) {
                           print("Error");
                         } else {
