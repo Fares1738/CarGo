@@ -1,18 +1,16 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import 'dart:io';
 import 'package:cargo/DrivingLicenseUploader.dart';
-import 'package:cargo/dashboard.dart';
 import 'package:cargo/reusable_widget/Custom_AppBar.dart';
-import 'package:cargo/verify_profile.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-// import 'package:icrud/firebase_operation/list.dart';
-// import 'package:icrud/firebase_operation/firebase_crus.dart';
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
 class GovidUploader extends StatefulWidget {
-  GovidUploader({Key? key}) : super(key: key);
+  const GovidUploader({Key? key}) : super(key: key);
 
   @override
   _GovidUploaderState createState() => _GovidUploaderState();
@@ -28,7 +26,6 @@ class _GovidUploaderState extends State<GovidUploader> {
   final pnameController = TextEditingController();
 
   String? url;
-  // String? urls;
 
   @override
   void dispose() {
@@ -42,30 +39,21 @@ class _GovidUploaderState extends State<GovidUploader> {
     pnameController.clear();
   }
 
-  // Adding Student
   CollectionReference pids =
       FirebaseFirestore.instance.collection('gid pictures');
 
   Future<void> addUser() async {
-    final imgurl = await uploadImage(_image!);
-    // final imgurls = await uploadImage(_images!);
-
     return pids
         .add({
           'pname': pname,
           ' frontimage': url,
-          // 'backimage': urls,
         })
         .then((value) => print('Govid Added'))
         .catchError((error) => print('Failed to Add user: $error'));
   }
 
   File? _image;
-  File? _images;
   final picker = ImagePicker();
-  // final pickers = ImagePicker();
-
-  // String? downloadUrl;
 
   Future imagePicker() async {
     try {
@@ -75,37 +63,19 @@ class _GovidUploaderState extends State<GovidUploader> {
           _image = File(pick.path);
         }
       });
-    } catch (e) {}
+    } catch (e) {
+      return e;
+    }
   }
 
-  Future uploadImage(File _image) async {
+  Future uploadImage(File image) async {
     String imgId = DateTime.now().microsecondsSinceEpoch.toString();
 
     Reference refrence =
         FirebaseStorage.instance.ref().child('frontimage').child('user$imgId');
-    await refrence.putFile(_image);
+    await refrence.putFile(image);
     url = await refrence.getDownloadURL();
   }
-
-  // Future imagePickers() async {
-  //   try {
-  //     final picks = await pickers.pickImage(source: ImageSource.gallery);
-  //     setState(() {
-  //       if (picks != null) {
-  //         _images = File(picks.path);
-  //       }
-  //     });
-  //   } catch (e) {}
-  // }
-
-  // Future uploadImages(File _images) async {
-  //   String imgIds = DateTime.now().microsecondsSinceEpoch.toString();
-
-  //   Reference refrence =
-  //       FirebaseStorage.instance.ref().child('backimage').child('user$imgIds');
-  //   await refrence.putFile(_images);
-  //   urls = await refrence.getDownloadURL();
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -117,7 +87,7 @@ class _GovidUploaderState extends State<GovidUploader> {
           padding: EdgeInsets.symmetric(vertical: 20, horizontal: 30),
           child: ListView(
             children: [
-              Container(
+              SizedBox(
                   height: 300,
                   width: double.infinity,
                   child: Column(
@@ -157,53 +127,30 @@ class _GovidUploaderState extends State<GovidUploader> {
                       ),
                     ],
                   )),
-              Container(
-                // this container is the value box for taking inputs
-                margin: EdgeInsets.symmetric(vertical: 10.0),
-                child: TextFormField(
-                  autofocus: false,
-                  decoration: InputDecoration(
-                    labelText: 'Your name: ',
-                    labelStyle: TextStyle(fontSize: 20.0),
-                    border: OutlineInputBorder(),
-                    errorStyle:
-                        TextStyle(color: Colors.redAccent, fontSize: 15),
-                  ),
-                  controller: pnameController,
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please Enter Your Name';
-                    }
-                    return null;
-                  },
-                ),
-              ),
-              Container(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    ElevatedButton(
-                      onPressed: () {
-                        // Validate returns true if the form is valid, otherwise false.
-                        if (_formKey.currentState!.validate()) {
-                          setState(() {
-                            pname = pnameController.text;
-                            addUser();
-                            clearText();
-                          });
-                        }
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => DidUploader()));
-                      },
-                      child: Text(
-                        'Next',
-                        style: TextStyle(fontSize: 18.0),
-                      ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  ElevatedButton(
+                    onPressed: () {
+                      // Validate returns true if the form is valid, otherwise false.
+                      if (_formKey.currentState!.validate()) {
+                        setState(() {
+                          pname = pnameController.text;
+                          addUser();
+                          clearText();
+                        });
+                      }
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => DidUploader()));
+                    },
+                    child: Text(
+                      'Next',
+                      style: TextStyle(fontSize: 18.0),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               )
             ],
           ),

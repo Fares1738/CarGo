@@ -1,7 +1,4 @@
-import 'package:cargo/verify_identity.dart';
 import 'package:flutter/material.dart';
-
-import 'explore_page.dart';
 
 class SelfiePage extends StatefulWidget {
   const SelfiePage({Key? key}) : super(key: key);
@@ -18,20 +15,8 @@ class _SelfiePageState extends State<SelfiePage> {
       body: SafeArea(
         child: Column(
           children: [
-            Container(
-              // child: Center(
-                // child: ElevatedButton(
-                //   style: ElevatedButton.styleFrom(
-                //       minimumSize: Size(200, 50),
-                //       textStyle: TextStyle(fontSize: 21),
-                //       backgroundColor: Colors.white,
-                //       foregroundColor: Colors.white,
-                //       shape: RoundedRectangleBorder(
-                //           borderRadius: BorderRadius.circular(30.0)),
-                //     ),
-                    
-                  child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-                     Material(
+            Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+              Material(
                   color: Colors.deepPurple,
                   elevation: 8,
                   borderRadius: BorderRadius.only(
@@ -59,12 +44,10 @@ class _SelfiePageState extends State<SelfiePage> {
                               color: Colors.white,
                             ))
                       ]))),
-
-
-                      SizedBox(height: 10,),
-
-
-                      Material(
+              SizedBox(
+                height: 10,
+              ),
+              Material(
                   color: Colors.deepPurple,
                   elevation: 8,
                   borderRadius: BorderRadius.only(
@@ -92,32 +75,21 @@ class _SelfiePageState extends State<SelfiePage> {
                               color: Colors.white,
                             ))
                       ]))),
-          ]),
-                  // onPressed: () {},
-
-
-
-
-                ),
-              
-            
-              Expanded(
+            ]),
+            Expanded(
               child: Center(
-                
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                      minimumSize: Size(200, 50),
-                      textStyle: TextStyle(fontSize: 21),
-                      backgroundColor: Colors.purple,
-                      foregroundColor: Colors.white,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(30.0)),
-                    ),
+                    minimumSize: Size(200, 50),
+                    textStyle: TextStyle(fontSize: 21),
+                    backgroundColor: Colors.purple,
+                    foregroundColor: Colors.white,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30.0)),
+                  ),
                   child: const Text('Upload a photo'),
                   onPressed: () {},
                 ),
-
-          
               ),
             ),
           ],

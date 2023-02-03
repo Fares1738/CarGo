@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:cargo/dashboard.dart';
 import 'package:flutter/material.dart';
 
@@ -8,6 +10,7 @@ class CongoPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        elevation: 0,
         backgroundColor: Color.fromARGB(255, 255, 255, 255),
         shadowColor: Color.fromARGB(255, 255, 255, 255),
         centerTitle: true,
@@ -78,7 +81,7 @@ class CongoPage extends StatelessWidget {
                     Navigator.pushAndRemoveUntil(
                         context,
                         PageRouteBuilder(
-                            pageBuilder: (context, a, b) => Dashboa()),
+                            pageBuilder: (context, a, b) => Dashboard()),
                         (route) => false);
                   },
                   child: Text(

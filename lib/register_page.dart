@@ -1,11 +1,8 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, prefer_typing_uninitialized_variables
 
 import 'package:cargo/verify_profile.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:cargo/landing_page.dart';
-import 'package:cargo/rent_page.dart';
 import 'package:cargo/services/auth.dart';
 import 'package:cargo/reusable_widget/InputDeco.dart';
 
@@ -19,7 +16,6 @@ class RegisterPage extends StatefulWidget {
 
 class _LoginPageState extends State<RegisterPage> {
   final AuthService _auth = AuthService();
-  // final FirebaseAuth _auth = FirebaseAuth.instance;
   final _formKey = GlobalKey<FormState>();
 
   //text field state
@@ -98,7 +94,6 @@ class _LoginPageState extends State<RegisterPage> {
                           onChanged: (val) {
                             setState(() => fullname = val);
                           },
-                          // controller: controller.fullname,
                         ),
                       ),
                     ),
@@ -133,13 +128,6 @@ class _LoginPageState extends State<RegisterPage> {
                           onChanged: (val) {
                             setState(() => email = val);
                           },
-                          // controller: controller.email,
-                          // decoration: InputDecoration(
-                          //     border: InputBorder.none,
-                          //     hintText: "Email",
-                          //     hintStyle: TextStyle(
-                          //       fontWeight: FontWeight.bold,
-                          //     )),
                         ),
                       ),
                     ),
@@ -172,7 +160,6 @@ class _LoginPageState extends State<RegisterPage> {
                           onChanged: (val) {
                             setState(() => password = val);
                           },
-                          // controller: controller.password,
                           obscureText: true,
                         ),
                       ),
@@ -185,9 +172,7 @@ class _LoginPageState extends State<RegisterPage> {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 25.0),
                     child: Container(
-                      decoration: BoxDecoration(
-                          // borderRadius: BorderRadius.circular(15),
-                          ),
+                      decoration: BoxDecoration(),
                       child: Padding(
                         padding: const EdgeInsets.only(left: 0.0),
                         child: TextFormField(
@@ -205,7 +190,6 @@ class _LoginPageState extends State<RegisterPage> {
                           onChanged: (val) {
                             setState(() => cPassword = val);
                           },
-                          // controller: controller.cPassword,
                           obscureText: true,
                         ),
                       ),
@@ -258,15 +242,6 @@ class _LoginPageState extends State<RegisterPage> {
                   ),
                 ]),
               ),
-              // Expanded(child: ElevatedButton(
-              //   onPressed: () async {
-              //     await _firebaseAuth
-              //         .signInWithEmailAndPassword(
-              //             email: _email.text, password: _password.text)
-              //         .then((value) => print('Sign Up Successful'));
-              //   },
-              // )),
-              //SizedBox(height: 25),
             ],
           ),
         )),

@@ -1,14 +1,9 @@
 // ignore_for_file: non_constant_identifier_names, prefer_const_constructors, prefer_typing_uninitialized_variables
 
-import 'package:cargo/booked_page.dart';
 import 'package:cargo/explore_page.dart';
 import 'package:cargo/rent_page.dart';
 import 'package:flutter/material.dart';
-
 import 'model/Cars.dart';
-
-//DateTime startDate = DateTime.now();
-//DateTime endDate = startDate.add(Duration(hours: 24));
 
 class BookingConfirmation extends StatefulWidget {
   final Cars car;
@@ -242,6 +237,7 @@ class _BookingConfirmationState extends State<BookingConfirmation> {
 
 AppBar CarGoAppBar() {
   return AppBar(
+    elevation: 0,
     backgroundColor: Colors.deepPurple,
     shadowColor: Colors.transparent,
     centerTitle: true,

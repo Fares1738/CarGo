@@ -1,11 +1,12 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import 'package:cargo/welcome_page.dart';
 import 'package:flutter/material.dart';
-
 import '../login_page.dart';
-import '../register_page.dart';
-import 'package:cargo/services/auth.dart';
 
 class Authenticate extends StatefulWidget {
+  const Authenticate({super.key});
+
   @override
   _AuthenticateState createState() => _AuthenticateState();
 }

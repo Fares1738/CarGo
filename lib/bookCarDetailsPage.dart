@@ -2,12 +2,8 @@
 import 'package:cargo/bookingConfirmationPage.dart';
 import 'package:cargo/services/auth.dart';
 import 'package:cargo/services/database.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-
 import 'model/Cars.dart';
 
 class Car {
@@ -41,23 +37,6 @@ class Car {
       required this.carMileage,
       required this.carRentPrice});
 }
-
-var car2 = Car(
-  carId: '123',
-  carPicture: 'prado',
-  carManfacturer: 'Toyota',
-  carModel: 'Prado',
-  carMakeYear: '2015',
-  carLocation: 'Jabra Street',
-  carLicenseNumber: 'KRG 3415',
-  carHostName: 'Hassan Mustafa',
-  carWheelDrive: '2WD',
-  carSeats: '4 Seats',
-  carGearBox: 'Auto',
-  carFuelConsumption: '12Km/L',
-  carMileage: '120K',
-  carRentPrice: 50,
-);
 
 class BookCarDetails extends StatefulWidget {
   const BookCarDetails({super.key, required this.car});
@@ -649,6 +628,7 @@ class _BookCarDetailsState extends State<BookCarDetails> {
 
 AppBar CarGoAppBar() {
   return AppBar(
+    elevation: 0,
     leading: BackButton(color: Colors.black),
     backgroundColor: Colors.transparent,
     shadowColor: Colors.transparent,

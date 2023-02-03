@@ -1,10 +1,10 @@
-import 'package:cargo/reusable_widget/Custom_AppBar.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+// ignore_for_file: file_names
 
+import 'package:cargo/reusable_widget/Custom_AppBar.dart';
 import 'package:flutter/material.dart';
 
 class Profile extends StatelessWidget {
-  Profile({super.key});
+  const Profile({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -12,28 +12,6 @@ class Profile extends StatelessWidget {
       home: ProfilePage(),
     );
   }
-
-  ////////////////////////////////CODE FOR RETRIEVING DATA FROM DATABASE///////////////////////////////////
-
-  // final CollectionReference userDetailsCollection =
-  //     FirebaseFirestore.instance.collection('userdetails');
-
-  // Future<void> getUserDetails() async {
-  //   final DocumentSnapshot snapshot =
-  //       await userDetailsCollection.doc().get();
-
-  //     final String pname = snapshot.data['pname'] as;
-  //     final String govid = snapshot.data['govid'];
-  //     final String driveid = snapshot.data['driveid'];
-  //     final String image = snapshot.data['image'];
-
-  //     print('pname: $pname');
-  //     print('govid: $govid');
-  //     print('driveid: $driveid');
-  //     print('image: $image');
-
-  // }
-  ////////////////////////////////CODE FOR RETRIEVING DATA FROM DATABASE///////////////////////////////////
 }
 
 class ProfilePage extends StatelessWidget {
@@ -61,7 +39,7 @@ class ProfilePage extends StatelessWidget {
               height: 20,
             ),
             Text(
-              "Name: ",
+              "Name: Nafis Ahmed",
               style: TextStyle(
                 fontSize: 20,
               ),
@@ -70,7 +48,7 @@ class ProfilePage extends StatelessWidget {
               height: 10,
             ),
             Text(
-              "Email: ",
+              "Email: NafisAhmed@gmail.com",
               style: TextStyle(
                 fontSize: 20,
               ),
@@ -79,7 +57,7 @@ class ProfilePage extends StatelessWidget {
               height: 10,
             ),
             Text(
-              "Passport/MyKad: ",
+              "Passport/MyKad: A2849283",
               style: TextStyle(
                 fontSize: 20,
               ),
@@ -88,7 +66,7 @@ class ProfilePage extends StatelessWidget {
               height: 10,
             ),
             Text(
-              "Drivers License Number: ",
+              "Drivers License Number: 49283743",
               style: TextStyle(
                 fontSize: 20,
               ),

@@ -1,11 +1,9 @@
 // ignore_for_file: unused_import
-
 // ignore_for_file: prefer_const_constructors
 
 import 'package:cargo/services/database.dart';
 import 'package:flutter/material.dart';
 import 'package:cargo/model/Cars.dart';
-
 import 'bookCarDetailsPage.dart';
 
 // ignore: use_key_in_widget_constructors

@@ -1,26 +1,15 @@
-import 'package:cargo/Car_Earnings.dart';
 import 'package:cargo/model/CarBooking.dart';
-import 'package:cargo/services/auth.dart';
 import 'package:cargo/services/database.dart';
 import 'package:flutter/material.dart';
 import 'package:cargo/model/Cars.dart';
-import 'host_page.dart';
-import 'bookCarDetailsPage.dart';
 
 class CarBookingsCarsTile extends StatelessWidget {
   final Cars car;
   final CarBooking carBooking;
-  CarBookingsCarsTile({required this.car, required this.carBooking});
+  const CarBookingsCarsTile({super.key, required this.car, required this.carBooking});
 
   @override
   Widget build(BuildContext context) {
-    AuthService auth = AuthService();
-    final String userId = auth.getUserId();
-    //totalEarnings;
-    print("----------CAR BOOKIN CARS TILE----------");
-    print("String Object Car Id: " + car.carId);
-    print("String Booking Car Id: " + carBooking.carId);
-
     if (carBooking.carId != car.carId) {
       return Container(
         height: 0,
@@ -248,7 +237,6 @@ Stack popUpMessage() {
         ),
         child: Row(
           children: [
-            //const SizedBox(width: 48),
             Expanded(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,

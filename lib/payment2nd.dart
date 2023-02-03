@@ -1,5 +1,4 @@
 import 'package:cargo/cardAddedSuccessfully.dart';
-// import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class Payment2nd extends StatefulWidget {
@@ -17,7 +16,6 @@ class _Payment2ndState extends State<Payment2nd> {
 
   @override
   void dispose() {
-    // TODO: implement dispose
     _subjectController.dispose();
     _daysController.dispose();
 
@@ -25,17 +23,15 @@ class _Payment2ndState extends State<Payment2nd> {
   }
 
   Future storeReq() async {
-
     Navigator.push(
         context, MaterialPageRoute(builder: (context) => CongoPage()));
   }
-
-
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        elevation: 0,
         backgroundColor: Color.fromARGB(255, 255, 255, 255),
         shadowColor: Color.fromARGB(255, 255, 255, 255),
         centerTitle: true,
@@ -56,18 +52,13 @@ class _Payment2ndState extends State<Payment2nd> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-// hello world
-
                 SizedBox(height: 10),
                 Text(
                   'Add Credit/Debit Card',
                   style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
                 ),
                 SizedBox(height: 20),
-//first name fieldtext
-
                 SizedBox(height: 20),
-// email textfield
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25.0),
                   child: Container(
@@ -89,7 +80,6 @@ class _Payment2ndState extends State<Payment2nd> {
                   ),
                 ),
                 SizedBox(height: 20),
-// email textfield
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25.0),
                   child: Container(
@@ -111,7 +101,6 @@ class _Payment2ndState extends State<Payment2nd> {
                   ),
                 ),
                 SizedBox(height: 20),
-// email textfield
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25.0),
                   child: GestureDetector(
@@ -136,7 +125,6 @@ class _Payment2ndState extends State<Payment2nd> {
                   ),
                 ),
                 SizedBox(height: 20),
-// not a member sign up button
               ],
             ),
           ),

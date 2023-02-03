@@ -169,7 +169,7 @@ class Settings1 extends StatelessWidget {
             Expanded(
                 child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
+                    children: const [
                   Text(
                     'Version Number',
                     style: TextStyle(
@@ -182,7 +182,7 @@ class Settings1 extends StatelessWidget {
             Expanded(
                 child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
+                    children: const [
                   Text(
                     'Country',
                     style: TextStyle(

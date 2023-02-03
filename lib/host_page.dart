@@ -13,7 +13,6 @@ import 'package:cargo/settings.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import 'model/Cars.dart';
 import 'rent_page.dart';
 import 'explore_page.dart';
@@ -31,44 +30,6 @@ class Hostpage extends StatefulWidget {
 class _Hostpage extends State<Hostpage> {
   @override
   Widget build(BuildContext context) {
-    //  // var cars = DatabaseService().getHostCars();
-    //   print("##############################");
-    //  // print(cars.length);
-    //   print("##############################");
-    //   // final Cars car = FirebaseAuth.instance.currentUser;
-    //  // for (Cars car in cars) {
-    //     print("##############################");
-    //    // print(car);
-    //     print("##############################");
-
-    // List<Cars> hostCars = [];
-    // double totalEarnings = 0;
-    // AuthService auth = AuthService();
-    // final String userId = auth.getUserId();
-    // for (var car in cars) {
-    //   if (car.carHostId == userId) {
-    //     hostCars.add(car);
-    //     totalEarnings += car.carHoursRented * car.carRentPrice;
-    //     setState(() {});
-    //   }
-    // }
-    // Stream<List<Cars>> carsStream = DatabaseService().cars;
-    // List<Cars> hostCars = carsStream.then((value) => value as List<Cars>);
-    double totalEarnings = 0;
-    // AuthService auth = AuthService();
-    // final String userId = auth.getUserId();
-    // for (var car in hostCars) {
-    //   if (car.carHostId == userId) {
-    //     hostCars.add(car);
-    //     totalEarnings += car.carHoursRented * car.carRentPrice;
-    //   }
-    // }
-
-    // print("##");
-    // print(hostCars);
-
-    // print("##");
-
     return StreamProvider<List<Cars>?>.value(
       initialData: null,
       value: DatabaseService().cars,
@@ -78,19 +39,6 @@ class _Hostpage extends State<Hostpage> {
           backgroundColor: Color.fromARGB(255, 255, 255, 255),
           body: Column(
             children: [
-              //////////////////////// DELETE ////////////////
-              // SizedBox(height: 30),
-              // Text(
-              //   "Total Earnings: ${totalEarnings.round()} RM",
-              //   textAlign: TextAlign.center,
-              //   style: TextStyle(
-              //     fontWeight: FontWeight.bold,
-              //     fontSize: 25,
-              //   ),
-              // ),
-              // SizedBox(height: 30),
-              //////////////////////// DELETE ////////////////
-
               SizedBox(height: 20),
               Text(
                 "My Cars",
@@ -262,7 +210,7 @@ class _Hostpage extends State<Hostpage> {
           case 3:
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => Dashboa()),
+              MaterialPageRoute(builder: (context) => Dashboard()),
             );
             break;
         }

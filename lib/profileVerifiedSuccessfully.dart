@@ -1,4 +1,6 @@
-import 'package:cargo/dashboard.dart';
+// ignore_for_file: file_names
+
+import 'package:cargo/explore_page.dart';
 import 'package:cargo/reusable_widget/Custom_AppBar.dart';
 import 'package:flutter/material.dart';
 
@@ -66,11 +68,11 @@ class VerifySuccessful extends StatelessWidget {
                     Navigator.pushAndRemoveUntil(
                         context,
                         PageRouteBuilder(
-                            pageBuilder: (context, a, b) => Dashboa()),
+                            pageBuilder: (context, a, b) => ExplorePage()),
                         (route) => false);
                   },
                   child: Text(
-                    " Dashboard",
+                    " Done",
                     style: TextStyle(color: Colors.white, fontSize: 18),
                   )),
             ),

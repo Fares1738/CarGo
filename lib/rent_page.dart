@@ -1,20 +1,15 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, non_constant_identifier_names
 
 import 'package:cargo/dashboard.dart';
 import 'package:cargo/history_page.dart';
-import 'package:cargo/landing_page.dart';
 import 'package:cargo/host_page.dart';
 import 'package:cargo/explore_page.dart';
 import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
-
 import 'booked_page.dart';
-import 'location_page.dart';
-import 'model/Cars.dart';
 
 class RentPage extends StatefulWidget {
-  // final Cars car;
-  // const RentPage({Key? key, required this.car}) : super(key: key);
+  const RentPage({super.key});
 
   @override
   State<RentPage> createState() => _RentPageState();
@@ -23,7 +18,6 @@ class RentPage extends StatefulWidget {
 class _RentPageState extends State<RentPage> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
-    // TabController tabController = TabController(length: 3, vsync: this);
     return DefaultTabController(
         length: 3,
         child: Scaffold(
@@ -71,10 +65,8 @@ class _RentPageState extends State<RentPage> with TickerProviderStateMixin {
                 ),
                 Expanded(
                   child: TabBarView(children: [
-                    Container(
-                        child: Center(
-                            //child: SearchElevatedButton(),
-                            )),
+                    Center(
+                        ),
                     BookedPage(),
                     HistoryPage(),
                   ]),
@@ -84,33 +76,6 @@ class _RentPageState extends State<RentPage> with TickerProviderStateMixin {
           ),
           bottomNavigationBar: CarGoCurvedNavigationBar(),
         ));
-  }
-
-  ElevatedButton SearchElevatedButton() {
-    return ElevatedButton.icon(
-      onPressed: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => Cities()),
-        );
-      },
-      icon: Text("Search for a Location"),
-      label: Icon(
-        Icons.search,
-        color: Colors.black,
-      ),
-      style: ElevatedButton.styleFrom(
-        minimumSize: Size(300, 40),
-        textStyle: TextStyle(
-          fontSize: 15,
-        ),
-        backgroundColor: Colors.white,
-        foregroundColor: Colors.black,
-        shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20.0),
-            side: BorderSide(color: Colors.black)),
-      ),
-    );
   }
 
   CurvedNavigationBar CarGoCurvedNavigationBar() {
@@ -136,7 +101,7 @@ class _RentPageState extends State<RentPage> with TickerProviderStateMixin {
           case 3:
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => Dashboa()),
+              MaterialPageRoute(builder: (context) => Dashboard()),
             );
             break;
         }
@@ -150,9 +115,9 @@ class _RentPageState extends State<RentPage> with TickerProviderStateMixin {
     );
   }
 
-  // ignore: non_constant_identifier_names
   AppBar CarGoAppBar() {
     return AppBar(
+      elevation: 0,
       backgroundColor: Colors.transparent,
       shadowColor: Colors.transparent,
       iconTheme: IconThemeData(color: Colors.black),

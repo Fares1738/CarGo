@@ -2,8 +2,6 @@ import 'package:cargo/reusable_widget/Custom_AppBar.dart';
 import 'package:cargo/verifyIdentityInstructions.dart';
 import 'package:flutter/material.dart';
 
-import 'explore_page.dart';
-
 class VerifyPage extends StatefulWidget {
   const VerifyPage({Key? key}) : super(key: key);
 

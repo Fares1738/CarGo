@@ -105,7 +105,6 @@ class AuthService {
           hoursRented,
           timesRented,
           imageUrl);
-      // return _userFromFirebaseUser(userId);
     } catch (e) {
       print(e.toString());
       return null;
@@ -128,7 +127,6 @@ class AuthService {
         bookingEndDate,
         bookingStatus,
       );
-      // return _userFromFirebaseUser(userId);
     } catch (e) {
       print(e.toString());
       return null;

@@ -1,8 +1,6 @@
 import 'package:cargo/payment2nd.dart';
 import 'package:flutter/material.dart';
 
-import 'package:flutter/material.dart';
-
 class PaymendAdd extends StatelessWidget {
   const PaymendAdd({super.key});
 
@@ -21,6 +19,7 @@ class Appbar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        elevation: 0,
         backgroundColor: Color.fromARGB(255, 255, 255, 255),
         shadowColor: Color.fromARGB(255, 255, 255, 255),
         centerTitle: true,

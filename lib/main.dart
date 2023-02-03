@@ -6,16 +6,15 @@ import 'package:cargo/welcome_page.dart';
 import 'package:cargo/wrapper.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
-
 import 'firebase_options.dart';
 import 'model/MyUser.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+
   CarGoPhoneSystemActionBar();
   runApp(const Home());
 }
@@ -29,7 +28,7 @@ class Home extends StatelessWidget {
         value: AuthService().user,
         initialData: null,
         child: MaterialApp(
-          // debugShowCheckedModeBanner: false,
+          debugShowCheckedModeBanner: false,
           home: Wrapper(),
         ));
   }

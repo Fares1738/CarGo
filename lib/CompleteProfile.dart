@@ -1,18 +1,15 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import 'dart:io';
-import 'package:cargo/dashboard.dart';
 import 'package:cargo/profileVerifiedSuccessfully.dart';
 import 'package:cargo/reusable_widget/Custom_AppBar.dart';
-import 'package:cargo/verify_profile.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-// import 'package:icrud/firebase_operation/list.dart';
-// import 'package:icrud/firebase_operation/firebase_crus.dart';
-
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
 class AddUserPage extends StatefulWidget {
-  AddUserPage({Key? key}) : super(key: key);
+  const AddUserPage({Key? key}) : super(key: key);
 
   @override
   _AddUserPageState createState() => _AddUserPageState();
@@ -50,7 +47,6 @@ class _AddUserPageState extends State<AddUserPage> {
       FirebaseFirestore.instance.collection('userdetails');
 
   Future<void> addUser() async {
-    final imgurl = await uploadImage(_image!);
     return pids
         .add({'pname': pname, 'govid': govid, 'driveid': driveid, 'image': url})
         .then((value) => print('User Added'))
@@ -69,7 +65,9 @@ class _AddUserPageState extends State<AddUserPage> {
           _image = File(pick.path);
         }
       });
-    } catch (e) {}
+    } catch (e) {
+      return e;
+    }
   }
 
   Future uploadImage(File _image) async {
@@ -133,96 +131,32 @@ class _AddUserPageState extends State<AddUserPage> {
                       ),
                     ],
                   )),
-              Container(
-                // this container is the value box for taking inputs
-                margin: EdgeInsets.symmetric(vertical: 10.0),
-                child: TextFormField(
-                  autofocus: false,
-                  decoration: InputDecoration(
-                    labelText: 'Your name: ',
-                    labelStyle: TextStyle(fontSize: 20.0),
-                    border: OutlineInputBorder(),
-                    errorStyle:
-                        TextStyle(color: Colors.redAccent, fontSize: 15),
-                  ),
-                  controller: pnameController,
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please Enter Your Name';
-                    }
-                    return null;
-                  },
-                ),
-              ),
-              Container(
-                margin: EdgeInsets.symmetric(vertical: 10.0),
-                child: TextFormField(
-                  autofocus: false,
-                  decoration: InputDecoration(
-                    labelText: 'MyKad/Passport no. : ',
-                    labelStyle: TextStyle(fontSize: 20.0),
-                    border: OutlineInputBorder(),
-                    errorStyle:
-                        TextStyle(color: Colors.redAccent, fontSize: 15),
-                  ),
-                  controller: govidController,
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please Enter government inproved id ';
-                    }
-                    return null;
-                  },
-                ),
-              ),
-              Container(
-                margin: EdgeInsets.symmetric(vertical: 10.0),
-                child: TextFormField(
-                  autofocus: false,
-                  decoration: InputDecoration(
-                    labelText: 'Driving licence id ',
-                    labelStyle: TextStyle(fontSize: 20.0),
-                    border: OutlineInputBorder(),
-                    errorStyle:
-                        TextStyle(color: Colors.redAccent, fontSize: 15),
-                  ),
-                  controller: driveidController,
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please Enter page';
-                    }
-                    return null;
-                  },
-                ),
-              ),
-              Container(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    ElevatedButton(
-                      onPressed: () {
-                        // Validate returns true if the form is valid, otherwise false.
-                        if (_formKey.currentState!.validate()) {
-                          setState(() {
-                            govid = govidController.text;
-                            pname = pnameController.text;
-                            driveid = driveidController.text;
-                            addUser();
-                            clearText();
-                          });
-                        }
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    const VerifySuccessful()));
-                      },
-                      child: Text(
-                        'Submit',
-                        style: TextStyle(fontSize: 18.0),
-                      ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  ElevatedButton(
+                    onPressed: () {
+                      // Validate returns true if the form is valid, otherwise false.
+                      if (_formKey.currentState!.validate()) {
+                        setState(() {
+                          govid = govidController.text;
+                          pname = pnameController.text;
+                          driveid = driveidController.text;
+                          addUser();
+                          clearText();
+                        });
+                      }
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const VerifySuccessful()));
+                    },
+                    child: Text(
+                      'Submit',
+                      style: TextStyle(fontSize: 18.0),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               )
             ],
           ),

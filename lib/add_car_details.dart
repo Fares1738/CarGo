@@ -2,15 +2,11 @@
 
 import 'dart:io';
 import 'package:cargo/reusable_widget/InputDeco.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:file_picker/file_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'car_details.dart';
 import 'reusable_widget/Custom_AppBar.dart';
-import 'package:cargo/services/database.dart';
-import 'package:provider/provider.dart';
 
 class AddVehicle extends StatefulWidget {
   final FirebaseStorage storage = FirebaseStorage.instance;
@@ -21,7 +17,6 @@ class AddVehicle extends StatefulWidget {
   State<StatefulWidget> createState() => AddVehicleState();
 }
 
-//
 class AddVehicleState extends State<AddVehicle> {
   final manufacturer = TextEditingController();
   final model = TextEditingController();
@@ -376,40 +371,10 @@ class AddVehicleState extends State<AddVehicle> {
 
                         //Pick image from phone storage and save it in firebase storage, and also generate download link//
                         onPressed: chooseImage,
-                        //selectFile
-
-                        child: Text('Add Car Pictures')
-                        //selectImages();
-                        ),
+                        child: Text('Add Car Pictures')),
                   ],
                 ),
               ),
-
-              // Print image
-              //   if (pickedFile != null)
-
-              // Print gridview of images
-              // Container(
-              //   margin: const EdgeInsets.all(15),
-              //   padding: const EdgeInsets.all(3.0),
-              //   decoration:
-              //       BoxDecoration(border: Border.all(color: Colors.black)),
-              //   child: Padding(
-              //     padding: const EdgeInsets.all(8.0),
-              //     child: GridView.builder(
-              //         shrinkWrap: true,
-              //         padding: const EdgeInsets.all(5),
-              //         itemCount: imageFileList!.length,
-              //         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              //             crossAxisCount: 3),
-              //         itemBuilder: (BuildContext context, int index) {
-              //           return Image.file(
-              //             File(imageFileList![index].path),
-              //             fit: BoxFit.cover,
-              //           );
-              //         }),
-              //   ),
-              // ),
 
               //Next Page Button
               Padding(
@@ -445,8 +410,6 @@ class AddVehicleState extends State<AddVehicle> {
                                     transmission: Text(selectedTransType!),
                                     location: Text(location.text),
                                     city: Text(selectedCity!),
-
-                                    /// images: imageFileList!,
                                     hoursRented: 0,
                                     timesRented: 0,
                                     imageUrl: imageUrl)));
@@ -463,39 +426,6 @@ class AddVehicleState extends State<AddVehicle> {
       ),
     );
   }
-
-  // PlatformFile pickedFile;
-
-  // Future selectFile() async {
-  //   final result = await FilePicker.platform.pickFiles();
-  //   if (result == null) return;
-
-  //   setState(() {
-  //     pickedFile = result.files.first;
-  //   });
-  // }
-
-  // Future uploadFile() async {
-  //   final path = 'files/${pickedFile.name}';
-  //   final file = File(pickedFile.path!);
-
-  //   final ref = FirebaseStorage.instance.ref().child(path);
-  //   ref.putFile(file);
-  // }
-
-  // Multi-image picker
-
-  // final ImagePicker imagePicker = ImagePicker();
-  // List<XFile>? imageFileList = [];
-
-  // void selectImages() async {
-  //   final List<XFile>? selectedImages = await imagePicker.pickMultiImage();
-  //   if (selectedImages!.isNotEmpty) {
-  //     imageFileList!.addAll(selectedImages);
-  //   }
-  //   print("Image List Length:" + imageFileList!.length.toString());
-  //   setState(() {});
-  // }
 
   void chooseImage() async {
     ImagePicker imagePicker = ImagePicker();

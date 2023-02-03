@@ -63,7 +63,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '286797532171',
     projectId: 'cargo-ad6c9',
     storageBucket: 'cargo-ad6c9.appspot.com',
-    iosClientId: '286797532171-b13rijfrk6qnfvg3sbmk69j93a8dp5rl.apps.googleusercontent.com',
+    iosClientId:
+        '286797532171-b13rijfrk6qnfvg3sbmk69j93a8dp5rl.apps.googleusercontent.com',
     iosBundleId: 'com.example.cargo',
   );
 }

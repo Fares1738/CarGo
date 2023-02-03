@@ -1,14 +1,11 @@
 import 'package:cargo/Car_Earnings.dart';
 import 'package:cargo/services/auth.dart';
-import 'package:cargo/services/database.dart';
 import 'package:flutter/material.dart';
 import 'package:cargo/model/Cars.dart';
-import 'host_page.dart';
-import 'bookCarDetailsPage.dart';
 
 class HostCarTile extends StatelessWidget {
   final Cars car;
-  HostCarTile({required this.car});
+  const HostCarTile({super.key, required this.car});
 
   @override
   Widget build(BuildContext context) {

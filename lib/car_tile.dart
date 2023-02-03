@@ -1,12 +1,10 @@
-import 'package:cargo/services/database.dart';
 import 'package:flutter/material.dart';
 import 'package:cargo/model/Cars.dart';
-
 import 'bookCarDetailsPage.dart';
 
 class CarTile extends StatelessWidget {
   final Cars car;
-  CarTile({required this.car});
+  const CarTile({super.key, required this.car});
 
   @override
   Widget build(BuildContext context) {

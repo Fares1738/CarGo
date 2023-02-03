@@ -1,33 +1,26 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, use_build_context_synchronously
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, use_build_context_synchronously, non_constant_identifier_names
 
-import 'package:cargo/DELETEAFTERWARDS.dart';
 import 'package:cargo/Profile.dart';
 import 'package:cargo/host_page.dart';
 import 'package:cargo/explore_page.dart';
 import 'package:cargo/login_page.dart';
 import 'package:cargo/rent_page.dart';
-import 'package:cargo/CompleteProfile.dart';
 import 'package:cargo/verify_profile.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-
 import 'package:flutter/material.dart';
-
 import 'package:cargo/contactus.dart';
 import 'package:cargo/payment.dart';
 import 'package:cargo/settings.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 
-import 'booked_page.dart';
-
-class Dashboa extends StatefulWidget {
-  const Dashboa({Key? key}) : super(key: key);
+class Dashboard extends StatefulWidget {
+  const Dashboard({Key? key}) : super(key: key);
 
   @override
-  State<Dashboa> createState() => _DashboaState();
+  State<Dashboard> createState() => _DashboardState();
 }
 
-class _DashboaState extends State<Dashboa> with TickerProviderStateMixin {
+class _DashboardState extends State<Dashboard> with TickerProviderStateMixin {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   signOut() async {
     await _auth.signOut();
@@ -53,9 +46,6 @@ class _DashboaState extends State<Dashboa> with TickerProviderStateMixin {
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: GestureDetector(
-                      onTap: () {
-                        // Get.to(const Reword());
-                      },
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -275,7 +265,7 @@ class _DashboaState extends State<Dashboa> with TickerProviderStateMixin {
             // );
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => Dashboa()),
+              MaterialPageRoute(builder: (context) => Dashboard()),
             );
             break;
         }
@@ -292,9 +282,9 @@ class _DashboaState extends State<Dashboa> with TickerProviderStateMixin {
   // ignore: non_constant_identifier_names
   AppBar CarGoAppBarBack() {
     return AppBar(
+      elevation: 0,
       backgroundColor: Colors.transparent,
       shadowColor: Colors.transparent,
-      // iconTheme: IconThemeData(color: Colors.black),
       centerTitle: true,
       title: Padding(
         padding: const EdgeInsets.only(top: 7),
